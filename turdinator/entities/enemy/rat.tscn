@@ -21,9 +21,11 @@ animations = [{
 
 [node name="Rat" type="CharacterBody2D"]
 position = Vector2(76, 56)
+collision_layer = 2
 script = ExtResource("1_4kftv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-5, 2)
 scale = Vector2(7.33708, 6.77195)
 shape = SubResource("CircleShape2D_pu7qs")
@@ -35,9 +37,10 @@ sprite_frames = SubResource("SpriteFrames_nkfjh")
 [node name="PerceptionArea" type="Area2D" parent="."]
 scale = Vector2(5.01799, 5.04184)
 collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionArea"]
-scale = Vector2(5, 5)
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_armlm")
 
 [node name="HitBoxArea" type="Area2D" parent="."]
@@ -45,10 +48,13 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 2
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
+visible = false
 position = Vector2(-5, 2)
 scale = Vector2(7.33708, 6.77195)
 shape = SubResource("CircleShape2D_pu7qs")
 
+[connection signal="area_entered" from="PerceptionArea" to="." method="_on_perception_area_area_entered"]
+[connection signal="area_exited" from="PerceptionArea" to="." method="_on_perception_area_area_exited"]
 [connection signal="body_entered" from="PerceptionArea" to="." method="_on_perception_area_body_entered"]
 [connection signal="body_exited" from="PerceptionArea" to="." method="_on_perception_area_body_exited"]
 [connection signal="body_entered" from="HitBoxArea" to="." method="_on_hit_box_area_body_entered"]
