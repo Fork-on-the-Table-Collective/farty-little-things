@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn8ccvfdc7d80"]
+
+[ext_resource type="Script" path="res://menu/skin_select.gd" id="1_cjtjm"]
+[ext_resource type="Texture2D" uid="uid://dt1a2qryhis10" path="res://menu/assets/rock.png" id="1_hbaiy"]
+
+[node name="SkinSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cjtjm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Background" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_hbaiy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="button_back" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 46
+text = "<"
+
+[node name="button_pick" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 79
+text = "Pick"
+
+[node name="button_next" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 46
+text = ">"
+
+[node name="button_back" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/button_pick" to="." method="_on_button_pick_pressed"]
+[connection signal="pressed" from="MarginContainer/button_back" to="." method="_on_button_back_pressed"]
