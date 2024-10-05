@@ -19,16 +19,16 @@ func set_size(modifier:float):
 	size += modifier
 
 func set_health(modifier: float):
-	health += modifier 
+	health += modifier
 	size = floor(health/HEALT_PER_SIZE)
-  
+
 func set_speed_modifier(modifier: float):
 	speed_modifier = modifier
 
 func _button_hover_sound_play():
 	sfx_stream_player.stream=button_hover
 	sfx_stream_player.play()
-	
+
 func _button_pressed_sound_play():
 	sfx_stream_player.stream=button_pressed
 	sfx_stream_player.play()
@@ -47,5 +47,3 @@ func set_all_button():
 	for child in buttons:
 		child.mouse_entered.connect(_button_hover_sound_play)
 		child.pressed.connect(_button_pressed_sound_play)
-
-

@@ -20,7 +20,7 @@ func _ready() -> void:
 	origin_speed = speed
 	velocity = Vector2(0, 0)
 	cooldown_timer = Timer.new()
-	cooldown_timer.set_wait_time(COOLDOWN) 
+	cooldown_timer.set_wait_time(COOLDOWN)
 	cooldown_timer.set_one_shot(true)  # The timer should stop after one timeout
 	cooldown_timer.connect("timeout",  _on_Cooldown_timeout)
 	add_child(cooldown_timer)  # Add the timer to the scene
