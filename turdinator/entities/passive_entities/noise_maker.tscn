@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://gejmnrh2ly5l"]
+
+[ext_resource type="Script" path="res://entities/passive_entities/noise_maker.gd" id="1_iso7d"]
+[ext_resource type="Texture2D" uid="uid://c3drgxbi3et35" path="res://entities/assets/paper.png" id="2_7hukj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txfw6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7hukj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_07nd3"]
+radius = 29.0
+height = 58.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m5s27"]
+
+[node name="noise_maker" type="Area2D"]
+script = ExtResource("1_iso7d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(0.14375, 0.180208)
+sprite_frames = SubResource("SpriteFrames_txfw6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_07nd3")
+
+[node name="noise_maker_sound" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
+
+[node name="PerceptionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionArea"]
+scale = Vector2(45, 45)
+shape = SubResource("CircleShape2D_m5s27")
+disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
