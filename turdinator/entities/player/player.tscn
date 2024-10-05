@@ -1,16 +1,196 @@
-[gd_scene load_steps=6 format=3 uid="uid://ujooexq3jie0"]
+[gd_scene load_steps=9 format=3 uid="uid://ujooexq3jie0"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_lqb31"]
+[ext_resource type="Texture2D" uid="uid://cmy7n50s8fqks" path="res://entities/assets/mrT_test.png" id="2_0cbjs"]
 [ext_resource type="Texture2D" uid="uid://cmy7n50s8fqks" path="res://entities/assets/mrT_test.png" id="2_v36oj"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_v1tcv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o5lx"]
+atlas = ExtResource("2_0cbjs")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv6et"]
+atlas = ExtResource("2_0cbjs")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6m1gc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o5lx")
+}],
+"loop": true,
+"name": &"brown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sv6et")
+}],
+"loop": true,
+"name": &"light_brown",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6eueg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_v36oj")
 }],
 "loop": true,
-"name": &"default",
+"name": &"down_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"down_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"down_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"down_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"idle_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"idle_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"idle_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"idle_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"left_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"left_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"left_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"left_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"right_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"right_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"right_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"right_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"up_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"up_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"up_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v36oj")
+}],
+"loop": true,
+"name": &"up_4",
 "speed": 5.0
 }]
 
@@ -18,22 +198,22 @@ animations = [{
 radius = 18.0
 height = 198.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fl6b7"]
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_lqb31")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_v1tcv")
+[node name="Player_Skin" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.00001, 127)
+scale = Vector2(1.03011, 0.983537)
+sprite_frames = SubResource("SpriteFrames_6m1gc")
+animation = &"brown"
+
+[node name="Player_Body" type="AnimatedSprite2D" parent="Player_Skin"]
+position = Vector2(0.970782, -129.126)
+scale = Vector2(0.970774, 1.01674)
+sprite_frames = SubResource("SpriteFrames_6eueg")
+animation = &"idle_1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_ndmki")
-
-[node name="PerceptionArea" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionArea"]
-scale = Vector2(25, 25)
-shape = SubResource("CircleShape2D_fl6b7")

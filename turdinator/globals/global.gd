@@ -47,5 +47,3 @@ func set_all_button():
 	for child in buttons:
 		child.mouse_entered.connect(_button_hover_sound_play)
 		child.pressed.connect(_button_pressed_sound_play)
-
-
