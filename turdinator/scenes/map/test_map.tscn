@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c57y7i7tjmnkl"]
+[gd_scene load_steps=3 format=3 uid="uid://b600b64qj8557"]
 
-[ext_resource type="PackedScene" uid="uid://ujooexq3jie0" path="res://entities/player/player.tscn" id="1_l1pwb"]
+[ext_resource type="PackedScene" uid="uid://3bh4ndncfa11" path="res://entities/player/player.tscn" id="1_l1pwb"]
 [ext_resource type="PackedScene" uid="uid://bcapk4utlhnos" path="res://entities/passive_entities/power_up.tscn" id="2_mfx0k"]
 
 [node name="Node2D" type="Node2D"]
