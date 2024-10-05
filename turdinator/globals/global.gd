@@ -1,14 +1,13 @@
 extends Node
 
-const HEALT_PER_SIZE = 20
+const HEALTH_PER_SIZE = 20
 
 var size: float = 4.0
-var health: float = size*HEALT_PER_SIZE
+var health: float = size*HEALTH_PER_SIZE
 var sfx_stream_player= AudioStreamPlayer2D.new()
 var button_hover=preload("res://sounds/sfx/menu_button_hover.wav")
 var button_pressed=preload("res://sounds/sfx/menu_button_click.wav")
 var speed_modifier: float = 1
-
 
 func _ready() -> void:
 	sfx_stream_player.bus="sfx"
@@ -20,7 +19,18 @@ func set_size(modifier:float):
 
 func set_health(modifier: float):
 	health += modifier
-	size = floor(health/HEALT_PER_SIZE)
+	size = floor(health/HEALTH_PER_SIZE)
+	if health <= 0:
+		var player = get_tree().get_first_node_in_group("player")
+		player.you_have_died.visible = true
+		get_tree().paused = true
+		await get_tree().create_timer(3, true, false, true).timeout
+		get_tree().paused = false
+		call_deferred("restart_scene")
+
+func restart_scene():
+	get_tree().reload_current_scene()
+	set_health(80)
 
 func set_speed_modifier(modifier: float):
 	speed_modifier = modifier
