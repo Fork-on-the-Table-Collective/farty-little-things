@@ -16,4 +16,8 @@ func _on_button_back_pressed() -> void:
 
 
 func _on_button_pick_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main/game_area.tscn")
+	if Global.is_first_run:
+		get_tree().change_scene_to_file(Global.levels[0])
+		Global.is_first_run=false
+	else:
+		get_tree().change_scene_to_file("res://scenes/main/game_area.tscn")
