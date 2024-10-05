@@ -1,6 +1,6 @@
 extends Area2D
 
-const HEALTH_MODIFIER: float = -10.0 
+const HEALTH_MODIFIER: float = -10.0
 const SIZE_MODIFIER: float = -1.0
 
 @onready var power_down_sound: AudioStreamPlayer = $power_down_sound
