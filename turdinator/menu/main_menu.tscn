@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnvl43pmh57j7"]
+[gd_scene load_steps=2 format=3 uid="uid://cxuouqc2cqlp2"]
 
 [ext_resource type="Script" path="res://menu/main_menu.gd" id="1_0w8w1"]
 
@@ -52,6 +52,12 @@ theme_override_font_sizes/font_size = 47
 text = "Push it!
 (Start)"
 
+[node name="ButtonSettings" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 47
+text = "Settings"
+
 [node name="ButtonExit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -60,4 +66,5 @@ text = "Flush!
 (Exit)"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
