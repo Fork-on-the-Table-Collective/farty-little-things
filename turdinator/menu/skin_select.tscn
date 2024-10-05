@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://wmjmnj4deiwk"]
+[gd_scene load_steps=3 format=3 uid="uid://wmjmnj4deiwk"]
 
+[ext_resource type="Script" path="res://menu/skin_select.gd" id="1_cjtjm"]
 [ext_resource type="Texture2D" uid="uid://dt1a2qryhis10" path="res://menu/assets/rock.png" id="1_hbaiy"]
 
 [node name="SkinSelect" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cjtjm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -67,3 +69,6 @@ size_flags_vertical = 8
 theme_override_constants/h_separation = 0
 theme_override_font_sizes/font_size = 50
 text = "Back"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/button_pick" to="." method="_on_button_pick_pressed"]
+[connection signal="pressed" from="MarginContainer/button_back" to="." method="_on_button_back_pressed"]

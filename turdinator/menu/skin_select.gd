@@ -11,9 +11,9 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_button_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://menu/skin_select.tscn")
+func _on_button_back_pressed() -> void:
+	get_tree().change_scene_to_file("res://menu/main_menu.tscn")
 
 
-func _on_button_exit_pressed() -> void:
-	get_tree().quit()
+func _on_button_pick_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main/game_area.tscn")
