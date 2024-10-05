@@ -6,6 +6,7 @@ const SPRINT = 3.0
 var anim_dict:Dictionary={}
 
 @onready var player_body: AnimatedSprite2D = $Player_Skin/Player_Body
+@onready var player_skin: AnimatedSprite2D = $Player_Skin
 
 func _ready() -> void:
 	set_animation_dict()
@@ -36,9 +37,9 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func get_move(direction:Vector2):
-	if direction.x < 0:
+	if direction.x > 0:
 		return "right"
-	elif direction.x > 0:
+	elif direction.x < 0:
 		return "left"
 	elif direction.y < 0:
 		return "up"
@@ -60,4 +61,5 @@ func play_animation(direction:Vector2, velocity:Vector2):
 	#print(anim_dict[int(Global.size)])
 	#print(anim_dict[int(Global.size)][get_move(direction)])
 	player_body.play(anim_dict[int(Global.size)][get_move(direction)])
-	player_body.speed_scale *= velocity.length()/100.0
+	player_skin.play(anim_dict[int(Global.size)][get_move(direction)] + "_" + Global.turd_color)
+	#player_body.speed_scale *= velocity.length()

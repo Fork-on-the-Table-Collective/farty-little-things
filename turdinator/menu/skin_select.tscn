@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn8ccvfdc7d80"]
+[gd_scene load_steps=2 format=3 uid="uid://cn8ccvfdc7d80"]
 
 [ext_resource type="Script" path="res://menu/skin_select.gd" id="1_cjtjm"]
-[ext_resource type="Texture2D" uid="uid://dt1a2qryhis10" path="res://menu/assets/rock.png" id="1_hbaiy"]
 
 [node name="SkinSelect" type="Control"]
 layout_mode = 3
@@ -30,37 +29,21 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 25
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("1_hbaiy")
+theme_override_font_sizes/font_size = 64
+text = "Are you vegan?"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="button_back" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 46
-text = "<"
-
-[node name="button_pick" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
-theme_override_font_sizes/font_size = 79
-text = "Pick"
-
-[node name="button_next" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 46
-text = ">"
+theme_override_font_sizes/font_size = 64
+item_count = 2
+popup/item_0/text = "No"
+popup/item_1/text = "Yes"
+popup/item_1/id = 1
 
 [node name="button_back" type="Button" parent="MarginContainer"]
 layout_mode = 2
@@ -70,5 +53,5 @@ theme_override_constants/h_separation = 0
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/button_pick" to="." method="_on_button_pick_pressed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="MarginContainer/button_back" to="." method="_on_button_back_pressed"]
