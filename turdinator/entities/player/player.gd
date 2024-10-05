@@ -7,9 +7,11 @@ var anim_dict:Dictionary={}
 
 @onready var player_body: AnimatedSprite2D = $Player_Skin/Player_Body
 @onready var player_skin: AnimatedSprite2D = $Player_Skin
+@onready var you_have_died: Node2D = $YouHaveDied
 
 func _ready() -> void:
 	set_animation_dict()
+	you_have_died.visible = false
 
 func _physics_process(_delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
@@ -19,8 +21,8 @@ func _physics_process(_delta: float) -> void:
 
 	# Apply movement direction and sprint
 	if input_dir: 
-		velocity.x = direction.x * SPEED / Global.size
-		velocity.y = direction.y * SPEED / Global.size
+		velocity.x = direction.x * SPEED / Global.size * Global.speed_modifier
+		velocity.y = direction.y * SPEED / Global.size * Global.speed_modifier
 		
 		# Play animation based on direction and velocity
 		play_animation(direction, velocity)
@@ -33,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		play_animation(direction, velocity)
-		
+
 	move_and_slide()
 
 func get_move(direction:Vector2):
