@@ -1,20 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2fethtyobpvf"]
+[gd_scene load_steps=10 format=3 uid="uid://b2fethtyobpvf"]
 
-[ext_resource type="Script" path="res://entities/enemy/rat.gd" id="1_4kftv"]
-[ext_resource type="Texture2D" uid="uid://c4d5q8up582wq" path="res://entities/assets/rat.png" id="2_kg1n1"]
+[ext_resource type="Script" path="res://entities/enemy/enemy.gd" id="1_4kftv"]
+[ext_resource type="Texture2D" uid="uid://cobe18e84cm7d" path="res://entities/assets/Rat_anim_sheet.png" id="2_aubs3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pu7qs"]
 radius = 6.21973
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trkke"]
+atlas = ExtResource("2_aubs3")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h8fl"]
+atlas = ExtResource("2_aubs3")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txa8t"]
+atlas = ExtResource("2_aubs3")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohr8j"]
+atlas = ExtResource("2_aubs3")
+region = Rect2(256, 256, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nkfjh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_kg1n1")
+"texture": SubResource("AtlasTexture_trkke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h8fl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txa8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohr8j")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"left",
+"speed": 8.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_armlm"]
@@ -31,15 +56,18 @@ scale = Vector2(7.33708, 6.77195)
 shape = SubResource("CircleShape2D_pu7qs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_nkfjh")
+animation = &"left"
+autoplay = "left"
 
 [node name="PerceptionArea" type="Area2D" parent="."]
+visible = false
 scale = Vector2(5.01799, 5.04184)
 collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionArea"]
+visible = false
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_armlm")
 
