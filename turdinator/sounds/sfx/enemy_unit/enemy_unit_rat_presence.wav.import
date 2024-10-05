@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ohpyu1wnr588"
-path="res://.godot/imported/enemy_unit_rat_presence.wav-35b8dd6502e590d264b65d3cf1f83bee.sample"
+path="res://.godot/imported/enemy_unit_rat_presence.wav-a80015cb6bcf034a33940bce7fad79fa.sample"
 
 [deps]
 
-source_file="res://sounds/sfx/enemy_unit_rat_presence.wav"
-dest_files=["res://.godot/imported/enemy_unit_rat_presence.wav-35b8dd6502e590d264b65d3cf1f83bee.sample"]
+source_file="res://sounds/sfx/enemy_unit/enemy_unit_rat_presence.wav"
+dest_files=["res://.godot/imported/enemy_unit_rat_presence.wav-a80015cb6bcf034a33940bce7fad79fa.sample"]
 
 [params]
 

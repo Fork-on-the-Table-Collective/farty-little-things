@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://brehpxe822sig"
-path="res://.godot/imported/enemy_unit_fly_presence.wav-107dc5c8805f04ff2a40d7e52fafb17c.sample"
+path="res://.godot/imported/enemy_unit_fly_presence.wav-c00d7c1fd628b34cac6ede1f07fba2f9.sample"
 
 [deps]
 
-source_file="res://sounds/sfx/enemy_unit_fly_presence.wav"
-dest_files=["res://.godot/imported/enemy_unit_fly_presence.wav-107dc5c8805f04ff2a40d7e52fafb17c.sample"]
+source_file="res://sounds/sfx/enemy_unit/enemy_unit_fly_presence.wav"
+dest_files=["res://.godot/imported/enemy_unit_fly_presence.wav-c00d7c1fd628b34cac6ede1f07fba2f9.sample"]
 
 [params]
 
