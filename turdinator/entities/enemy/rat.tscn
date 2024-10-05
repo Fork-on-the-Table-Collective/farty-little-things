@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2fethtyobpvf"]
+
+[ext_resource type="Script" path="res://entities/enemy/rat.gd" id="1_4kftv"]
+[ext_resource type="Texture2D" uid="uid://c4d5q8up582wq" path="res://entities/assets/rat.png" id="2_kg1n1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pu7qs"]
+radius = 6.21973
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nkfjh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kg1n1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_armlm"]
+
+[node name="Rat" type="CharacterBody2D"]
+position = Vector2(76, 56)
+script = ExtResource("1_4kftv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 2)
+scale = Vector2(7.33708, 6.77195)
+shape = SubResource("CircleShape2D_pu7qs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_nkfjh")
+
+[node name="PerceptionArea" type="Area2D" parent="."]
+scale = Vector2(5.01799, 5.04184)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionArea"]
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_armlm")
+
+[node name="HitBoxArea" type="Area2D" parent="."]
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+
+[node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
+position = Vector2(-5, 2)
+scale = Vector2(7.33708, 6.77195)
+shape = SubResource("CircleShape2D_pu7qs")
+
+[connection signal="body_entered" from="PerceptionArea" to="." method="_on_perception_area_body_entered"]
+[connection signal="body_exited" from="PerceptionArea" to="." method="_on_perception_area_body_exited"]
+[connection signal="body_entered" from="HitBoxArea" to="." method="_on_hit_box_area_body_entered"]
