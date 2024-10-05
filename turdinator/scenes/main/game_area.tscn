@@ -1,13 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1uomkedbq21i"]
+[gd_scene load_steps=2 format=3 uid="uid://btvdcq6h8ut5u"]
 
-[ext_resource type="PackedScene" uid="uid://ujooexq3jie0" path="res://entities/player/player.tscn" id="1_gg8vx"]
-[ext_resource type="PackedScene" uid="uid://bcapk4utlhnos" path="res://entities/passive_entities/power_up.tscn" id="2_awo0v"]
+[ext_resource type="Script" path="res://scenes/main/game_area.gd" id="1_8l05c"]
 
 [node name="GameArea" type="Node2D"]
+script = ExtResource("1_8l05c")
 
-[node name="Player" parent="." instance=ExtResource("1_gg8vx")]
-z_index = 3
-position = Vector2(684, 577)
+[node name="menu" type="Button" parent="."]
+offset_left = 626.0
+offset_top = 4.0
+offset_right = 830.0
+offset_bottom = 104.0
+text = "MENU"
 
-[node name="power_up" parent="." instance=ExtResource("2_awo0v")]
-position = Vector2(1560, 849)
+[node name="testmap" type="Button" parent="."]
+offset_left = 356.0
+offset_top = 6.0
+offset_right = 539.0
+offset_bottom = 117.0
+text = "TEST MAP"
+
+[connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="testmap" to="." method="_on_testmap_pressed"]

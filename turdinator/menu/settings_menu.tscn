@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx4glfnd5gafh"]
+
+[ext_resource type="Script" path="res://menu/settings_menu.gd" id="1_22mna"]
+[ext_resource type="PackedScene" uid="uid://bqm25h0mdorpk" path="res://scenes/common/volume_slider.tscn" id="1_ra15j"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_22mna")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+
+[node name="master_label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master volume"
+
+[node name="master_slider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_ra15j")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="music_label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music volume"
+
+[node name="music_slider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_ra15j")]
+layout_mode = 2
+bus_name = "music"
+
+[node name="sfx_label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFX volume"
+
+[node name="sfx_slider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_ra15j")]
+layout_mode = 2
+bus_name = "sfx"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

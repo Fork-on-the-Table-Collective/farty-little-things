@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://rgtvun0njkb8"]
+
+[ext_resource type="AudioStream" uid="uid://103eicarpwha" path="res://sounds/music/music_reference_fart_mixdown.wav" id="1_jbtf4"]
+
+[node name="MusicReferenceFartMixdown" type="AudioStreamPlayer2D"]
+position = Vector2(366, 1021)
+stream = ExtResource("1_jbtf4")
+autoplay = true
+bus = &"music"
