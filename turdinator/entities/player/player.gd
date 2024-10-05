@@ -3,6 +3,11 @@ extends CharacterBody2D
 const SPEED = 300.0
 const SPRINT = 3.0
 
+@onready var you_have_died: Node2D = $YouHaveDied
+
+func _ready() -> void:
+	you_have_died.visible = false
+
 func _physics_process(_delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
