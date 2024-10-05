@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3erro1tlgq27"]
+
+[sub_resource type="GDScript" id="GDScript_ceukn"]
+script/source = "extends RichTextLabel
+
+
+@onready var timer: Timer = $Timer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	timer.start()
+
+
+func _on_timer_timeout() -> void:
+	get_tree().quit()
+"
+
+[node name="Feedback" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 460.0
+offset_bottom = 50.0
+scale = Vector2(2.53877, 4.19768)
+text = "This map is complete! 
+Let's see how big the plant can grow, thanks your turd!"
+script = SubResource("GDScript_ceukn")
+
+[node name="Timer" type="Timer" parent="RichTextLabel"]
+wait_time = 3.0
+
+[connection signal="timeout" from="RichTextLabel/Timer" to="RichTextLabel" method="_on_timer_timeout"]

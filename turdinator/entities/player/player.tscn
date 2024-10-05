@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://3bh4ndncfa11"]
+[gd_scene load_steps=7 format=3 uid="uid://ujooexq3jie0"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_lqb31"]
 [ext_resource type="Texture2D" uid="uid://cmy7n50s8fqks" path="res://entities/assets/mrT_test.png" id="2_v36oj"]
+[ext_resource type="PackedScene" uid="uid://dmyqbuomfcbwm" path="res://entities/ui/YouHaveDied.tscn" id="3_llmpy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v1tcv"]
 animations = [{
@@ -20,7 +21,7 @@ height = 198.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fl6b7"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_lqb31")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -37,3 +38,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionArea"]
 scale = Vector2(25, 25)
 shape = SubResource("CircleShape2D_fl6b7")
+
+[node name="YouHaveDied" parent="." instance=ExtResource("3_llmpy")]
+visible = false
+position = Vector2(-221, -143)
