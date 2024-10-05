@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcapk4utlhnos"]
+[gd_scene load_steps=5 format=3 uid="uid://djjym27n4yfqk"]
 
-[ext_resource type="Script" path="res://entities/passive_entities/power_up.gd" id="1_cstcl"]
-[ext_resource type="Texture2D" uid="uid://c6imkofabs11f" path="res://entities/assets/power_up.png" id="2_gaskc"]
+[ext_resource type="Script" path="res://entities/passive_entities/power_down.gd" id="1_q2ka2"]
+[ext_resource type="Texture2D" uid="uid://dcu1l564vqxli" path="res://entities/assets/sewer.jpeg" id="2_cv62q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_txfw6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_gaskc")
+"texture": ExtResource("2_cv62q")
 }],
 "loop": true,
 "name": &"default",
@@ -18,18 +18,18 @@ animations = [{
 radius = 69.0
 height = 176.0
 
-[node name="power_up" type="Area2D"]
-script = ExtResource("1_cstcl")
+[node name="power_down" type="Area2D"]
+script = ExtResource("1_q2ka2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -1)
-scale = Vector2(0.263014, 0.269918)
+scale = Vector2(0.14375, 0.180208)
 sprite_frames = SubResource("SpriteFrames_txfw6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_07nd3")
 
-[node name="power_up_sound" type="AudioStreamPlayer" parent="."]
+[node name="power_down_sound" type="AudioStreamPlayer" parent="."]
 bus = &"sfx"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

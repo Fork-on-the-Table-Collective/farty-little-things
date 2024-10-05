@@ -9,8 +9,8 @@ func _physics_process(_delta: float) -> void:
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction = Vector2(input_dir.x, input_dir.y)
 	if input_dir: 
-		velocity.x = direction.x * SPEED / Global.size
-		velocity.y = direction.y * SPEED / Global.size
+		velocity.x = direction.x * SPEED / Global.size * Global.speed_modifier
+		velocity.y = direction.y * SPEED / Global.size * Global.speed_modifier
 		# Check if sprinting 
 		if Input.is_action_pressed("sprint"):
 			velocity *= SPRINT
