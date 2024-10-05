@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bx4glfnd5gafh"]
+[gd_scene load_steps=3 format=3 uid="uid://bx4glfnd5gafh"]
 
+[ext_resource type="Script" path="res://menu/settings_menu.gd" id="1_22mna"]
 [ext_resource type="PackedScene" uid="uid://bqm25h0mdorpk" path="res://scenes/common/volume_slider.tscn" id="1_ra15j"]
 
 [node name="SettingsMenu" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_22mna")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -59,3 +61,9 @@ text = "SFX volume"
 [node name="sfx_slider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_ra15j")]
 layout_mode = 2
 bus_name = "sfx"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
