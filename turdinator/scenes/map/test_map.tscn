@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c57y7i7tjmnkl"]
+
+[ext_resource type="PackedScene" uid="uid://ujooexq3jie0" path="res://entities/player/player.tscn" id="1_l1pwb"]
+[ext_resource type="PackedScene" uid="uid://bcapk4utlhnos" path="res://entities/passive_entities/power_up.tscn" id="2_mfx0k"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_l1pwb")]
+position = Vector2(308, 350)
+
+[node name="power_up" parent="." instance=ExtResource("2_mfx0k")]
+position = Vector2(868, 345)
