@@ -2,8 +2,8 @@ extends Node
 
 const HEALTH_PER_SIZE = 20
 
-var size: float = 4.0
-var health: float = size*HEALTH_PER_SIZE
+var size: float = 2.0
+var health: float = size*HEALT_PER_SIZE
 var sfx_stream_player= AudioStreamPlayer2D.new()
 var button_hover=preload("res://sounds/sfx/menu_button_hover.wav")
 var button_pressed=preload("res://sounds/sfx/menu_button_click.wav")
@@ -43,6 +43,7 @@ func load_variables():
 func update_highscore():
 	if score > highscore:
 		highscore=score
+var turd_color: String 
 
 func _ready() -> void:
 	load_variables()
@@ -90,3 +91,6 @@ func set_all_button():
 	for child in buttons:
 		child.mouse_entered.connect(_button_hover_sound_play)
 		child.pressed.connect(_button_pressed_sound_play)
+
+func set_turd_color(color: String):
+	turd_color = color
