@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b600b64qj8557"]
+[gd_scene load_steps=4 format=3 uid="uid://c57y7i7tjmnkl"]
 
-[ext_resource type="PackedScene" uid="uid://3bh4ndncfa11" path="res://entities/player/player.tscn" id="1_l1pwb"]
+[ext_resource type="PackedScene" uid="uid://ujooexq3jie0" path="res://entities/player/player.tscn" id="1_l1pwb"]
 [ext_resource type="PackedScene" uid="uid://bcapk4utlhnos" path="res://entities/passive_entities/power_up.tscn" id="2_mfx0k"]
+[ext_resource type="PackedScene" uid="uid://b2fethtyobpvf" path="res://entities/enemy/rat.tscn" id="3_ugmbo"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -10,3 +11,8 @@ position = Vector2(308, 350)
 
 [node name="power_up" parent="." instance=ExtResource("2_mfx0k")]
 position = Vector2(868, 345)
+
+[node name="Rat" parent="." instance=ExtResource("3_ugmbo")]
+position = Vector2(858, 777)
+speed = 150.0
+damage = -10.0
