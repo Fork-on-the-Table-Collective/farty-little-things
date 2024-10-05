@@ -14,9 +14,6 @@ func _ready() -> void:
 	add_child(sfx_stream_player)
 	set_all_button()
 
-func set_size(modifier:float):
-	size += modifier
-
 func set_health(modifier: float):
 	health += modifier
 	size = floor(health/HEALTH_PER_SIZE)

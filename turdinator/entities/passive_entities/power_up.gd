@@ -7,6 +7,5 @@ const SIZE_MODIFIER: float = 1.0
 
 func _on_body_entered(body: Node2D) -> void:
 	Global.set_health(HEALTH_MODIFIER)
-	Global.set_size(SIZE_MODIFIER)
 	power_up_sound.play()
 	queue_free()
