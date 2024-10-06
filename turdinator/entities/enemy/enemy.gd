@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-const COOLDOWN = 1.0
+const COOLDOWN = 2.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack_effect: AnimatedSprite2D = $AnimatedSprite2D/AttackEffect
 
 @export var speed = 200.0
 @export var damage = -20.0
@@ -27,6 +28,8 @@ func _ready() -> void:
 
 func _on_Cooldown_timeout():
 	speed=origin_speed
+	attack_effect.stop()
+	attack_effect.visible = false
 
 func _physics_process(_delta: float) -> void:
 	if target != null:
@@ -40,6 +43,8 @@ func _physics_process(_delta: float) -> void:
 
 func _on_hit_box_area_body_entered(_body: Node2D) -> void:
 	Global.set_health(damage)
+	attack_effect.visible = true
+	attack_effect.play("activated")
 	speed=0
 	cooldown_timer.start()
 
