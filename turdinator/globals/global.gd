@@ -12,7 +12,7 @@ const MAX_LEVEL=4.0
 # Dictionary contains the transformation values to scale the player to size
 # Values: x scale, y scale, x position, y position
 const player_scale_dict:Dictionary={
-	1.0: {"Scale": Vector2(1.1, 0.65), "Position": Vector2(-10.0, 15.0)},
+	1.0: {"Scale": Vector2(1.0, 0.5), "Position": Vector2(-5.0, 35.0)},
 	2.0: {"Scale": Vector2(1.1, 1.1), "Position": Vector2(-10.0, -10.0)},
 	3.0: {"Scale": Vector2(2.35, 0.95), "Position": Vector2(0.0, -10.0)},
 	4.0: {"Scale": Vector2(2.85, 1.2), "Position": Vector2(0.0, 0.0)}
@@ -74,7 +74,7 @@ func _ready() -> void:
 
 func set_health(modifier: float):
 	health += modifier
-	size = min(ceil(health/HEALTH_PER_SIZE),MAX_LEVEL)
+	size = max(1,min(ceil(health/HEALTH_PER_SIZE),MAX_LEVEL))
 	player_body_collision_pos = player_scale_dict[size].Position
 	player_body_collision_scale = player_scale_dict[size].Scale
 	print(size)
