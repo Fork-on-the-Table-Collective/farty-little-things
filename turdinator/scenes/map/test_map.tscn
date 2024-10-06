@@ -98,8 +98,11 @@ rendering_quadrant_size = 32
 position = Vector2(548, 130)
 scale = Vector2(0.3, 0.3)
 
+[node name="power_up2" parent="." instance=ExtResource("2_mfx0k")]
+position = Vector2(917, 553)
+
 [node name="power_up" parent="." instance=ExtResource("2_mfx0k")]
-position = Vector2(580, 561)
+position = Vector2(595, 543)
 
 [node name="Rat" parent="." instance=ExtResource("5_rylnt")]
 position = Vector2(216, 105)

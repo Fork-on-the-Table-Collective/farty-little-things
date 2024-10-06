@@ -10,7 +10,6 @@ var anim_dict:Dictionary={}
 @onready var you_have_died: Node2D = $YouHaveDied
 @onready var body_collision_shape: CollisionShape2D = $BodyCollisionShape
 
-
 func reset_player_params():
 	Global.size=2.0
 	Global.health=Global.size*Global.HEALTH_PER_SIZE
@@ -75,16 +74,14 @@ func set_animation_dict():
 			anim_dict[i][direction]=direction+"_"+str(i)
 
 func play_animation(direction:Vector2, anim_speed_modifier:float):
-	#print(get_move(direction))
-	#print(Global.size)
-	#print(anim_dict[int(Global.size)])
-	#print(anim_dict[int(Global.size)][get_move(direction)])
 	const NORMAL_SPEED = 3.0
 	var animation_body_name = anim_dict[int(Global.size)][get_move(direction)]
 	var animation_skin_name =animation_body_name+ "_" + Global.turd_color
 	#var anim_speed_modifier=Global.speed_modifier/Global.size
 	player_body.speed_scale=anim_speed_modifier*NORMAL_SPEED
 	player_body.play(animation_body_name)
-	
 	player_skin.play(animation_skin_name)
+	
+	if Global.size == 3.0:
+		player_skin.scale = Vector2(0.85, 0.85)
 	#player_body.speed_scale *= velocity.length()
