@@ -1,4 +1,4 @@
-[gd_scene load_steps=198 format=3 uid="uid://ujooexq3jie0"]
+[gd_scene load_steps=199 format=3 uid="uid://ujooexq3jie0"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_lqb31"]
 [ext_resource type="Texture2D" uid="uid://d1le86ljgsxpc" path="res://entities/assets/mrT_front_damaged_sheet.png" id="2_ksdh1"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://rhvn4k6lh41d" path="res://entities/assets/bigT_right_sheet.png" id="10_rruvc"]
 [ext_resource type="PackedScene" uid="uid://cyen0uoxx84q3" path="res://particles/Streak.tscn" id="12_geocg"]
 [ext_resource type="Texture2D" uid="uid://blf763jnn58ra" path="res://entities/assets/bigT_back_sheet.png" id="13_cn2yf"]
+[ext_resource type="PackedScene" uid="uid://pofaim3vrakg" path="res://scenes/common/toutch_controls.tscn" id="17_svtgq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxdg3"]
 atlas = ExtResource("2_ksdh1")
@@ -1611,3 +1612,6 @@ zoom = Vector2(2, 2)
 
 [node name="Streak" parent="." instance=ExtResource("12_geocg")]
 position = Vector2(0, 68)
+
+[node name="ToutchControls" parent="." instance=ExtResource("17_svtgq")]
+visible = false
