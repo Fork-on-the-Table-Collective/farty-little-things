@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=4 uid="uid://dosccavodo1fq"]
+[gd_scene load_steps=7 format=4 uid="uid://dosccavodo1fq"]
 
-[ext_resource type="TileSet" uid="uid://cpbcrogyoswvp" path="res://scenes/map/assets/tilemap_setup.tres" id="1_mie1h"]
+[ext_resource type="TileSet" uid="uid://cgu33n7n1fnsn" path="res://scenes/map/assets/tilemap_setup.tres" id="1_mie1h"]
 [ext_resource type="PackedScene" uid="uid://b2fethtyobpvf" path="res://entities/enemy/rat.tscn" id="2_3bpex"]
 [ext_resource type="PackedScene" uid="uid://ujooexq3jie0" path="res://entities/player/player.tscn" id="3_qgn8m"]
 [ext_resource type="PackedScene" uid="uid://bcapk4utlhnos" path="res://entities/passive_entities/power_up.tscn" id="4_o1ypc"]
+[ext_resource type="PackedScene" uid="uid://cwld63ar4l5wt" path="res://entities/passive_entities/end_zone.tscn" id="5_tpgft"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mtdse"]
+a = Vector2(2, -69)
+b = Vector2(1, 87)
 
 [node name="Map01" type="Node2D"]
 
@@ -94,9 +99,35 @@ position = Vector2(4297, 106)
 [node name="PassiveEntities" type="Node" parent="."]
 
 [node name="power_up" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
-position = Vector2(2178, 1234)
+position = Vector2(3562, 2128)
 scale = Vector2(0.3, 0.3)
 
+[node name="power_up2" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
+position = Vector2(2585, 1233)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up3" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
+position = Vector2(2808, 1519)
+scale = Vector2(0.09, 0.09)
+
+[node name="power_up4" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
+position = Vector2(3716, 1602)
+scale = Vector2(0.027, 0.027)
+
+[node name="power_up5" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
+position = Vector2(4373, 3262)
+scale = Vector2(0.09, 0.09)
+
+[node name="power_up6" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
+position = Vector2(6138, 1948)
+scale = Vector2(0.0081, 0.0081)
+
 [node name="Player" parent="." instance=ExtResource("3_qgn8m")]
-position = Vector2(1907, 649)
+position = Vector2(1891, 594)
 scale = Vector2(0.4, 0.4)
+
+[node name="EndZone" parent="." instance=ExtResource("5_tpgft")]
+position = Vector2(8271, 4138)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndZone"]
+shape = SubResource("SegmentShape2D_mtdse")

@@ -94,12 +94,15 @@ tile_map_data = PackedByteArray("AAACAAAAAAAEAAAAAAACAP//AAAEAAAAADADAAAAAAAAAAQ
 tile_set = SubResource("TileSet_whmhk")
 rendering_quadrant_size = 32
 
-[node name="Player" parent="." instance=ExtResource("1_l1pwb")]
-position = Vector2(548, 130)
-scale = Vector2(0.3, 0.3)
-
 [node name="power_up" parent="." instance=ExtResource("2_mfx0k")]
-position = Vector2(580, 561)
+position = Vector2(1229, 373)
+
+[node name="power_up2" parent="." instance=ExtResource("2_mfx0k")]
+position = Vector2(1618, 414)
+
+[node name="Player" parent="." instance=ExtResource("1_l1pwb")]
+position = Vector2(1467, -56)
+scale = Vector2(0.3, 0.3)
 
 [node name="Rat" parent="." instance=ExtResource("5_rylnt")]
 position = Vector2(216, 105)

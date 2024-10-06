@@ -1,33 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://gxl0tsf8mfqd"]
+[gd_scene load_steps=3 format=3 uid="uid://gxl0tsf8mfqd"]
 
 [ext_resource type="Script" path="res://entities/passive_entities/slow_downer.gd" id="1_pk7qc"]
-[ext_resource type="Texture2D" uid="uid://dx4vhtjrpnyqx" path="res://entities/assets/water.jpeg" id="2_h8udg"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_txfw6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_h8udg")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_07nd3"]
-radius = 48.0
-height = 102.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6u6f"]
+size = Vector2(22, 71)
 
 [node name="slow_downer" type="Area2D"]
 script = ExtResource("1_pk7qc")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -1)
-scale = Vector2(0.14375, 0.180208)
-sprite_frames = SubResource("SpriteFrames_txfw6")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_07nd3")
+shape = SubResource("RectangleShape2D_l6u6f")
 
 [node name="slow_down_sound" type="AudioStreamPlayer" parent="."]
 bus = &"sfx"
