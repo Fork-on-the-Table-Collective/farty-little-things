@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://rgtvun0njkb8"]
+
+[ext_resource type="AudioStream" uid="uid://cig5c33th4bg5" path="res://sounds/music/BGM 1 BUS.wav" id="1_ymxx4"]
+[ext_resource type="AudioStream" uid="uid://c4jpdelpsowth" path="res://sounds/music/BGM 2 BUS.wav" id="2_nyiab"]
+[ext_resource type="AudioStream" uid="uid://ckhnl01wmhrce" path="res://sounds/music/BGM 3 BUS.wav" id="3_y8xbw"]
+
+[node name="Node" type="Node"]
+
+[node name="Bgm1Bus" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ymxx4")
+autoplay = true
+bus = &"bgm1"
+
+[node name="Bgm2Bus" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nyiab")
+autoplay = true
+bus = &"bgm2"
+
+[node name="Bgm3Bus" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_y8xbw")
+autoplay = true
+bus = &"bgm3"
