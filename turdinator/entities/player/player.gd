@@ -27,8 +27,9 @@ func _process(_delta: float) -> void:
 	you_have_died.visible = Global.you_are_dead
 	body_collision_shape.scale=Global.player_body_collision_scale
 	var delta_zoom :Vector2= camera.zoom - DEFAULT_ZOOM/Global.health*Global.HEALTH_PER_SIZE
-	if delta_zoom != DEFAULT_ZOOM*0:
+	if delta_zoom != DEFAULT_ZOOM*0 and  not Global.you_are_dead:
 		camera.zoom -=delta_zoom*_delta
+			
 	
 	
 func _physics_process(_delta: float) -> void:
