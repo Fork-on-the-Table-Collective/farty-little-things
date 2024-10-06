@@ -4,8 +4,10 @@
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 z_index = 100
-offset_right = 478.0
-offset_bottom = 176.0
+offset_left = 25.0
+offset_top = -138.0
+offset_right = 626.0
+offset_bottom = 38.0
 bbcode_enabled = true
 text = "[center][color=red][font_size=64]
 You have died![/font_size][/color][/center]"
