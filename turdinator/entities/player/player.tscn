@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://ujooexq3jie0"]
+[gd_scene load_steps=87 format=3 uid="uid://ujooexq3jie0"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_lqb31"]
 [ext_resource type="Texture2D" uid="uid://d22r4mfo526wc" path="res://entities/assets/mrT_front_sheet.png" id="2_lp0d2"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bqh8ww08n0q3o" path="res://entities/assets/mrT_left_sheet.png" id="4_v8juv"]
 [ext_resource type="Texture2D" uid="uid://bqbcb3cq8n52n" path="res://entities/assets/mrT_right_sheet.png" id="5_erp5l"]
 [ext_resource type="Texture2D" uid="uid://cju3cw6mgh6nb" path="res://entities/assets/mrT_back_sheet.png" id="6_6o6o5"]
-[ext_resource type="PackedScene" uid="uid://dmyqbuomfcbwm" path="res://entities/ui/YouHaveDied.tscn" id="3_llmpy"]
+[ext_resource type="PackedScene" uid="uid://dmyqbuomfcbwm" path="res://entities/ui/YouHaveDied.tscn" id="7_3s45b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vitdw"]
 atlas = ExtResource("2_lp0d2")
@@ -881,9 +881,6 @@ radius = 18.0
 height = 198.0
 
 [node name="Player" type="CharacterBody2D"]
-[sub_resource type="CircleShape2D" id="CircleShape2D_fl6b7"]
-
-[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_lqb31")
 
 [node name="Player_Skin" type="AnimatedSprite2D" parent="."]
@@ -895,7 +892,7 @@ autoplay = "idle_2_brown"
 
 [node name="Player_Body" type="AnimatedSprite2D" parent="Player_Skin"]
 sprite_frames = SubResource("SpriteFrames_6eueg")
-animation = &"idle_2"
+animation = &"down_1"
 autoplay = "idle_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -903,14 +900,4 @@ visible = false
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_ndmki")
 
-[node name="PerceptionArea" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionArea"]
-scale = Vector2(25, 25)
-shape = SubResource("CircleShape2D_fl6b7")
-
-[node name="YouHaveDied" parent="." instance=ExtResource("3_llmpy")]
-visible = false
-position = Vector2(-221, -143)
+[node name="YouHaveDied" parent="." instance=ExtResource("7_3s45b")]

@@ -11,30 +11,35 @@ var anim_dict:Dictionary={}
 
 func _ready() -> void:
 	set_animation_dict()
-	you_have_died.visible = false
+	#you_have_died.visible = false
 
 func _physics_process(_delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	# Map the input directions to x and y axis: -1, 0, 1
 	var direction = Vector2(input_dir.x, input_dir.y)
+	var speed_modifier = 1.0
 
 	# Apply movement direction and sprint
 	if input_dir: 
-		velocity.x = direction.x * SPEED / Global.size * Global.speed_modifier
-		velocity.y = direction.y * SPEED / Global.size * Global.speed_modifier
+		speed_modifier =  Global.speed_modifier/Global.size
+		velocity=direction*speed_modifier*SPEED
+		play_animation(direction, speed_modifier)
+		#velocity.y = direction.y * SPEED / Global.size * Global.speed_modifier
 		
 		# Play animation based on direction and velocity
-		play_animation(direction, velocity)
+		#play_animation(direction, Global.speed_modifier/Global.size)
 		
 		# Check if sprinting 
 		if Input.is_action_pressed("sprint"):
-			velocity *= SPRINT
-			play_animation(direction, velocity)
+			speed_modifier*=SPRINT
+			velocity=direction*speed_modifier*SPEED
+			play_animation(direction, speed_modifier)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-		play_animation(direction, velocity)
+		#velocity.x = move_toward(velocity.x, 0, SPEED)
+		#velocity.y = move_toward(velocity.y, 0, SPEED)
+		velocity=direction*0
+		play_animation(direction, 1)
 
 	move_and_slide()
 
@@ -57,11 +62,18 @@ func set_animation_dict():
 		for direction in directions:
 			anim_dict[i][direction]=direction+"_"+str(i)
 
-func play_animation(direction:Vector2, velocity:Vector2):
+func play_animation(direction:Vector2, anim_speed_modifier:float):
 	#print(get_move(direction))
 	#print(Global.size)
 	#print(anim_dict[int(Global.size)])
 	#print(anim_dict[int(Global.size)][get_move(direction)])
-	player_body.play(anim_dict[int(Global.size)][get_move(direction)])
-	player_skin.play(anim_dict[int(Global.size)][get_move(direction)] + "_" + Global.turd_color)
+	const NORMAL_SPEED = 3.0
+	var animation_body_name = anim_dict[int(Global.size)][get_move(direction)]
+	var animation_skin_name =animation_body_name+ "_" + Global.turd_color
+	#var anim_speed_modifier=Global.speed_modifier/Global.size
+	player_body.speed_scale=anim_speed_modifier*NORMAL_SPEED
+	print(player_body.speed_scale)
+	player_body.play(animation_body_name)
+	
+	player_skin.play(animation_skin_name)
 	#player_body.speed_scale *= velocity.length()

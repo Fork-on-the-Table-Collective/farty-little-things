@@ -1,9 +1,14 @@
 extends Node
 
+# FOR DEVELOPMENT
+const USE_SAVE=false
+
+
 const HEALTH_PER_SIZE = 20
 
+
 var size: float = 2.0
-var health: float = size*HEALT_PER_SIZE
+var health: float = size*HEALTH_PER_SIZE
 var sfx_stream_player= AudioStreamPlayer2D.new()
 var button_hover=preload("res://sounds/sfx/menu_button_hover.wav")
 var button_pressed=preload("res://sounds/sfx/menu_button_click.wav")
@@ -19,11 +24,12 @@ var levels=["res://scenes/map/test_map.tscn","res://scenes/map/tile_test_map.tsc
 
 
 func store_variables():
-	var file = FileAccess.open(variable_store_path,FileAccess.WRITE)
-	file.store_var(highscore)
-	file.store_var(score)
-	file.store_var(is_first_run)
-	file.store_var(last_level_id)
+	if USE_SAVE:
+		var file = FileAccess.open(variable_store_path,FileAccess.WRITE)
+		file.store_var(highscore)
+		file.store_var(score)
+		file.store_var(is_first_run)
+		file.store_var(last_level_id)
 	
 
 func load_variables():
@@ -43,7 +49,7 @@ func load_variables():
 func update_highscore():
 	if score > highscore:
 		highscore=score
-var turd_color: String 
+var turd_color: String = "brown"
 
 func _ready() -> void:
 	load_variables()

@@ -10,7 +10,7 @@ var menu = preload("res://menu/main_menu.tscn")
 func _ready() -> void:
 	var map_buttons=[map_1,map_2,map_3]
 	if Global.is_first_run:
-		get_tree().change_scene_to_file("res://menu/skin_select.tscn")
+		get_tree().change_scene_to_file.call_deferred("res://menu/skin_select.tscn")
 	for id in range(map_buttons.size()):
 		print(Global.last_level_id)
 		if id > Global.last_level_id+1:

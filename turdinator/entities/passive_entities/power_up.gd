@@ -5,7 +5,7 @@ const SIZE_MODIFIER: float = 1.0
 
 @onready var power_up_sound: AudioStreamPlayer = $power_up_sound
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	Global.set_health(HEALTH_MODIFIER)
 	power_up_sound.play()
 	queue_free()
