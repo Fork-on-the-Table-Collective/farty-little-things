@@ -1,7 +1,7 @@
 extends Node
 
 # FOR DEVELOPMENT
-const USE_SAVE=false
+const USE_SAVE=true
 
 # Only change is constant 
 const HEALTH_PER_SIZE = 20
@@ -31,7 +31,7 @@ var is_first_run:bool=true
 var last_level_id:int=1
 var variable_store_path = "user://variable_store.save"
 var level_store_path = "user://level_store.save"
-var levels=["res://scenes/map/test_map.tscn","res://scenes/map/tile_test_map.tscn"]
+var levels=["res://scenes/map/map_01.tscn","res://scenes/map/tile_test_map.tscn"]
 var you_are_dead = false
 var player_body_collision_pos=Vector2(0.0,0.0)
 var player_body_collision_scale=Vector2(1.0,1.0)
@@ -45,7 +45,7 @@ func store_variables():
 		file.store_var(score)
 		file.store_var(is_first_run)
 		file.store_var(last_level_id)
-	
+
 
 func load_variables():
 	if FileAccess.file_exists(variable_store_path):
@@ -82,7 +82,7 @@ func set_health(modifier: float):
 	if health <= 0:
 		size=1
 		you_are_dead = true
-		print("jajj")		
+		print("jajj")
 		await get_tree().create_timer(0.1, true, false, true).timeout
 
 		get_tree().paused = true
@@ -92,7 +92,6 @@ func set_health(modifier: float):
 
 func restart_scene():
 	get_tree().reload_current_scene()
-	set_health(80)
 
 func set_speed_modifier(modifier: float):
 	speed_modifier = modifier

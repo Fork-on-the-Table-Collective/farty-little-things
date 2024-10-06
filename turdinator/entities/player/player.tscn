@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://detxa71g3klqh" path="res://entities/assets/mrT_back_damaged_sheet.png" id="8_oae1g"]
 [ext_resource type="Texture2D" uid="uid://rhvn4k6lh41d" path="res://entities/assets/bigT_right_sheet.png" id="10_rruvc"]
 [ext_resource type="Texture2D" uid="uid://blf763jnn58ra" path="res://entities/assets/bigT_back_sheet.png" id="13_cn2yf"]
+[ext_resource type="PackedScene" uid="uid://cyen0uoxx84q3" path="res://particles/Streak.tscn" id="12_geocg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxdg3"]
 atlas = ExtResource("2_ksdh1")
@@ -1575,6 +1576,7 @@ height = 182.0
 radius = 33.4819
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 5
 script = ExtResource("1_lqb31")
 
 [node name="Player_Skin" type="AnimatedSprite2D" parent="."]
@@ -1606,3 +1608,6 @@ shape = SubResource("CircleShape2D_v8pti")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="Streak" parent="." instance=ExtResource("12_geocg")]
+position = Vector2(0, 68)

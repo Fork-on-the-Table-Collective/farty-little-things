@@ -5,6 +5,7 @@ script/source = "extends RichTextLabel
 
 
 @onready var timer: Timer = $Timer
+@export var next_scene_path: String = \"res://scenes/main/game_area.tscn\"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,14 +14,16 @@ func _ready() -> void:
 
 
 func _on_timer_timeout() -> void:
-	get_tree().quit()
+	get_tree().change_scene_to_file.call_deferred(next_scene_path)
 "
 
 [node name="Feedback" type="Node2D"]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 460.0
-offset_bottom = 50.0
+offset_left = 464.0
+offset_top = 386.0
+offset_right = 924.0
+offset_bottom = 436.0
 scale = Vector2(2.53877, 4.19768)
 text = "This map is complete! 
 Let's see how big the plant can grow, thanks your turd!"
