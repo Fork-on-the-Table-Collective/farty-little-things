@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcu1l564vqxli"
-path="res://.godot/imported/sewer.jpeg-09e8be9eb7abd625aa420c8ed033e713.ctex"
+uid="uid://c72o0l16f3t27"
+path="res://.godot/imported/glass_shards.png-efffb7e47b52646917d85178554e8564.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/assets/sewer.jpeg"
-dest_files=["res://.godot/imported/sewer.jpeg-09e8be9eb7abd625aa420c8ed033e713.ctex"]
+source_file="res://entities/assets/glass_shards.png"
+dest_files=["res://.godot/imported/glass_shards.png-efffb7e47b52646917d85178554e8564.ctex"]
 
 [params]
 

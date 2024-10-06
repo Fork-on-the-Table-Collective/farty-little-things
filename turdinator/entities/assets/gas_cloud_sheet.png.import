@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4d5q8up582wq"
-path="res://.godot/imported/rat.png-7eeba44cbc2e2c21222301f295b4c84c.ctex"
+uid="uid://dbxai7iynmbw"
+path="res://.godot/imported/gas_cloud_sheet.png-a3d2dc81e1400abff91794ada365e1f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/assets/rat.png"
-dest_files=["res://.godot/imported/rat.png-7eeba44cbc2e2c21222301f295b4c84c.ctex"]
+source_file="res://entities/assets/gas_cloud_sheet.png"
+dest_files=["res://.godot/imported/gas_cloud_sheet.png-a3d2dc81e1400abff91794ada365e1f5.ctex"]
 
 [params]
 
