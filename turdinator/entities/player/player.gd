@@ -19,6 +19,7 @@ var farts: Array = []
 @onready var camera: Camera2D = $Camera2D
 @onready var streak: CPUParticles2D = $Streak
 @onready var toutch_controls: CanvasLayer = $ToutchControls
+@onready var slow_down_sound: AudioStreamPlayer = $slow_down_sound
 
 func reset_player_params():
 	Global.size=2.0
@@ -137,3 +138,13 @@ func play_animation(direction:Vector2, anim_speed_modifier:float):
 	else:
 		player_skin.scale = Vector2(1.0, 1.0)
 	#player_body.speed_scale *= velocity.length()
+
+func _on_terrain_sense_area_body_entered(body: Node2D) -> void:
+	slow_down_sound.play()
+	Global.set_speed_modifier(0.75)
+	pass # Replace with function body.
+
+func _on_terrain_sense_area_body_exited(body: Node2D) -> void:
+	slow_down_sound.stop()
+	Global.set_speed_modifier(1.0)
+	pass # Replace with function body.
