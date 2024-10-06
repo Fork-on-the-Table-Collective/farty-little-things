@@ -6,7 +6,6 @@ const USE_SAVE=true
 # Only change is constant 
 const HEALTH_PER_SIZE = 20
 const WAIT_OF_RESTART = 3
-#const DEFAULT_PLAYER_COL_SCALE = Vector2(.5,.5)
 const MAX_LEVEL=4.0
 
 # Dictionary contains the transformation values to scale the player to size
@@ -25,7 +24,6 @@ var sfx_stream_player= AudioStreamPlayer2D.new()
 var button_hover=preload("res://sounds/sfx/menu/menu_button_hover.wav")
 var button_pressed=preload("res://sounds/sfx/menu/menu_button_click.wav")
 var speed_modifier: float = 1
-#var score:int = 0
 var highscore:int = 0
 var is_first_run:bool=true
 var last_level_id:int=1
@@ -36,6 +34,11 @@ var you_are_dead = false
 var turd_color: String = "brown"
 var player_body_collision_pos=Vector2(0.0,0.0)
 var player_body_collision_scale=Vector2(1.0,1.0)
+var slider_value_dict: Dictionary={
+	"Master": 1.0,
+	"music": 1.0,
+	"sfx": 1.0
+} 
 # to be saved, level_comp, score, highscore, fist start
 
 
@@ -43,18 +46,19 @@ func store_variables():
 	if USE_SAVE:
 		var file = FileAccess.open(variable_store_path,FileAccess.WRITE)
 		file.store_var(highscore)
-		#file.store_var(score)
 		file.store_var(is_first_run)
 		file.store_var(last_level_id)
-
+		file.store_line(JSON.stringify(slider_value_dict))
 
 func load_variables():
 	if FileAccess.file_exists(variable_store_path):
 		var file=FileAccess.open(variable_store_path,FileAccess.READ)
 		highscore=file.get_var(highscore)
-		#score=file.get_var(score)
 		is_first_run=file.get_var(is_first_run)
 		last_level_id=file.get_var(last_level_id)
+		var dictonary_line=JSON.parse_string(file.get_line())
+		if dictonary_line:
+			slider_value_dict = dictonary_line
 	else:
 		print("no savefile")
 		highscore=0

@@ -11,6 +11,7 @@ func _ready() -> void:
 	value = db_to_linear(
 		AudioServer.get_bus_volume_db(bus_index)
 	)
+	Global.slider_value_dict[bus_name] = value
 
 func _on_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(
