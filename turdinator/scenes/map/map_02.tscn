@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://cw4mtm1egp553"]
 
-[ext_resource type="TileSet" uid="uid://cpbcrogyoswvp" path="res://scenes/map/assets/tilemap_setup.tres" id="1_inkka"]
+[ext_resource type="TileSet" uid="uid://cgu33n7n1fnsn" path="res://scenes/map/assets/tilemap_setup.tres" id="1_inkka"]
 [ext_resource type="PackedScene" uid="uid://b2fethtyobpvf" path="res://entities/enemy/rat.tscn" id="2_c448l"]
 [ext_resource type="PackedScene" uid="uid://bcapk4utlhnos" path="res://entities/passive_entities/power_up.tscn" id="3_f60oa"]
 [ext_resource type="PackedScene" uid="uid://ujooexq3jie0" path="res://entities/player/player.tscn" id="4_xqyjm"]
@@ -51,7 +51,35 @@ position = Vector2(3922, 3190)
 [node name="PassiveEntities" type="Node" parent="."]
 
 [node name="power_up" parent="PassiveEntities" instance=ExtResource("3_f60oa")]
-position = Vector2(3721, 1510)
+position = Vector2(3692, 1799)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up2" parent="PassiveEntities" instance=ExtResource("3_f60oa")]
+position = Vector2(4819, 3766)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up3" parent="PassiveEntities" instance=ExtResource("3_f60oa")]
+position = Vector2(4748, 2577)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up4" parent="PassiveEntities" instance=ExtResource("3_f60oa")]
+position = Vector2(6161, 2655)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up5" parent="PassiveEntities" instance=ExtResource("3_f60oa")]
+position = Vector2(6837, 1617)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up6" parent="PassiveEntities" instance=ExtResource("3_f60oa")]
+position = Vector2(7954, 2406)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up7" parent="PassiveEntities" instance=ExtResource("3_f60oa")]
+position = Vector2(5491, 1190)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up8" parent="PassiveEntities" instance=ExtResource("3_f60oa")]
+position = Vector2(2995, 2132)
 scale = Vector2(0.3, 0.3)
 
 [node name="Player" parent="." instance=ExtResource("4_xqyjm")]

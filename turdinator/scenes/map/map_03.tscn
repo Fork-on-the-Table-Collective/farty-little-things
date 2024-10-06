@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://nt6ffo0l755x"]
 
-[ext_resource type="TileSet" uid="uid://cpbcrogyoswvp" path="res://scenes/map/assets/tilemap_setup.tres" id="1_fonlq"]
+[ext_resource type="TileSet" uid="uid://cgu33n7n1fnsn" path="res://scenes/map/assets/tilemap_setup.tres" id="1_fonlq"]
 [ext_resource type="PackedScene" uid="uid://b2fethtyobpvf" path="res://entities/enemy/rat.tscn" id="2_n8dcg"]
 [ext_resource type="PackedScene" uid="uid://bcapk4utlhnos" path="res://entities/passive_entities/power_up.tscn" id="3_8b26n"]
 [ext_resource type="PackedScene" uid="uid://ujooexq3jie0" path="res://entities/player/player.tscn" id="4_122y3"]
@@ -54,7 +54,51 @@ position = Vector2(2568, 3918)
 [node name="PassiveEntities" type="Node" parent="."]
 
 [node name="power_up" parent="PassiveEntities" instance=ExtResource("3_8b26n")]
-position = Vector2(3734, 1447)
+position = Vector2(3768, 1002)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up2" parent="PassiveEntities" instance=ExtResource("3_8b26n")]
+position = Vector2(2798, 4603)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up3" parent="PassiveEntities" instance=ExtResource("3_8b26n")]
+position = Vector2(2565, 3243)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up4" parent="PassiveEntities" instance=ExtResource("3_8b26n")]
+position = Vector2(1250, 2577)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up5" parent="PassiveEntities" instance=ExtResource("3_8b26n")]
+position = Vector2(1961, 3921)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up6" parent="PassiveEntities" instance=ExtResource("3_8b26n")]
+position = Vector2(2354, 1113)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up7" parent="PassiveEntities" instance=ExtResource("3_8b26n")]
+position = Vector2(5111, 2135)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up8" parent="PassiveEntities" instance=ExtResource("3_8b26n")]
+position = Vector2(6324, 1462)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up9" parent="PassiveEntities" instance=ExtResource("3_8b26n")]
+position = Vector2(5784, 3250)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up10" parent="PassiveEntities" instance=ExtResource("3_8b26n")]
+position = Vector2(5256, 3925)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up11" parent="PassiveEntities" instance=ExtResource("3_8b26n")]
+position = Vector2(6174, 4987)
+scale = Vector2(0.3, 0.3)
+
+[node name="power_up12" parent="PassiveEntities" instance=ExtResource("3_8b26n")]
+position = Vector2(3895, 4378)
 scale = Vector2(0.3, 0.3)
 
 [node name="Player" parent="." instance=ExtResource("4_122y3")]
