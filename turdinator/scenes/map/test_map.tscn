@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c57y7i7tjmnkl"]
+[gd_scene load_steps=15 format=4 uid="uid://c57y7i7tjmnkl"]
 
 [ext_resource type="PackedScene" uid="uid://ujooexq3jie0" path="res://entities/player/player.tscn" id="1_l1pwb"]
 [ext_resource type="Script" path="res://scenes/map/map.gd" id="1_oe2ba"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://c5njj1u4wmj2g" path="res://entities/passive_entities/noise_maker_phone.tscn" id="7_8iyav"]
 [ext_resource type="PackedScene" uid="uid://ccljyggwpq8y0" path="res://entities/passive_entities/power_down_gas.tscn" id="8_3kn5s"]
 [ext_resource type="PackedScene" uid="uid://djjym27n4yfqk" path="res://entities/passive_entities/power_down_glass.tscn" id="9_cov8p"]
+[ext_resource type="PackedScene" uid="uid://ca6q5pb5s3k1g" path="res://entities/enemy/fly.tscn" id="10_dwb46"]
+[ext_resource type="PackedScene" uid="uid://cnx0iia3n2vb7" path="res://entities/enemy/croissant.tscn" id="11_sj6i4"]
+[ext_resource type="PackedScene" uid="uid://dv85me646w46q" path="res://entities/enemy/sinoc.tscn" id="12_2hd4y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_44reb"]
 texture = ExtResource("3_q1hq3")
@@ -131,3 +134,12 @@ scale = Vector2(3, 3)
 
 [node name="Rat2" parent="." instance=ExtResource("5_rylnt")]
 position = Vector2(877, -228)
+
+[node name="Fly" parent="." instance=ExtResource("10_dwb46")]
+position = Vector2(1130, 240)
+
+[node name="Fly2" parent="." instance=ExtResource("11_sj6i4")]
+position = Vector2(1977, 365)
+
+[node name="Rat3" parent="." instance=ExtResource("12_2hd4y")]
+position = Vector2(2166, -72)
