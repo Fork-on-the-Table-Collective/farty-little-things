@@ -1,4 +1,4 @@
-[gd_scene load_steps=199 format=3 uid="uid://ujooexq3jie0"]
+[gd_scene load_steps=201 format=3 uid="uid://ujooexq3jie0"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_lqb31"]
 [ext_resource type="Texture2D" uid="uid://d1le86ljgsxpc" path="res://entities/assets/mrT_front_damaged_sheet.png" id="2_ksdh1"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://rhvn4k6lh41d" path="res://entities/assets/bigT_right_sheet.png" id="10_rruvc"]
 [ext_resource type="PackedScene" uid="uid://cyen0uoxx84q3" path="res://particles/Streak.tscn" id="12_geocg"]
 [ext_resource type="Texture2D" uid="uid://blf763jnn58ra" path="res://entities/assets/bigT_back_sheet.png" id="13_cn2yf"]
+[ext_resource type="AudioStream" uid="uid://16hil73l0exy" path="res://sounds/sfx/player/player_step_in_sewage_water.wav" id="17_cxr4a"]
 [ext_resource type="PackedScene" uid="uid://pofaim3vrakg" path="res://scenes/common/toutch_controls.tscn" id="17_svtgq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxdg3"]
@@ -1576,6 +1577,10 @@ height = 182.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8pti"]
 radius = 33.4819
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8vb56"]
+radius = 31.0
+height = 120.0
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 script = ExtResource("1_lqb31")
@@ -1615,3 +1620,18 @@ position = Vector2(0, 68)
 
 [node name="ToutchControls" parent="." instance=ExtResource("17_svtgq")]
 visible = false
+
+[node name="TerrainSenseArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainSenseArea"]
+position = Vector2(-1, 33)
+shape = SubResource("CapsuleShape2D_8vb56")
+
+[node name="slow_down_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_cxr4a")
+bus = &"sfx"
+
+[connection signal="body_entered" from="TerrainSenseArea" to="." method="_on_terrain_sense_area_body_entered"]
+[connection signal="body_exited" from="TerrainSenseArea" to="." method="_on_terrain_sense_area_body_exited"]
