@@ -85,8 +85,7 @@ func set_health(modifier: float):
 	if health <= 0:
 		size=1
 		you_are_dead = true
-		print("jajj")
-		await get_tree().create_timer(0.1, true, false, true).timeout
+		await get_tree().create_timer(.1, true, false, true).timeout
 
 		get_tree().paused = true
 		await get_tree().create_timer(WAIT_OF_RESTART, true, false, true).timeout

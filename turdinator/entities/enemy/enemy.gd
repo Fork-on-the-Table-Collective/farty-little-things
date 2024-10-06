@@ -74,16 +74,12 @@ func _physics_process(_delta: float) -> void:
 	
 func patrol() -> void:
 	velocity = Vector2(1.0,1.0)
-	print("orientation")
-	print(orientation)
 	direction=Vector2(1.0,1.0)
 	if orientation == 0:
 		direction.y=0
 		if ray_cast_right.is_colliding() :
-			print("right")
 			direction.x= -1.0
 		elif ray_cast_left.is_colliding() :
-			print("left")
 			direction.x = 1.0
 	elif orientation == 1:
 		direction.x=0
@@ -92,11 +88,7 @@ func patrol() -> void:
 		elif ray_cast_down.is_colliding() :
 			direction.y = -1
 	velocity = direction * speed
-	#goahead=false
-	print("speed")
-	print(speed)
-	print(direction)
-	print(velocity)
+
 
 func _on_hit_box_area_body_entered(_body: Node2D) -> void:
 	Global.set_health(damage)
@@ -106,7 +98,6 @@ func _on_hit_box_area_body_entered(_body: Node2D) -> void:
 	cooldown_timer.start()
 
 func _on_perception_area_area_entered(area: Area2D) -> void:
-	print("turd seen")
 	target = area
 	set_movement(target)
 
