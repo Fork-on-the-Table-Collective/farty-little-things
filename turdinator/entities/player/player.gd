@@ -80,7 +80,7 @@ func _physics_process(delta: float) -> void:
 		#play_animation(direction, Global.speed_modifier/Global.size)
 
 		# Check if sprinting
-		if Input.is_action_pressed("sprint") or Input.is_action_pressed("ui_select"): 
+		if Input.is_action_pressed("sprint") or Input.is_action_pressed("ui_select"):
 			speed_modifier*=SPRINT
 			velocity=direction*speed_modifier*SPEED
 			play_animation(direction, speed_modifier)
@@ -132,7 +132,7 @@ func play_animation(direction:Vector2, anim_speed_modifier:float):
 	player_body.speed_scale=anim_speed_modifier*NORMAL_SPEED
 	player_body.play(animation_body_name)
 	player_skin.play(animation_skin_name)
-	
+
 	if Global.size == 3.0:
 		player_skin.scale = Vector2(0.85, 0.85)
 	else:
