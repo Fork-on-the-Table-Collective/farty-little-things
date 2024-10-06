@@ -13,6 +13,8 @@ var anim_dict:Dictionary={}
 @onready var body_collision_shape: CollisionShape2D = $BodyCollisionShape
 @onready var camera: Camera2D = $Camera2D
 @onready var streak: CPUParticles2D = $Streak
+@onready var control: Control = $Control
+@onready var control_2: Control = $Control2
 
 func reset_player_params():
 	Global.size=2.0
@@ -22,6 +24,9 @@ func reset_player_params():
 
 
 func _ready() -> void:
+	if OS.get_name() == "iOS":
+		control.visible=true
+		control_2.visible=true
 	reset_player_params()
 	set_animation_dict()
 	Global.you_are_dead = false
@@ -41,12 +46,17 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var toutch_input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	# Map the input directions to x and y axis: -1, 0, 1
-	var direction = Vector2(input_dir.x, input_dir.y)
+	var direction = Vector2.ZERO
+	if input_dir:
+		direction = Vector2(input_dir.x, input_dir.y)
+	elif toutch_input_dir:
+		direction = Vector2(toutch_input_dir.x, toutch_input_dir.y)
 	var speed_modifier = 1.0
 
 	# Apply movement direction and sprint
-	if input_dir:
+	if input_dir or toutch_input_dir:
 		speed_modifier =  Global.speed_modifier/Global.size
 		velocity=direction*speed_modifier*SPEED
 		play_animation(direction, speed_modifier)
@@ -56,7 +66,7 @@ func _physics_process(delta: float) -> void:
 		#play_animation(direction, Global.speed_modifier/Global.size)
 
 		# Check if sprinting
-		if Input.is_action_pressed("sprint"):
+		if Input.is_action_pressed("sprint") or Input.is_action_pressed("ui_select"): 
 			speed_modifier*=SPRINT
 			velocity=direction*speed_modifier*SPEED
 			play_animation(direction, speed_modifier)
@@ -69,7 +79,7 @@ func _physics_process(delta: float) -> void:
 		#velocity.x = move_toward(velocity.x, 0, SPEED)
 		#velocity.y = move_toward(velocity.y, 0, SPEED)
 		streak.emitting = false
-		velocity=direction*0
+		velocity=direction
 		play_animation(direction, 1)
 
 	move_and_slide()
