@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const COOLDOWN = 1.0
+const PATROL_TURNOVER_TIME = 5.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -8,11 +9,15 @@ const COOLDOWN = 1.0
 @export var damage = -20.0
 
 @export_group("Patrol properties")
-@export_enum("horizontal", "vertical") var orientation: String
-@export_range(-1,1) var direction: int
+
+
+
+var direction:Vector2=Vector2.ZERO
+var orientation = 0
 
 var target: Area2D = null
 var cooldown_timer: Timer
+var patrol_timer: Timer
 var is_click_on_cooldown: bool = false
 var origin_speed
 
@@ -26,19 +31,35 @@ func set_movement(t: Node2D):
 
 func _ready() -> void:
 	origin_speed = speed
-	velocity = Vector2(0, 0)
+	velocity = Vector2(1.0,1.0)
 	cooldown_timer = Timer.new()
 	cooldown_timer.set_wait_time(COOLDOWN)
 	cooldown_timer.set_one_shot(true)  # The timer should stop after one timeout
-	cooldown_timer.connect("timeout",  _on_Cooldown_timeout)
+	cooldown_timer.timeout.connect(_on_Cooldown_timeout)
 	add_child(cooldown_timer)  # Add the timer to the scene
+
+	patrol_timer = Timer.new()
+	patrol_timer.set_wait_time(PATROL_TURNOVER_TIME)
+	patrol_timer.set_one_shot(false)  # The timer should stop after one timeout
+	patrol_timer.timeout.connect(_on_Patrol_timeout)
+	add_child(patrol_timer)  # Add the timer to the scene
+	patrol_timer.start()
+
+func _process(_delta: float) -> void:
+	if direction==Vector2(0,0):
+		patrol()
+
+
+func _on_Patrol_timeout():
+	orientation=randi() % 2
+	patrol()
+	#direction*=-1
 
 func _on_Cooldown_timeout():
 	speed=origin_speed
-	patrol(orientation, direction)
-
+	patrol()
+	
 func _physics_process(_delta: float) -> void:
-	patrol(orientation, direction)
 	
 	if target != null:
 		set_movement(target)
@@ -47,16 +68,32 @@ func _physics_process(_delta: float) -> void:
 	else:
 		animated_sprite.flip_h=false
 	move_and_slide()
-
-func patrol(orientation:String, direction:int) -> void:
-	if orientation == "horizontal":
-		velocity.x = direction * speed
-		if ray_cast_right.is_colliding() || ray_cast_left.is_colliding():
-			direction *= -1
-	elif orientation == "vertical":
-		velocity.y += direction * speed
-		if ray_cast_up.is_colliding() || ray_cast_down.is_colliding():
-			direction *= -1
+	
+func patrol() -> void:
+	velocity = Vector2(1.0,1.0)
+	print("orientation")
+	print(orientation)
+	direction=Vector2(1.0,1.0)
+	if orientation == 0:
+		direction.y=0
+		if ray_cast_right.is_colliding() :
+			print("right")
+			direction.x= -1.0
+		elif ray_cast_left.is_colliding() :
+			print("left")
+			direction.x = 1.0
+	elif orientation == 1:
+		direction.x=0
+		if ray_cast_up.is_colliding() :
+			direction.y= 1
+		elif ray_cast_down.is_colliding() :
+			direction.y = -1
+	velocity = direction * speed
+	#goahead=false
+	print("speed")
+	print(speed)
+	print(direction)
+	print(velocity)
 
 func _on_hit_box_area_body_entered(_body: Node2D) -> void:
 	Global.set_health(damage)
@@ -70,4 +107,4 @@ func _on_perception_area_area_entered(area: Area2D) -> void:
 
 func _on_perception_area_area_exited(_area: Area2D) -> void:
 	target=null
-	velocity=Vector2(0.0,0.0)
+	velocity=Vector2.ZERO

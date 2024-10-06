@@ -81,7 +81,7 @@ texture_region_size = Vector2i(224, 224)
 
 [sub_resource type="TileSet" id="TileSet_whmhk"]
 tile_size = Vector2i(224, 224)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 8
 sources/0 = SubResource("TileSetAtlasSource_44reb")
 
 [node name="Node2D" type="Node2D"]
@@ -101,10 +101,8 @@ position = Vector2(1229, 373)
 position = Vector2(1618, 414)
 
 [node name="Player" parent="." instance=ExtResource("1_l1pwb")]
-position = Vector2(1467, -56)
+position = Vector2(545, 374)
 scale = Vector2(0.3, 0.3)
 
 [node name="Rat" parent="." instance=ExtResource("5_rylnt")]
-position = Vector2(216, 105)
-orientation = "horizontal"
-direction = 1
+position = Vector2(149, 151)

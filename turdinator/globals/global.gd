@@ -77,8 +77,11 @@ func set_health(modifier: float):
 	size = max(1,min(ceil(health/HEALTH_PER_SIZE),MAX_LEVEL))
 	player_body_collision_pos = player_scale_dict[size].Position
 	player_body_collision_scale = player_scale_dict[size].Scale
-	print(size)
-	print(player_body_collision_scale)
+	if modifier<0:
+		print("DAMAGE!!!")
+	else:
+		print("healing")
+	print("Health: "+str(health))
 	if health <= 0:
 		size=1
 		you_are_dead = true
