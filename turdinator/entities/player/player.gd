@@ -13,8 +13,7 @@ var anim_dict:Dictionary={}
 @onready var body_collision_shape: CollisionShape2D = $BodyCollisionShape
 @onready var camera: Camera2D = $Camera2D
 @onready var streak: CPUParticles2D = $Streak
-@onready var control: Control = $Control
-@onready var control_2: Control = $Control2
+@onready var toutch_controls: CanvasLayer = $ToutchControls
 
 func reset_player_params():
 	Global.size=2.0
@@ -25,8 +24,7 @@ func reset_player_params():
 
 func _ready() -> void:
 	if OS.get_name() == "iOS":
-		control.visible=true
-		control_2.visible=true
+		toutch_controls.visible=true
 	reset_player_params()
 	set_animation_dict()
 	Global.you_are_dead = false
