@@ -1,7 +1,7 @@
 extends Node
 
 # FOR DEVELOPMENT
-const USE_SAVE=false
+const USE_SAVE=true
 
 
 const HEALTH_PER_SIZE = 20
@@ -23,7 +23,7 @@ var is_first_run:bool=true
 var last_level_id:int=1
 var variable_store_path = "user://variable_store.save"
 var level_store_path = "user://level_store.save"
-var levels=["res://scenes/map/test_map.tscn","res://scenes/map/tile_test_map.tscn"]
+var levels=["res://scenes/map/map_01.tscn","res://scenes/map/tile_test_map.tscn"]
 var you_are_dead = false
 var player_body_collision_scale=Vector2(1.0,1.0)
 # to be saved, level_comp, score, highscore, fist start
