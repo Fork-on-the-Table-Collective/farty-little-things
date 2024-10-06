@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://ujooexq3jie0"]
+[gd_scene load_steps=105 format=3 uid="uid://ujooexq3jie0"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_lqb31"]
 [ext_resource type="Texture2D" uid="uid://d1le86ljgsxpc" path="res://entities/assets/mrT_front_damaged_sheet.png" id="2_ksdh1"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bqw782lowyv5r" path="res://entities/assets/mrT_right_damaged_sheet.png" id="6_mdrde"]
 [ext_resource type="PackedScene" uid="uid://dmyqbuomfcbwm" path="res://entities/ui/YouHaveDied.tscn" id="7_3s45b"]
 [ext_resource type="Texture2D" uid="uid://detxa71g3klqh" path="res://entities/assets/mrT_back_damaged_sheet.png" id="8_oae1g"]
+[ext_resource type="PackedScene" uid="uid://cyen0uoxx84q3" path="res://particles/Streak.tscn" id="12_geocg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxdg3"]
 atlas = ExtResource("2_ksdh1")
@@ -972,6 +973,7 @@ height = 182.0
 radius = 33.4819
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 5
 script = ExtResource("1_lqb31")
 
 [node name="Player_Skin" type="AnimatedSprite2D" parent="."]
@@ -1005,3 +1007,6 @@ shape = SubResource("CircleShape2D_v8pti")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="Streak" parent="." instance=ExtResource("12_geocg")]
+position = Vector2(0, 68)

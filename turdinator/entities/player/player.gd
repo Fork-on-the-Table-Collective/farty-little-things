@@ -12,17 +12,22 @@ var anim_dict:Dictionary={}
 @onready var you_have_died: Node2D = $YouHaveDied
 @onready var body_collision_shape: CollisionShape2D = $BodyCollisionShape
 @onready var camera: Camera2D = $Camera2D
+@onready var streak: CPUParticles2D = $Streak
 
 
 func reset_player_params():
 	Global.size=2.0
 	Global.health=Global.size*Global.HEALTH_PER_SIZE
 	Global.set_health(0.0)
+	streak.emitting = false
+
 
 func _ready() -> void:
 	reset_player_params()
 	set_animation_dict()
 	Global.you_are_dead = false
+	streak.color = player_skin.sprite_frames.get_frame_texture("idle_2_" + Global.turd_color, 0).get_image().get_pixel(128, 128)
+
 
 func _process(_delta: float) -> void:
 	you_have_died.visible = Global.you_are_dead
@@ -55,11 +60,15 @@ func _physics_process(delta: float) -> void:
 			speed_modifier*=SPRINT
 			velocity=direction*speed_modifier*SPEED
 			play_animation(direction, speed_modifier)
+			streak.emitting = true
 			if Global.health >= Global.HEALTH_PER_SIZE:
 				Global.set_health(-HEALTH_LOST_PER_SECOND_OF_SPRINT * delta)
+		else:
+			streak.emitting = false
 	else:
 		#velocity.x = move_toward(velocity.x, 0, SPEED)
 		#velocity.y = move_toward(velocity.y, 0, SPEED)
+		streak.emitting = false
 		velocity=direction*0
 		play_animation(direction, 1)
 
