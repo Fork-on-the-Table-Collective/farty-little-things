@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dmyqbuomfcbwm"]
+
+[node name="YouHaveDied" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 100
+offset_left = 31.0
+offset_top = -25.0
+offset_right = 329.0
+offset_bottom = 29.0
+theme_override_colors/default_color = Color(0.984314, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 39
+bbcode_enabled = true
+text = "You have died!"
+fit_content = true
+tab_size = 1

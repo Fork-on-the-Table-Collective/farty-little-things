@@ -20,7 +20,7 @@ func _ready() -> void:
 	origin_speed = speed
 	velocity = Vector2(0, 0)
 	cooldown_timer = Timer.new()
-	cooldown_timer.set_wait_time(COOLDOWN) 
+	cooldown_timer.set_wait_time(COOLDOWN)
 	cooldown_timer.set_one_shot(true)  # The timer should stop after one timeout
 	cooldown_timer.connect("timeout",  _on_Cooldown_timeout)
 	add_child(cooldown_timer)  # Add the timer to the scene
@@ -28,7 +28,7 @@ func _ready() -> void:
 func _on_Cooldown_timeout():
 	speed=origin_speed
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if target != null:
 		set_movement(target)
 	if velocity.x >0:
@@ -38,12 +38,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_hit_box_area_body_entered(body: Node2D) -> void:
+func _on_hit_box_area_body_entered(_body: Node2D) -> void:
 	Global.set_health(damage)
 	speed=0
 	cooldown_timer.start()
-	print(Global.health)
-	print(Global.size)
+
 
 
 func _on_perception_area_area_entered(area: Area2D) -> void:
@@ -52,6 +51,6 @@ func _on_perception_area_area_entered(area: Area2D) -> void:
 	set_movement(target)
 
 
-func _on_perception_area_area_exited(area: Area2D) -> void:
+func _on_perception_area_area_exited(_area: Area2D) -> void:
 	target=null
 	velocity=Vector2(0.0,0.0)

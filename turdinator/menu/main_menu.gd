@@ -6,10 +6,6 @@ func _ready() -> void:
 	Global.set_all_button()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_button_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://menu/skin_select.tscn")
@@ -19,3 +15,7 @@ func _on_button_settings_pressed() -> void:
 
 func _on_button_exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_button_mute_toggled(toggled_on: bool) -> void:
+	AudioServer.set_bus_mute(0,toggled_on)
