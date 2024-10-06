@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cyen0uoxx84q3" path="res://particles/Streak.tscn" id="12_geocg"]
 [ext_resource type="Texture2D" uid="uid://blf763jnn58ra" path="res://entities/assets/bigT_back_sheet.png" id="13_cn2yf"]
 [ext_resource type="AudioStream" uid="uid://16hil73l0exy" path="res://sounds/sfx/player/player_step_in_sewage_water.wav" id="17_cxr4a"]
-[ext_resource type="PackedScene" uid="uid://pofaim3vrakg" path="res://scenes/common/toutch_controls.tscn" id="17_svtgq"]
+[ext_resource type="PackedScene" path="res://scenes/common/toutch_controls.tscn" id="17_svtgq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxdg3"]
 atlas = ExtResource("2_ksdh1")
