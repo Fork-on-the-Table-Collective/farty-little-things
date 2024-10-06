@@ -13,9 +13,11 @@ var anim_dict:Dictionary={}
 
 func reset_player_params():
 	Global.size=2.0
+	Global.health=Global.size*Global.HEALTH_PER_SIZE
 	Global.set_health(0.0)
 
 func _ready() -> void:
+	reset_player_params()
 	set_animation_dict()
 	Global.you_are_dead = false
 
