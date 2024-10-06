@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6imkofabs11f"
-path="res://.godot/imported/power_up.png-95f04a22b1d8262fd000441acb014002.ctex"
+uid="uid://ctosqo0fb77s2"
+path="res://.godot/imported/power_up_sheet.png-265feab7f7fe70418ab6d4ca6644b32d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/assets/power_up.png"
-dest_files=["res://.godot/imported/power_up.png-95f04a22b1d8262fd000441acb014002.ctex"]
+source_file="res://entities/assets/power_up_sheet.png"
+dest_files=["res://.godot/imported/power_up_sheet.png-265feab7f7fe70418ab6d4ca6644b32d.ctex"]
 
 [params]
 
