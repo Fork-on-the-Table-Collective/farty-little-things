@@ -103,3 +103,5 @@ position = Vector2(580, 561)
 
 [node name="Rat" parent="." instance=ExtResource("5_rylnt")]
 position = Vector2(216, 105)
+orientation = "horizontal"
+direction = 1

@@ -81,6 +81,18 @@ position = Vector2(-5, 2)
 scale = Vector2(7.33708, 6.77195)
 shape = SubResource("CircleShape2D_pu7qs")
 
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(150, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-150, 0)
+
+[node name="RayCastUp" type="RayCast2D" parent="."]
+target_position = Vector2(0, -75)
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+target_position = Vector2(0, 75)
+
 [connection signal="area_entered" from="PerceptionArea" to="." method="_on_perception_area_area_entered"]
 [connection signal="area_exited" from="PerceptionArea" to="." method="_on_perception_area_area_exited"]
 [connection signal="body_entered" from="PerceptionArea" to="." method="_on_perception_area_body_entered"]
