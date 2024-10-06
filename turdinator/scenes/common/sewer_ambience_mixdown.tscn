@@ -1,9 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bocsryppefdwv"]
-
-[ext_resource type="AudioStream" uid="uid://bqkufsas4qqcf" path="res://sounds/sfx/atmo/sewer_ambience_mixdown.wav" id="1_jglxh"]
+[gd_scene format=3 uid="uid://bocsryppefdwv"]
 
 [node name="SewerAmbienceMixdown" type="AudioStreamPlayer2D"]
 position = Vector2(1066, 557)
-stream = ExtResource("1_jglxh")
 autoplay = true
 bus = &"sfx"
