@@ -3,14 +3,22 @@ extends Node
 # FOR DEVELOPMENT
 const USE_SAVE=true
 
-
+# Only change is constant 
 const HEALTH_PER_SIZE = 20
 const WAIT_OF_RESTART = 3
-const DEFAULT_PLAYER_COL_SCALE = Vector2(.5,.5)
+#const DEFAULT_PLAYER_COL_SCALE = Vector2(.5,.5)
 const MAX_LEVEL=4.0
 
+# Dictionary contains the transformation values to scale the player to size
+# Values: x scale, y scale, x position, y position
+const player_scale_dict:Dictionary={
+	1.0: {"Scale": Vector2(1.0, 0.5), "Position": Vector2(-5.0, 35.0)},
+	2.0: {"Scale": Vector2(1.1, 1.1), "Position": Vector2(-10.0, -10.0)},
+	3.0: {"Scale": Vector2(2.35, 0.95), "Position": Vector2(0.0, -10.0)},
+	4.0: {"Scale": Vector2(2.85, 1.2), "Position": Vector2(0.0, 0.0)}
+}
 
-
+# all the fucking variables you moron
 var size: float = 2.0
 var health: float = size*HEALTH_PER_SIZE
 var sfx_stream_player= AudioStreamPlayer2D.new()
@@ -25,6 +33,7 @@ var variable_store_path = "user://variable_store.save"
 var level_store_path = "user://level_store.save"
 var levels=["res://scenes/map/map_01.tscn","res://scenes/map/tile_test_map.tscn"]
 var you_are_dead = false
+var player_body_collision_pos=Vector2(0.0,0.0)
 var player_body_collision_scale=Vector2(1.0,1.0)
 # to be saved, level_comp, score, highscore, fist start
 
@@ -65,8 +74,9 @@ func _ready() -> void:
 
 func set_health(modifier: float):
 	health += modifier
-	size = min(ceil(health/HEALTH_PER_SIZE),MAX_LEVEL)
-	player_body_collision_scale = DEFAULT_PLAYER_COL_SCALE*size
+	size = max(1,min(ceil(health/HEALTH_PER_SIZE),MAX_LEVEL))
+	player_body_collision_pos = player_scale_dict[size].Position
+	player_body_collision_scale = player_scale_dict[size].Scale
 	print(size)
 	print(player_body_collision_scale)
 	if health <= 0:

@@ -14,7 +14,6 @@ var anim_dict:Dictionary={}
 @onready var camera: Camera2D = $Camera2D
 @onready var streak: CPUParticles2D = $Streak
 
-
 func reset_player_params():
 	Global.size=2.0
 	Global.health=Global.size*Global.HEALTH_PER_SIZE
@@ -32,6 +31,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	you_have_died.visible = Global.you_are_dead
 	body_collision_shape.scale=Global.player_body_collision_scale
+	body_collision_shape.position=Global.player_body_collision_pos
 	var delta_zoom :Vector2= camera.zoom - DEFAULT_ZOOM/Global.health*Global.HEALTH_PER_SIZE
 	if delta_zoom != DEFAULT_ZOOM*0 and  not Global.you_are_dead:
 		camera.zoom -=delta_zoom*_delta
@@ -94,16 +94,16 @@ func set_animation_dict():
 			anim_dict[i][direction]=direction+"_"+str(i)
 
 func play_animation(direction:Vector2, anim_speed_modifier:float):
-	#print(get_move(direction))
-	#print(Global.size)
-	#print(anim_dict[int(Global.size)])
-	#print(anim_dict[int(Global.size)][get_move(direction)])
 	const NORMAL_SPEED = 3.0
 	var animation_body_name = anim_dict[int(Global.size)][get_move(direction)]
 	var animation_skin_name =animation_body_name+ "_" + Global.turd_color
 	#var anim_speed_modifier=Global.speed_modifier/Global.size
 	player_body.speed_scale=anim_speed_modifier*NORMAL_SPEED
 	player_body.play(animation_body_name)
-
 	player_skin.play(animation_skin_name)
+	
+	if Global.size == 3.0:
+		player_skin.scale = Vector2(0.85, 0.85)
+	else:
+		player_skin.scale = Vector2(1.0, 1.0)
 	#player_body.speed_scale *= velocity.length()

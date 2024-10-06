@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcu1l564vqxli"
-path="res://.godot/imported/sewer.jpeg-09e8be9eb7abd625aa420c8ed033e713.ctex"
+uid="uid://dyn4inudo362c"
+path="res://.godot/imported/bigT_front_sheet.png-3818bb3f354d16c98c42ee4a9f3320ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/assets/sewer.jpeg"
-dest_files=["res://.godot/imported/sewer.jpeg-09e8be9eb7abd625aa420c8ed033e713.ctex"]
+source_file="res://entities/assets/bigT_front_sheet.png"
+dest_files=["res://.godot/imported/bigT_front_sheet.png-3818bb3f354d16c98c42ee4a9f3320ef.ctex"]
 
 [params]
 
