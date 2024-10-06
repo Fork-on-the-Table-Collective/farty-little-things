@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=4 uid="uid://c57y7i7tjmnkl"]
+[gd_scene load_steps=12 format=4 uid="uid://c57y7i7tjmnkl"]
 
 [ext_resource type="PackedScene" uid="uid://ujooexq3jie0" path="res://entities/player/player.tscn" id="1_l1pwb"]
 [ext_resource type="Script" path="res://scenes/map/map.gd" id="1_oe2ba"]
 [ext_resource type="PackedScene" uid="uid://bcapk4utlhnos" path="res://entities/passive_entities/power_up.tscn" id="2_mfx0k"]
 [ext_resource type="Texture2D" uid="uid://v3celowijn40" path="res://scenes/map/assets/Tileset_01.png" id="3_q1hq3"]
 [ext_resource type="PackedScene" uid="uid://b2fethtyobpvf" path="res://entities/enemy/rat.tscn" id="5_rylnt"]
+[ext_resource type="PackedScene" uid="uid://gejmnrh2ly5l" path="res://entities/passive_entities/noise_maker_pc.tscn" id="6_ps8j0"]
+[ext_resource type="PackedScene" uid="uid://c5njj1u4wmj2g" path="res://entities/passive_entities/noise_maker_phone.tscn" id="7_8iyav"]
+[ext_resource type="PackedScene" uid="uid://ccljyggwpq8y0" path="res://entities/passive_entities/power_down_gas.tscn" id="8_3kn5s"]
+[ext_resource type="PackedScene" uid="uid://djjym27n4yfqk" path="res://entities/passive_entities/power_down_glass.tscn" id="9_cov8p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_44reb"]
 texture = ExtResource("3_q1hq3")
@@ -96,13 +100,34 @@ rendering_quadrant_size = 32
 
 [node name="power_up" parent="." instance=ExtResource("2_mfx0k")]
 position = Vector2(1229, 373)
+scale = Vector2(3, 3)
 
 [node name="power_up2" parent="." instance=ExtResource("2_mfx0k")]
 position = Vector2(1618, 414)
+scale = Vector2(3, 3)
 
 [node name="Player" parent="." instance=ExtResource("1_l1pwb")]
 position = Vector2(545, 374)
 scale = Vector2(0.3, 0.3)
 
 [node name="Rat" parent="." instance=ExtResource("5_rylnt")]
-position = Vector2(149, 151)
+position = Vector2(216, 105)
+
+[node name="noise_maker" parent="." instance=ExtResource("6_ps8j0")]
+position = Vector2(1043, 35)
+scale = Vector2(3, 3)
+
+[node name="noise_maker2" parent="." instance=ExtResource("7_8iyav")]
+position = Vector2(1164, -262)
+scale = Vector2(3, 3)
+
+[node name="power_down" parent="." instance=ExtResource("8_3kn5s")]
+position = Vector2(1713, 107)
+scale = Vector2(3, 3)
+
+[node name="power_down2" parent="." instance=ExtResource("9_cov8p")]
+position = Vector2(1749, -233)
+scale = Vector2(3, 3)
+
+[node name="Rat2" parent="." instance=ExtResource("5_rylnt")]
+position = Vector2(877, -228)

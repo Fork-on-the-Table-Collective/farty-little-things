@@ -7,6 +7,8 @@ var next_scene_path: String = "res://scenes/map/feedback.tscn"
 
 func _on_body_entered(body: Node2D) -> void:
 	if is_instance_of(body, PLAYER):
-		Global.score+=100
+		#Global.score=Global.size
+		Global.update_highscore(Global.size)
+		print("Your score: " + str(Global.size))
 		Global.last_level_id+=1
 		get_tree().change_scene_to_file.call_deferred(next_scene_path)

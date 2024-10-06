@@ -4,6 +4,7 @@ const COOLDOWN = 1.0
 const PATROL_TURNOVER_TIME = 5.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack_effect: AnimatedSprite2D = $AnimatedSprite2D/AttackEffect
 
 @export var speed = 200.0
 @export var damage = -20.0
@@ -58,7 +59,9 @@ func _on_Patrol_timeout():
 func _on_Cooldown_timeout():
 	speed=origin_speed
 	patrol()
-	
+	attack_effect.stop()
+	attack_effect.visible = false
+
 func _physics_process(_delta: float) -> void:
 	
 	if target != null:
@@ -97,6 +100,8 @@ func patrol() -> void:
 
 func _on_hit_box_area_body_entered(_body: Node2D) -> void:
 	Global.set_health(damage)
+	attack_effect.visible = true
+	attack_effect.play("activated")
 	speed=0
 	cooldown_timer.start()
 

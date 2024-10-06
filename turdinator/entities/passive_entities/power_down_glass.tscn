@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://djjym27n4yfqk"]
+
+[ext_resource type="Script" path="res://entities/passive_entities/power_down.gd" id="1_248oh"]
+[ext_resource type="Texture2D" uid="uid://c72o0l16f3t27" path="res://entities/assets/glass_shards.png" id="2_0e1gu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o3r0"]
+atlas = ExtResource("2_0e1gu")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txfw6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1o3r0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aho68"]
+size = Vector2(16, 19)
+
+[node name="power_down" type="Area2D"]
+script = ExtResource("1_248oh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(0.14375, 0.180208)
+sprite_frames = SubResource("SpriteFrames_txfw6")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_aho68")
+
+[node name="power_down_sound" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
