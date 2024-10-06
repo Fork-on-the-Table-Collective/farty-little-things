@@ -5,6 +5,10 @@ const USE_SAVE=false
 
 
 const HEALTH_PER_SIZE = 20
+const WAIT_OF_RESTART = 3
+const DEFAULT_PLAYER_COL_SCALE = Vector2(.5,.5)
+const MAX_LEVEL=4.0
+
 
 
 var size: float = 2.0
@@ -20,6 +24,8 @@ var last_level_id:int=1
 var variable_store_path = "user://variable_store.save"
 var level_store_path = "user://level_store.save"
 var levels=["res://scenes/map/test_map.tscn","res://scenes/map/tile_test_map.tscn"]
+var you_are_dead = false
+var player_body_collision_scale=Vector2(1.0,1.0)
 # to be saved, level_comp, score, highscore, fist start
 
 
@@ -59,12 +65,18 @@ func _ready() -> void:
 
 func set_health(modifier: float):
 	health += modifier
-	size = floor(health/HEALTH_PER_SIZE)
+	size = min(ceil(health/HEALTH_PER_SIZE),MAX_LEVEL)
+	player_body_collision_scale = DEFAULT_PLAYER_COL_SCALE*size
+	print(size)
+	print(player_body_collision_scale)
 	if health <= 0:
-		var player = get_tree().get_first_node_in_group("player")
-		player.you_have_died.visible = true
+		size=1
+		you_are_dead = true
+		print("jajj")		
+		await get_tree().create_timer(0.1, true, false, true).timeout
+
 		get_tree().paused = true
-		await get_tree().create_timer(3, true, false, true).timeout
+		await get_tree().create_timer(WAIT_OF_RESTART, true, false, true).timeout
 		get_tree().paused = false
 		call_deferred("restart_scene")
 

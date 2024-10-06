@@ -12,7 +12,6 @@ func _ready() -> void:
 	if Global.is_first_run:
 		get_tree().change_scene_to_file.call_deferred("res://menu/skin_select.tscn")
 	for id in range(map_buttons.size()):
-		print(Global.last_level_id)
 		if id > Global.last_level_id+1:
 			map_buttons[id].visible=false
 		elif id == Global.last_level_id+1:
