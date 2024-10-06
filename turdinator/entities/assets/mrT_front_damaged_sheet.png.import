@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3drgxbi3et35"
-path="res://.godot/imported/paper.png-9739d5a14458d6d76c5f34bc1587b7bf.ctex"
+uid="uid://d1le86ljgsxpc"
+path="res://.godot/imported/mrT_front_damaged_sheet.png-ef14952a1ca0a5b4a537eada25aef392.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/assets/paper.png"
-dest_files=["res://.godot/imported/paper.png-9739d5a14458d6d76c5f34bc1587b7bf.ctex"]
+source_file="res://entities/assets/mrT_front_damaged_sheet.png"
+dest_files=["res://.godot/imported/mrT_front_damaged_sheet.png-ef14952a1ca0a5b4a537eada25aef392.ctex"]
 
 [params]
 

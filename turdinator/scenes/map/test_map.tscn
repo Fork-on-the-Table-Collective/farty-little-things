@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://c57y7i7tjmnkl"]
+[gd_scene load_steps=8 format=4 uid="uid://c57y7i7tjmnkl"]
 
 [ext_resource type="PackedScene" uid="uid://ujooexq3jie0" path="res://entities/player/player.tscn" id="1_l1pwb"]
 [ext_resource type="Script" path="res://scenes/map/map.gd" id="1_oe2ba"]
 [ext_resource type="PackedScene" uid="uid://bcapk4utlhnos" path="res://entities/passive_entities/power_up.tscn" id="2_mfx0k"]
 [ext_resource type="Texture2D" uid="uid://v3celowijn40" path="res://scenes/map/assets/Tileset_01.png" id="3_q1hq3"]
+[ext_resource type="PackedScene" uid="uid://b2fethtyobpvf" path="res://entities/enemy/rat.tscn" id="5_rylnt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_44reb"]
 texture = ExtResource("3_q1hq3")
@@ -95,6 +96,11 @@ rendering_quadrant_size = 32
 
 [node name="Player" parent="." instance=ExtResource("1_l1pwb")]
 position = Vector2(548, 130)
+scale = Vector2(0.3, 0.3)
 
 [node name="power_up" parent="." instance=ExtResource("2_mfx0k")]
 position = Vector2(580, 561)
+
+[node name="Rat" parent="." instance=ExtResource("5_rylnt")]
+position = Vector2(216, 105)
+scale = Vector2(0.5, 0.5)
