@@ -4,11 +4,13 @@
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 z_index = 100
-offset_left = 25.0
-offset_top = -138.0
-offset_right = 626.0
-offset_bottom = 38.0
+offset_left = 31.0
+offset_top = -25.0
+offset_right = 329.0
+offset_bottom = 29.0
+theme_override_colors/default_color = Color(0.984314, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 39
 bbcode_enabled = true
-text = "[center][color=red][font_size=64]
-You have died![/font_size][/color][/center]"
+text = "You have died!"
 fit_content = true
+tab_size = 1
