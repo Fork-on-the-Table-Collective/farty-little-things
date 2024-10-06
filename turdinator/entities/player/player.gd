@@ -5,7 +5,12 @@ const SPRINT = 3.0
 const HEALTH_LOST_PER_SECOND_OF_SPRINT = 2
 const DEFAULT_ZOOM = Vector2(2.0,2.0)
 
+var random = RandomNumberGenerator.new()
+
 var anim_dict:Dictionary={}
+
+const FARTS_COUNT = 3
+var farts: Array = []
 
 @onready var player_body: AnimatedSprite2D = $Player_Skin/Player_Body
 @onready var player_skin: AnimatedSprite2D = $Player_Skin
@@ -26,6 +31,15 @@ func _ready() -> void:
 	set_animation_dict()
 	Global.you_are_dead = false
 	streak.color = player_skin.sprite_frames.get_frame_texture("idle_2_" + Global.turd_color, 0).get_image().get_pixel(128, 128)
+	load_farts()
+
+
+func load_farts() -> void:
+	for i in range(1, FARTS_COUNT + 1):
+		var audio_player = AudioStreamPlayer.new()
+		audio_player.stream = load("res://sounds/sfx/farts/fart%s.wav" % i)
+		farts.append(audio_player)
+		add_child(audio_player)
 
 
 func _process(_delta: float) -> void:
@@ -73,6 +87,14 @@ func _physics_process(delta: float) -> void:
 		play_animation(direction, 1)
 
 	move_and_slide()
+
+	if Input.is_action_just_pressed("fart"):
+		play_random_fart()
+
+func play_random_fart():
+	var r = random.randi_range(0, FARTS_COUNT - 1)
+	print(r)
+	farts[r].play()
 
 func get_move(direction:Vector2):
 	if direction.x > 0:
