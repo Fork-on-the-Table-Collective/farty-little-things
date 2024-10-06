@@ -2,17 +2,36 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const SPRINT = 3.0
+const DEFAULT_ZOOM = Vector2(2.0,2.0)
 
 var anim_dict:Dictionary={}
 
 @onready var player_body: AnimatedSprite2D = $Player_Skin/Player_Body
 @onready var player_skin: AnimatedSprite2D = $Player_Skin
 @onready var you_have_died: Node2D = $YouHaveDied
+@onready var body_collision_shape: CollisionShape2D = $BodyCollisionShape
+@onready var camera: Camera2D = $Camera2D
+
+
+func reset_player_params():
+	Global.size=2.0
+	Global.health=Global.size*Global.HEALTH_PER_SIZE
+	Global.set_health(0.0)
 
 func _ready() -> void:
+	reset_player_params()
 	set_animation_dict()
-	you_have_died.visible = false
+	Global.you_are_dead = false
 
+func _process(_delta: float) -> void:
+	you_have_died.visible = Global.you_are_dead
+	body_collision_shape.scale=Global.player_body_collision_scale
+	var delta_zoom :Vector2= camera.zoom - DEFAULT_ZOOM/Global.health*Global.HEALTH_PER_SIZE
+	if delta_zoom != DEFAULT_ZOOM*0 and  not Global.you_are_dead:
+		camera.zoom -=delta_zoom*_delta
+			
+	
+	
 func _physics_process(_delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -72,7 +91,6 @@ func play_animation(direction:Vector2, anim_speed_modifier:float):
 	var animation_skin_name =animation_body_name+ "_" + Global.turd_color
 	#var anim_speed_modifier=Global.speed_modifier/Global.size
 	player_body.speed_scale=anim_speed_modifier*NORMAL_SPEED
-	print(player_body.speed_scale)
 	player_body.play(animation_body_name)
 	
 	player_skin.play(animation_skin_name)

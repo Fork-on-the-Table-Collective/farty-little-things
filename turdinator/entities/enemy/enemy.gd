@@ -42,8 +42,7 @@ func _on_hit_box_area_body_entered(_body: Node2D) -> void:
 	Global.set_health(damage)
 	speed=0
 	cooldown_timer.start()
-	print(Global.health)
-	print(Global.size)
+
 
 
 func _on_perception_area_area_entered(area: Area2D) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://ujooexq3jie0"]
+[gd_scene load_steps=104 format=3 uid="uid://ujooexq3jie0"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_lqb31"]
 [ext_resource type="Texture2D" uid="uid://d1le86ljgsxpc" path="res://entities/assets/mrT_front_damaged_sheet.png" id="2_ksdh1"]
@@ -965,27 +965,43 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ndmki"]
-radius = 18.0
-height = 198.0
+radius = 24.0
+height = 182.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8pti"]
+radius = 33.4819
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_lqb31")
 
 [node name="Player_Skin" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.00001, 127)
+position = Vector2(-1.00001, 4)
 scale = Vector2(1.03011, 0.983537)
 sprite_frames = SubResource("SpriteFrames_6m1gc")
-animation = &"down_1_light_brown"
+animation = &"down_2_brown"
 autoplay = "idle_2_brown"
 
 [node name="Player_Body" type="AnimatedSprite2D" parent="Player_Skin"]
 sprite_frames = SubResource("SpriteFrames_6eueg")
-animation = &"up_1"
+animation = &"down_2"
 autoplay = "idle_2"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+[node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_ndmki")
 
 [node name="YouHaveDied" parent="." instance=ExtResource("7_3s45b")]
+position = Vector2(2, -2)
+scale = Vector2(2, 2)
+
+[node name="PerceptionArea" type="Area2D" parent="."]
+scale = Vector2(5.01799, 5.04184)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionArea"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_v8pti")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
