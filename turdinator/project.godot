@@ -18,8 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://globals/global.gd"
-MusicReferenceFartMixdown="*res://scenes/common/music_reference_fart_mixdown.tscn"
-SewerAmbienceMixdown="*res://scenes/common/sewer_ambience_mixdown.tscn"
+BackgroundMusics="*res://scenes/common/background_musics.tscn"
 
 [display]
 
@@ -68,6 +67,7 @@ sprint={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="PerceptionArea"
+2d_physics/layer_5="SlowDownArea"
 
 [rendering]
 

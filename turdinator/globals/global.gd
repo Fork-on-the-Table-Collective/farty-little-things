@@ -14,8 +14,8 @@ const MAX_LEVEL=4.0
 var size: float = 2.0
 var health: float = size*HEALTH_PER_SIZE
 var sfx_stream_player= AudioStreamPlayer2D.new()
-var button_hover=preload("res://sounds/sfx/menu_button_hover.wav")
-var button_pressed=preload("res://sounds/sfx/menu_button_click.wav")
+var button_hover=preload("res://sounds/sfx/menu/menu_button_hover.wav")
+var button_pressed=preload("res://sounds/sfx/menu/menu_button_click.wav")
 var speed_modifier: float = 1
 var score:int
 var highscore:int
