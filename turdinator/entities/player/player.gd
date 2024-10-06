@@ -11,7 +11,7 @@ var anim_dict:Dictionary={}
 
 func _ready() -> void:
 	set_animation_dict()
-	#you_have_died.visible = false
+	you_have_died.visible = false
 
 func _physics_process(_delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
