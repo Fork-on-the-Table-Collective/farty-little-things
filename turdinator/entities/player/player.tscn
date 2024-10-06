@@ -1579,14 +1579,13 @@ script = ExtResource("1_lqb31")
 
 [node name="Player_Skin" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6m1gc")
-animation = &"left_4_brown"
+animation = &"left_1_brown"
 autoplay = "idle_2_brown"
 
 [node name="Player_Body" type="AnimatedSprite2D" parent="Player_Skin"]
 sprite_frames = SubResource("SpriteFrames_6eueg")
-animation = &"right_2"
+animation = &"right_1"
 autoplay = "idle_2"
-frame_progress = 0.14127
 
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ndmki")

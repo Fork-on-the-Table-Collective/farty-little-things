@@ -25,6 +25,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	you_have_died.visible = Global.you_are_dead
 	body_collision_shape.scale=Global.player_body_collision_scale
+	body_collision_shape.position=Global.player_body_collision_pos
 	var delta_zoom :Vector2= camera.zoom - DEFAULT_ZOOM/Global.health*Global.HEALTH_PER_SIZE
 	if delta_zoom != DEFAULT_ZOOM*0 and  not Global.you_are_dead:
 		camera.zoom -=delta_zoom*_delta
@@ -91,4 +92,6 @@ func play_animation(direction:Vector2, anim_speed_modifier:float):
 	
 	if Global.size == 3.0:
 		player_skin.scale = Vector2(0.85, 0.85)
+	else:
+		player_skin.scale = Vector2(1.0, 1.0)
 	#player_body.speed_scale *= velocity.length()

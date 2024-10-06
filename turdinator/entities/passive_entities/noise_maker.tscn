@@ -263,7 +263,8 @@ script = ExtResource("1_iso7d")
 position = Vector2(-1, -1)
 scale = Vector2(0.14375, 0.180208)
 sprite_frames = SubResource("SpriteFrames_txfw6")
-animation = &"animation_phone"
+animation = &"idle_computer"
+autoplay = "idle_computer"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, -1.5)
