@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=4 uid="uid://dosccavodo1fq"]
+[gd_scene load_steps=7 format=4 uid="uid://dosccavodo1fq"]
 
 [ext_resource type="TileSet" uid="uid://cpbcrogyoswvp" path="res://scenes/map/assets/tilemap_setup.tres" id="1_mie1h"]
 [ext_resource type="PackedScene" uid="uid://b2fethtyobpvf" path="res://entities/enemy/rat.tscn" id="2_3bpex"]
 [ext_resource type="PackedScene" uid="uid://ujooexq3jie0" path="res://entities/player/player.tscn" id="3_qgn8m"]
 [ext_resource type="PackedScene" uid="uid://bcapk4utlhnos" path="res://entities/passive_entities/power_up.tscn" id="4_o1ypc"]
+[ext_resource type="PackedScene" uid="uid://cwld63ar4l5wt" path="res://entities/passive_entities/end_zone.tscn" id="5_tpgft"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mtdse"]
+a = Vector2(2, -69)
+b = Vector2(1, 87)
 
 [node name="Map01" type="Node2D"]
 
@@ -98,5 +103,11 @@ position = Vector2(2178, 1234)
 scale = Vector2(0.3, 0.3)
 
 [node name="Player" parent="." instance=ExtResource("3_qgn8m")]
-position = Vector2(1907, 649)
+position = Vector2(7980, 4154)
 scale = Vector2(0.4, 0.4)
+
+[node name="EndZone" parent="." instance=ExtResource("5_tpgft")]
+position = Vector2(8271, 4138)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndZone"]
+shape = SubResource("SegmentShape2D_mtdse")
