@@ -36,7 +36,7 @@ func store_variables():
 		file.store_var(score)
 		file.store_var(is_first_run)
 		file.store_var(last_level_id)
-	
+
 
 func load_variables():
 	if FileAccess.file_exists(variable_store_path):
@@ -72,7 +72,7 @@ func set_health(modifier: float):
 	if health <= 0:
 		size=1
 		you_are_dead = true
-		print("jajj")		
+		print("jajj")
 		await get_tree().create_timer(0.1, true, false, true).timeout
 
 		get_tree().paused = true
@@ -82,7 +82,6 @@ func set_health(modifier: float):
 
 func restart_scene():
 	get_tree().reload_current_scene()
-	set_health(80)
 
 func set_speed_modifier(modifier: float):
 	speed_modifier = modifier
