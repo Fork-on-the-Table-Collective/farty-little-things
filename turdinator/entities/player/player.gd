@@ -19,6 +19,7 @@ var farts: Array = []
 @onready var camera: Camera2D = $Camera2D
 @onready var streak: CPUParticles2D = $Streak
 @onready var toutch_controls: CanvasLayer = $ToutchControls
+@onready var slow_down_sound: AudioStreamPlayer = $slow_down_sound
 
 func reset_player_params():
     Global.size=2.0
@@ -124,16 +125,26 @@ func set_animation_dict():
             anim_dict[i][direction]=direction+"_"+str(i)
 
 func play_animation(direction:Vector2, anim_speed_modifier:float):
-    const NORMAL_SPEED = 3.0
-    var animation_body_name = anim_dict[int(Global.size)][get_move(direction)]
-    var animation_skin_name =animation_body_name+ "_" + Global.turd_color
-    #var anim_speed_modifier=Global.speed_modifier/Global.size
-    player_body.speed_scale=anim_speed_modifier*NORMAL_SPEED
-    player_body.play(animation_body_name)
-    player_skin.play(animation_skin_name)
-    
-    if Global.size == 3.0:
-        player_skin.scale = Vector2(0.85, 0.85)
-    else:
-        player_skin.scale = Vector2(1.0, 1.0)
-    #player_body.speed_scale *= velocity.length()
+	const NORMAL_SPEED = 3.0
+	var animation_body_name = anim_dict[int(Global.size)][get_move(direction)]
+	var animation_skin_name =animation_body_name+ "_" + Global.turd_color
+	#var anim_speed_modifier=Global.speed_modifier/Global.size
+	player_body.speed_scale=anim_speed_modifier*NORMAL_SPEED
+	player_body.play(animation_body_name)
+	player_skin.play(animation_skin_name)
+	
+	if Global.size == 3.0:
+		player_skin.scale = Vector2(0.85, 0.85)
+	else:
+		player_skin.scale = Vector2(1.0, 1.0)
+	#player_body.speed_scale *= velocity.length()
+
+func _on_terrain_sense_area_body_entered(body: Node2D) -> void:
+	slow_down_sound.play()
+	Global.set_speed_modifier(0.75)
+	pass # Replace with function body.
+
+func _on_terrain_sense_area_body_exited(body: Node2D) -> void:
+	slow_down_sound.stop()
+	Global.set_speed_modifier(1.0)
+	pass # Replace with function body.

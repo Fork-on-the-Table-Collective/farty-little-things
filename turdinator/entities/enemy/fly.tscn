@@ -1,35 +1,35 @@
 [gd_scene load_steps=17 format=3 uid="uid://ca6q5pb5s3k1g"]
 
 [ext_resource type="Script" path="res://entities/enemy/enemy.gd" id="1_kpoai"]
-[ext_resource type="Texture2D" uid="uid://fsfit4ulyq4n" path="res://entities/assets/Fly_anim_sheet.png" id="2_4b5sa"]
+[ext_resource type="Texture2D" uid="uid://bdhjiukg2mvp8" path="res://entities/assets/Fly_anim_sheet_new.png" id="2_i471g"]
 [ext_resource type="Texture2D" uid="uid://bffcq21bytkrk" path="res://entities/assets/Damage_effect_sheet.png" id="3_p68t6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pu7qs"]
 radius = 6.21973
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fl3rt"]
-atlas = ExtResource("2_4b5sa")
-region = Rect2(0, 0, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vp5ty"]
+atlas = ExtResource("2_i471g")
+region = Rect2(0, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_10hlv"]
-atlas = ExtResource("2_4b5sa")
-region = Rect2(256, 0, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_t353h"]
+atlas = ExtResource("2_i471g")
+region = Rect2(512, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vw8px"]
-atlas = ExtResource("2_4b5sa")
-region = Rect2(0, 256, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3cf7"]
+atlas = ExtResource("2_i471g")
+region = Rect2(1024, 0, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nkfjh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fl3rt")
+"texture": SubResource("AtlasTexture_vp5ty")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_10hlv")
+"texture": SubResource("AtlasTexture_t353h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vw8px")
+"texture": SubResource("AtlasTexture_e3cf7")
 }],
 "loop": true,
 "name": &"left",
@@ -106,16 +106,16 @@ shape = SubResource("CircleShape2D_pu7qs")
 sprite_frames = SubResource("SpriteFrames_nkfjh")
 animation = &"left"
 autoplay = "left"
-frame_progress = 0.0761338
+frame_progress = 0.314775
 
 [node name="AttackEffect" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 visible = false
-position = Vector2(-82.5, 80)
+position = Vector2(-157.5, 150)
 rotation = -2.1808
-scale = Vector2(0.35, 0.35)
+scale = Vector2(0.701959, 0.69541)
 sprite_frames = SubResource("SpriteFrames_7finr")
 animation = &"activated"
-frame_progress = 0.552985
+frame_progress = 0.243045
 
 [node name="PerceptionArea" type="Area2D" parent="."]
 scale = Vector2(5.01799, 5.04184)
