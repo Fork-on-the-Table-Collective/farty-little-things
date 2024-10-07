@@ -1,17 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://btvdcq6h8ut5u"]
 
-[ext_resource type="Script" path="res://scenes/main/game_area.gd" id="1_8l05c"]
-[ext_resource type="Theme" path="res://scenes/common/fontTheme.tres" id="2_75v8o"]
+[ext_resource type="Script" path="res://menu/level_select.gd" id="1_ub24o"]
+[ext_resource type="Theme" uid="uid://b8kfdhofsvpyy" path="res://scenes/common/fontTheme.tres" id="2_dlggl"]
 
 [node name="GameArea" type="Node2D"]
-script = ExtResource("1_8l05c")
+script = ExtResource("1_ub24o")
 
 [node name="menu" type="Button" parent="."]
 offset_left = 626.0
 offset_top = 4.0
 offset_right = 830.0
 offset_bottom = 104.0
-theme = ExtResource("2_75v8o")
+theme = ExtResource("2_dlggl")
 text = "MENU"
 
 [node name="GridContainer" type="GridContainer" parent="."]
