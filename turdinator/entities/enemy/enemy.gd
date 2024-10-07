@@ -23,13 +23,13 @@ const PATROL_TURNOVER_TIME = 5.0
 var speed = 200.0
 var damage = -20.0
 var direction:Vector2=Vector2.ZERO
-var orientation = 0
 var is_in_hitbox: bool = false
 var target: Area2D = null
 var cooldown_timer: Timer
 var patrol_timer: Timer
 var is_click_on_cooldown: bool = false
 var origin_speed
+var you_can_eat:bool = true
 
 
 enum Enemies {
@@ -111,7 +111,8 @@ func set_animation_from_images():
 			sprite_frames.add_frame("default",texture)
 
 func set_movement(t: Node2D):
-	velocity = (t.global_position - position).normalized() * speed
+	if t:
+		velocity = (t.global_position - position).normalized() * speed
 
 func _ready() -> void:
 	speed=ENEMIES_CHAR_SHEETS[enemy].speed
@@ -137,7 +138,7 @@ func _ready() -> void:
 	cooldown_timer = Timer.new()
 	cooldown_timer.set_wait_time(COOLDOWN)
 	cooldown_timer.set_one_shot(false)  # The timer should stop after one timeout
-	cooldown_timer.timeout.connect(_apply_damage)
+	cooldown_timer.timeout.connect(_cooldown_over)
 	add_child(cooldown_timer)  # Add the timer to the scene
 
 	patrol_timer = Timer.new()
@@ -171,24 +172,37 @@ func patrol() -> void:
 		direction = Vector2(randf_range(-1,1),randf_range(-1,1))
 		velocity = direction.normalized() * speed /2
 
-func _apply_damage():
-	if is_in_hitbox == true:
-		Global.set_health(damage)
-		attack_effect.visible = true
-		attack_effect.play("activated")
+func _cooldown_over():
+	you_can_eat=true
+	apply_damage()
+
+func apply_damage():
+	if you_can_eat:
+		if is_in_hitbox == true:
+			Global.set_health(damage)
+			attack_effect.visible = true
+			attack_effect.play("activated")
+			you_can_eat=false
+			speed=0
+			cooldown_timer.start()
+		else:
+			speed=origin_speed
+			patrol()
 	else:
-		speed=origin_speed
-		patrol()
+		target=null
+		velocity=Vector2.ZERO
 
 func _on_hit_box_area_body_entered(_body: Node2D) -> void:
 	is_in_hitbox=true
-	_apply_damage()
-	speed=0
-	cooldown_timer.start()
+	apply_damage()
 
 func _on_perception_area_area_entered(area: Area2D) -> void:
-	target = area
-	set_movement(target)
+	if you_can_eat:
+		target = area
+		set_movement(target)
+	else:
+		target=null
+		velocity=Vector2.ZERO
 
 func _on_perception_area_area_exited(_area: Area2D) -> void:
 	target=null
