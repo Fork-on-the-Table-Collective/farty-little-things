@@ -2,7 +2,7 @@ extends Area2D
 
 const PLAYER = preload("res://entities/player/player.gd")
 
-var next_scene_path: String = "res://scenes/map/feedback.tscn"
+var next_scene_path: String = "res://menu/highscore_scene.tscn"
 
 
 func _on_body_entered(body: Node2D) -> void:
