@@ -13,6 +13,7 @@ func create_map_loading_buttons():
 	for level_num in range(len(Global.levels)) :
 		var map_button: = TextureButton.new()
 		map_button.texture_normal=load(Global.level_covers[level_num])
+		
 		if level_num == 0:
 			map_button.pressed.connect(_on_map_pressed.bind(story_intro))
 		else:
@@ -20,6 +21,7 @@ func create_map_loading_buttons():
 		map_button.button_down.connect(_on_map_down.bind(map_button))
 		map_button.mouse_entered.connect(_on_mouse_entered.bind(map_button))
 		map_button.mouse_exited.connect(_on_mouse_exited.bind(map_button))
+
 		if level_num > Global.last_level_id+1:
 			map_button.visible=false
 		elif level_num == Global.last_level_id+1:
