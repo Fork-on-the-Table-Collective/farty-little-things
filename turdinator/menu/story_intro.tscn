@@ -124,6 +124,7 @@ text = "SKIP"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_64uih")
+bus = &"sfx"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(838, 312)

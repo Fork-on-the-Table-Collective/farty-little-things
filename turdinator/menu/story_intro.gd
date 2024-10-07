@@ -19,6 +19,11 @@ func _ready() -> void:
 	fade()
 
 func fade() -> void:
+	var bus_index = AudioServer.get_bus_index("music")
+	AudioServer.set_bus_volume_db(
+		bus_index,
+		linear_to_db(0.1)
+	)
 	var tween = self.create_tween()
 	tween.tween_interval(in_time)
 	tween.tween_property(self, "modulate:a", 1.0,fade_in_time)
@@ -29,6 +34,10 @@ func fade() -> void:
 	await get_tree().create_timer(fade_in_time, true, false, true).timeout
 	audio_stream_player.play()
 	await tween.finished
+	AudioServer.set_bus_volume_db(
+		bus_index,
+		linear_to_db(1.0)
+	)
 
 	get_tree().change_scene_to_file(next_scene)
 
