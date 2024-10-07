@@ -9,10 +9,6 @@ const PATROL_TURNOVER_TIME = 5.0
 @export var speed = 200.0
 @export var damage = -20.0
 
-@export_group("Patrol properties")
-
-
-
 var direction:Vector2=Vector2.ZERO
 var orientation = 0
 
@@ -21,6 +17,7 @@ var cooldown_timer: Timer
 var patrol_timer: Timer
 var is_click_on_cooldown: bool = false
 var origin_speed
+var hitbox_scale: Vector2
 
 @onready var ray_cast_right: RayCast2D = $RayCastRight
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
@@ -38,6 +35,8 @@ func _ready() -> void:
 	cooldown_timer.set_one_shot(true)  # The timer should stop after one timeout
 	cooldown_timer.timeout.connect(_on_Cooldown_timeout)
 	add_child(cooldown_timer)  # Add the timer to the scene
+
+	attack_effect.visible = false
 
 	patrol_timer = Timer.new()
 	patrol_timer.set_wait_time(PATROL_TURNOVER_TIME)

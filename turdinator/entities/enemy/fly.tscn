@@ -118,7 +118,7 @@ animation = &"activated"
 frame_progress = 0.243045
 
 [node name="PerceptionArea" type="Area2D" parent="."]
-scale = Vector2(5.01799, 5.04184)
+scale = Vector2(8.06378, 8.10211)
 collision_layer = 4
 collision_mask = 4
 
@@ -127,13 +127,29 @@ scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_armlm")
 
 [node name="HitBoxArea" type="Area2D" parent="."]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.15894, 2.15894)
 collision_layer = 2
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
 position = Vector2(-5, 2)
 scale = Vector2(7.33708, 6.77195)
 shape = SubResource("CircleShape2D_pu7qs")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(250, 0)
+collision_mask = 8
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-250, 0)
+collision_mask = 0
+
+[node name="RayCastUp" type="RayCast2D" parent="."]
+target_position = Vector2(0, -200)
+collision_mask = 8
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+target_position = Vector2(0, 200)
+collision_mask = 8
 
 [connection signal="area_entered" from="PerceptionArea" to="." method="_on_perception_area_area_entered"]
 [connection signal="area_exited" from="PerceptionArea" to="." method="_on_perception_area_area_exited"]
