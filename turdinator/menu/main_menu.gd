@@ -5,8 +5,6 @@ extends Control
 func _ready() -> void:
 	Global.set_all_button()
 
-
-
 func _on_button_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://menu/skin_select.tscn")
 

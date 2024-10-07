@@ -5,7 +5,7 @@ const SHADER:Shader = preload("res://scenes/common/texture_button.gdshader")
 const HOVER_COLOR=Color(1, .2, .2,.5)
 const BUTTON_DOWN_COLOR=Color(.5, .5, .5,.5)
 
-@onready var grid_container: GridContainer = $VBoxContainer/MarginContainer2/GridContainer
+@onready var grid_container: GridContainer = $MarginContainer2/GridContainer
 var menu = "res://menu/main_menu.tscn"
 
 func create_map_loading_buttons():
