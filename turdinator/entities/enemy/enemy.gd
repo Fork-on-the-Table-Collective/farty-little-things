@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const COOLDOWN = 1.0
+const COOLDOWN = 2.0
 const PATROL_TURNOVER_TIME = 5.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -8,30 +8,29 @@ const PATROL_TURNOVER_TIME = 5.0
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var perception_shape: CollisionShape2D = $PerceptionArea/CollisionShape2D
 @onready var hit_box: CollisionShape2D = $HitBoxArea/HitBox
+@onready var ray_cast_right: RayCast2D = $RayCastRight
+@onready var ray_cast_left: RayCast2D = $RayCastLeft
+@onready var ray_cast_up: RayCast2D = $RayCastUp
+@onready var ray_cast_down: RayCast2D = $RayCastDown
+@onready var enemy_char_animation: AnimatedSprite2D = $AnimatedSprite2D
 
-var speed = 200.0
-var damage = -20.0
 @export var enemy:Enemies
 @export var is_patroling:bool=true
 
 
 
 
+var speed = 200.0
+var damage = -20.0
 var direction:Vector2=Vector2.ZERO
 var orientation = 0
-
+var is_in_hitbox: bool = false
 var target: Area2D = null
 var cooldown_timer: Timer
 var patrol_timer: Timer
 var is_click_on_cooldown: bool = false
 var origin_speed
-var go=true
 
-@onready var ray_cast_right: RayCast2D = $RayCastRight
-@onready var ray_cast_left: RayCast2D = $RayCastLeft
-@onready var ray_cast_up: RayCast2D = $RayCastUp
-@onready var ray_cast_down: RayCast2D = $RayCastDown
-@onready var enemy_char_animation: AnimatedSprite2D = $AnimatedSprite2D
 
 enum Enemies {
 	Fly,
@@ -45,7 +44,7 @@ const ENEMIES_CHAR_SHEETS=[
 		"rows":1,
 		"cols":3,
 		"speed":250.0,
-		"damage":-5.0,
+		"damage":-3.0,
 		"scale":Vector2(.1,.1),
 		"attak_position":Vector2(-137,153),
 		"attak_scale":Vector2(0.7,0.7),
@@ -59,7 +58,7 @@ const ENEMIES_CHAR_SHEETS=[
 		"rows":1,
 		"cols":3,
 		"speed":200.0,
-		"damage":-20.0,
+		"damage":-10.0,
 		"scale":Vector2(.3,.3),
 		"attak_position":Vector2(-202,102.5),
 		"attak_scale":Vector2(0.6,0.56),
@@ -73,7 +72,7 @@ const ENEMIES_CHAR_SHEETS=[
 		"rows":1,
 		"cols":3,
 		"speed":200.0,
-		"damage":-10.0,
+		"damage":-8.0,
 		"scale":Vector2(.4,.4),
 		"attak_position":Vector2(37.5,67.5),
 		"attak_scale":Vector2(0.332,0.427),
@@ -87,7 +86,7 @@ const ENEMIES_CHAR_SHEETS=[
 		"rows":2,
 		"cols":2,
 		"speed":100.0,
-		"damage":-25.0,
+		"damage":-10.0,
 		"scale":Vector2(.4,.4),
 		"attak_position":Vector2(-120,77.5),
 		"attak_scale":Vector2(0.35,0.35),
@@ -137,8 +136,8 @@ func _ready() -> void:
 	velocity = Vector2.ONE
 	cooldown_timer = Timer.new()
 	cooldown_timer.set_wait_time(COOLDOWN)
-	cooldown_timer.set_one_shot(true)  # The timer should stop after one timeout
-	cooldown_timer.timeout.connect(_on_Cooldown_timeout)
+	cooldown_timer.set_one_shot(false)  # The timer should stop after one timeout
+	cooldown_timer.timeout.connect(_apply_damage)
 	add_child(cooldown_timer)  # Add the timer to the scene
 
 	patrol_timer = Timer.new()
@@ -154,11 +153,6 @@ func _ready() -> void:
 func _on_Patrol_timeout():
 	patrol()
 	
-func _on_Cooldown_timeout():
-	speed=origin_speed
-	patrol()
-	attack_effect.stop()
-	attack_effect.visible = false
 
 func _physics_process(_delta: float) -> void:
 	if ray_cast_right.is_colliding() or ray_cast_left.is_colliding() or ray_cast_up.is_colliding() or ray_cast_down.is_colliding() : 
@@ -176,16 +170,19 @@ func patrol() -> void:
 		velocity = Vector2.ONE
 		direction = Vector2(randf_range(-1,1),randf_range(-1,1))
 		velocity = direction.normalized() * speed /2
-		
-	print("dir: "+str(direction))
-	print("velo: "+str(velocity))
-	print("speed: "+str(speed))
 
+func _apply_damage():
+	if is_in_hitbox == true:
+		Global.set_health(damage)
+		attack_effect.visible = true
+		attack_effect.play("activated")
+	else:
+		speed=origin_speed
+		patrol()
 
 func _on_hit_box_area_body_entered(_body: Node2D) -> void:
-	Global.set_health(damage)
-	attack_effect.visible = true
-	attack_effect.play("activated")
+	is_in_hitbox=true
+	_apply_damage()
 	speed=0
 	cooldown_timer.start()
 
@@ -196,3 +193,10 @@ func _on_perception_area_area_entered(area: Area2D) -> void:
 func _on_perception_area_area_exited(_area: Area2D) -> void:
 	target=null
 	velocity=Vector2.ZERO
+
+
+func _on_hit_box_area_body_exited(_body: Node2D) -> void:
+	is_in_hitbox=false
+	speed = origin_speed
+	attack_effect.stop()
+	attack_effect.visible = false
