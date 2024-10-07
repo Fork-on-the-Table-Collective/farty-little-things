@@ -3,7 +3,9 @@ extends CharacterBody2D
 const SPEED = 300.0
 const SPRINT = 3.0
 const HEALTH_LOST_PER_SECOND_OF_SPRINT = 2
-const DEFAULT_ZOOM = Vector2(2.0,2.0)
+const DEFAULT_ZOOM = Vector2.ONE*2
+const MAX_ZOOM = Vector2.ONE*2.2
+const MIN_ZOOM = Vector2.ONE*.9
 
 var random = RandomNumberGenerator.new()
 
@@ -50,10 +52,10 @@ func _process(_delta: float) -> void:
 	you_have_died.visible = Global.you_are_dead
 	body_collision_shape.scale=Global.player_body_collision_scale
 	body_collision_shape.position=Global.player_body_collision_pos
-	var delta_zoom :Vector2= camera.zoom - DEFAULT_ZOOM/Global.health*Global.HEALTH_PER_SIZE
-	if delta_zoom != Vector2.ZERO and camera.zoom<Vector2(2.2,2.2) and not Global.you_are_dead:
-		camera.zoom -=delta_zoom*_delta
-		
+	var delta_zoom :Vector2= (camera.zoom - DEFAULT_ZOOM/Global.health*Global.HEALTH_PER_SIZE)*_delta
+	if delta_zoom != Vector2.ZERO and camera.zoom-delta_zoom<MAX_ZOOM and camera.zoom-delta_zoom> MIN_ZOOM and not Global.you_are_dead:
+		camera.zoom -=delta_zoom
+	
 
 
 
