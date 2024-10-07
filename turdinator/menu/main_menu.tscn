@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3pa47are1ywk"]
+[gd_scene load_steps=3 format=3 uid="uid://c3pa47are1ywk"]
 
 [ext_resource type="Script" path="res://menu/main_menu.gd" id="1_0w8w1"]
+[ext_resource type="Theme" uid="uid://b8kfdhofsvpyy" path="res://scenes/common/fontTheme.tres" id="1_k85u2"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_k85u2")
 script = ExtResource("1_0w8w1")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -35,7 +37,6 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 10
-theme_override_font_sizes/font_size = 47
 text = "Mute
 "
 
@@ -48,20 +49,17 @@ theme_override_constants/separation = 25
 [node name="ButtonStart" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 47
 text = "Push it!
 (Start)"
 
 [node name="ButtonSettings" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 47
 text = "Settings"
 
 [node name="ButtonExit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 47
 text = "Flush!
 (Exit)"
 
