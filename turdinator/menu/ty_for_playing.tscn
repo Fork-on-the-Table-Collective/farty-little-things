@@ -1,9 +1,72 @@
-[gd_scene load_steps=5 format=3 uid="uid://dy1voteia0ols"]
+[gd_scene load_steps=19 format=3 uid="uid://dy1voteia0ols"]
 
 [ext_resource type="Script" path="res://menu/ty_for_playing.gd" id="1_av4gw"]
-[ext_resource type="Texture2D" uid="uid://b7mqb7bhqjr56" path="res://menu/assets/backgrounds/bricked_wall.png" id="2_g8sa0"]
+[ext_resource type="Texture2D" uid="uid://b6lyofo1cb2el" path="res://menu/assets/anim_background/End_scene_1.png" id="2_52jic"]
 [ext_resource type="FontFile" uid="uid://cx1860fsnt3vy" path="res://ui/assets/Font_Pixellari.ttf" id="3_6a07m"]
+[ext_resource type="Texture2D" uid="uid://c4py8hj1rgqqi" path="res://menu/assets/anim_background/End_scene_2.png" id="3_e1v8a"]
+[ext_resource type="Texture2D" uid="uid://bh6uv2u68sigc" path="res://menu/assets/anim_background/End_scene_3.png" id="4_6abv0"]
 [ext_resource type="Theme" uid="uid://b07d6ovs3se0r" path="res://ui/assets/button_theme.tres" id="4_v0ade"]
+[ext_resource type="Texture2D" uid="uid://dgi0stc5swup7" path="res://menu/assets/anim_background/End_scene_4.png" id="5_4md8y"]
+[ext_resource type="Texture2D" uid="uid://fwnn1vlicdqw" path="res://menu/assets/anim_background/End_scene_5.png" id="6_dbooa"]
+[ext_resource type="Texture2D" uid="uid://c3qsxmywnyrnp" path="res://menu/assets/anim_background/End_scene_6.png" id="7_tgjpm"]
+[ext_resource type="Texture2D" uid="uid://dvfj1f653njak" path="res://menu/assets/anim_background/End_scene_7.png" id="8_b57l8"]
+[ext_resource type="Texture2D" uid="uid://chi3nnukap5kw" path="res://menu/assets/anim_background/End_scene_8.png" id="9_ixfhm"]
+[ext_resource type="Texture2D" uid="uid://sjob5nm0832c" path="res://menu/assets/anim_background/End_scene_9.png" id="10_y4axo"]
+[ext_resource type="Texture2D" uid="uid://bo0epmo54hl8l" path="res://menu/assets/anim_background/End_scene_10.png" id="11_yguh1"]
+[ext_resource type="Texture2D" uid="uid://cehcycstlj38y" path="res://menu/assets/anim_background/End_scene_11.png" id="12_ud53b"]
+[ext_resource type="Texture2D" uid="uid://cg4lfn25cacyt" path="res://menu/assets/anim_background/End_scene_12.png" id="13_ji455"]
+[ext_resource type="Texture2D" uid="uid://m07qqulsxuwq" path="res://menu/assets/anim_background/End_scene_13.png" id="14_3amik"]
+[ext_resource type="Texture2D" uid="uid://bf8jlnf40susy" path="res://menu/assets/anim_background/End_scene_14.png" id="15_blno5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_olhuf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_52jic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e1v8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6abv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4md8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dbooa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tgjpm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_b57l8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ixfhm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_y4axo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_yguh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ud53b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ji455")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3amik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_blno5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="TyForPlaying" type="Control"]
 layout_mode = 3
@@ -14,27 +77,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_av4gw")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_g8sa0")
-expand_mode = 1
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer"]
+position = Vector2(851, 471)
+scale = Vector2(0.9, 0.9)
+sprite_frames = SubResource("SpriteFrames_olhuf")
+autoplay = "default"
+frame = 13
+frame_progress = 1.0
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
@@ -51,5 +114,22 @@ size_flags_vertical = 8
 theme = ExtResource("4_v0ade")
 theme_override_font_sizes/font_size = 50
 text = "Back to main menu"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 2
+offset_left = 42.0
+offset_top = 105.0
+offset_right = 1672.0
+offset_bottom = 994.0
+scale = Vector2(0.979923, 0.842955)
+theme_override_fonts/font = ExtResource("3_6a07m")
+theme_override_font_sizes/font_size = 40
+text = "Created by the Fork on the Table collective for the Ludum Dare #56 Game Jam in 2024:
+
+Development: ahus, gubee, Chuques, Dizs, Weroosh
+
+Arte: Lasz, FayeFaye, KBimadod, 
+
+SFX & Music: UrbanArtifex, Turbosolarium"
 
 [connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]
