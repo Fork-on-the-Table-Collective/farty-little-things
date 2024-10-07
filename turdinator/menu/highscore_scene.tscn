@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://csrclhuecj778"]
+[gd_scene load_steps=5 format=3 uid="uid://hgnycao8x4pc"]
 
 [ext_resource type="Texture2D" uid="uid://b7mqb7bhqjr56" path="res://menu/assets/backgrounds/bricked_wall.png" id="1_63cxm"]
 [ext_resource type="Script" path="res://menu/highscore_scene.gd" id="1_bp5iu"]
 [ext_resource type="Script" path="res://menu/next_level_button.gd" id="2_cbsnp"]
-[ext_resource type="Theme" uid="uid://jcmrsw7t7yxc" path="res://scenes/common/fontTheme.tres" id="3_4d5q1"]
+[ext_resource type="Theme" uid="uid://b8kfdhofsvpyy" path="res://scenes/common/fontTheme.tres" id="3_4d5q1"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -24,15 +24,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_63cxm")
 expand_mode = 1
-
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 1180.0
-offset_top = 664.0
-offset_right = 1454.0
-offset_bottom = 795.0
-theme = ExtResource("3_4d5q1")
-text = "Next Level"
-script = ExtResource("2_cbsnp")
 
 [node name="PointsContainer" type="HBoxContainer" parent="CanvasLayer"]
 offset_left = 132.0
@@ -72,5 +63,14 @@ offset_bottom = 724.0
 grow_horizontal = 2
 theme = ExtResource("3_4d5q1")
 text = "Points: XX"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 1180.0
+offset_top = 664.0
+offset_right = 1480.0
+offset_bottom = 795.0
+theme = ExtResource("3_4d5q1")
+text = "Next Level"
+script = ExtResource("2_cbsnp")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]
