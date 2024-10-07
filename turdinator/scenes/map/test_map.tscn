@@ -5,12 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://bcapk4utlhnos" path="res://entities/passive_entities/power_up.tscn" id="2_mfx0k"]
 [ext_resource type="Texture2D" uid="uid://v3celowijn40" path="res://scenes/map/assets/Tileset_01.png" id="3_q1hq3"]
 [ext_resource type="PackedScene" uid="uid://b2fethtyobpvf" path="res://entities/enemy/rat.tscn" id="5_rylnt"]
-[ext_resource type="PackedScene" uid="uid://gejmnrh2ly5l" path="res://entities/passive_entities/noise_maker_pc.tscn" id="6_ps8j0"]
-[ext_resource type="PackedScene" uid="uid://c5njj1u4wmj2g" path="res://entities/passive_entities/noise_maker_phone.tscn" id="7_8iyav"]
-[ext_resource type="PackedScene" uid="uid://ccljyggwpq8y0" path="res://entities/passive_entities/power_down_gas.tscn" id="8_3kn5s"]
-[ext_resource type="PackedScene" uid="uid://djjym27n4yfqk" path="res://entities/passive_entities/power_down_glass.tscn" id="9_cov8p"]
+[ext_resource type="PackedScene" path="res://entities/passive_entities/noise_maker_pc.tscn" id="6_ps8j0"]
+[ext_resource type="PackedScene" path="res://entities/passive_entities/noise_maker_phone.tscn" id="7_8iyav"]
+[ext_resource type="PackedScene" path="res://entities/passive_entities/power_down_gas.tscn" id="8_3kn5s"]
+[ext_resource type="PackedScene" path="res://entities/passive_entities/power_down_glass.tscn" id="9_cov8p"]
 [ext_resource type="PackedScene" uid="uid://ca6q5pb5s3k1g" path="res://entities/enemy/fly.tscn" id="10_dwb46"]
-[ext_resource type="PackedScene" uid="uid://cnx0iia3n2vb7" path="res://entities/enemy/croissant.tscn" id="11_sj6i4"]
+[ext_resource type="PackedScene" path="res://entities/enemy/croissant.tscn" id="11_sj6i4"]
 [ext_resource type="PackedScene" uid="uid://dv85me646w46q" path="res://entities/enemy/sinoc.tscn" id="12_2hd4y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_44reb"]
@@ -88,7 +88,7 @@ texture_region_size = Vector2i(224, 224)
 
 [sub_resource type="TileSet" id="TileSet_whmhk"]
 tile_size = Vector2i(224, 224)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 8
 sources/0 = SubResource("TileSetAtlasSource_44reb")
 
 [node name="Node2D" type="Node2D"]
@@ -110,7 +110,7 @@ position = Vector2(1618, 414)
 scale = Vector2(3, 3)
 
 [node name="Player" parent="." instance=ExtResource("1_l1pwb")]
-position = Vector2(1467, -56)
+position = Vector2(545, 374)
 scale = Vector2(0.3, 0.3)
 
 [node name="Rat" parent="." instance=ExtResource("5_rylnt")]

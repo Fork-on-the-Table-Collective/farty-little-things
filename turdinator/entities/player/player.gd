@@ -51,8 +51,9 @@ func _process(_delta: float) -> void:
 	body_collision_shape.scale=Global.player_body_collision_scale
 	body_collision_shape.position=Global.player_body_collision_pos
 	var delta_zoom :Vector2= camera.zoom - DEFAULT_ZOOM/Global.health*Global.HEALTH_PER_SIZE
-	if delta_zoom != DEFAULT_ZOOM*0 and  not Global.you_are_dead:
+	if delta_zoom != Vector2.ZERO and camera.zoom<Vector2(2.2,2.2) and not Global.you_are_dead:
 		camera.zoom -=delta_zoom*_delta
+		
 
 
 
@@ -102,7 +103,6 @@ func _physics_process(delta: float) -> void:
 
 func play_random_fart():
 	var r = random.randi_range(0, FARTS_COUNT - 1)
-	print(r)
 	farts[r].play()
 
 func get_move(direction:Vector2):
@@ -139,12 +139,12 @@ func play_animation(direction:Vector2, anim_speed_modifier:float):
 		player_skin.scale = Vector2(1.0, 1.0)
 	#player_body.speed_scale *= velocity.length()
 
-func _on_terrain_sense_area_body_entered(body: Node2D) -> void:
+func _on_terrain_sense_area_body_entered(_body: Node2D) -> void:
 	slow_down_sound.play()
 	Global.set_speed_modifier(0.75)
 	pass # Replace with function body.
 
-func _on_terrain_sense_area_body_exited(body: Node2D) -> void:
+func _on_terrain_sense_area_body_exited(_body: Node2D) -> void:
 	slow_down_sound.stop()
 	Global.set_speed_modifier(1.0)
 	pass # Replace with function body.

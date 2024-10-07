@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cyen0uoxx84q3" path="res://particles/Streak.tscn" id="12_geocg"]
 [ext_resource type="Texture2D" uid="uid://blf763jnn58ra" path="res://entities/assets/bigT_back_sheet.png" id="13_cn2yf"]
 [ext_resource type="AudioStream" uid="uid://16hil73l0exy" path="res://sounds/sfx/player/player_step_in_sewage_water.wav" id="17_cxr4a"]
-[ext_resource type="PackedScene" uid="uid://pofaim3vrakg" path="res://scenes/common/toutch_controls.tscn" id="17_svtgq"]
+[ext_resource type="PackedScene" path="res://scenes/common/toutch_controls.tscn" id="17_svtgq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxdg3"]
 atlas = ExtResource("2_ksdh1")
@@ -1583,19 +1583,23 @@ height = 120.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
+collision_mask = 9
 script = ExtResource("1_lqb31")
 
 [node name="Player_Skin" type="AnimatedSprite2D" parent="."]
+visibility_layer = 9
 sprite_frames = SubResource("SpriteFrames_6m1gc")
 animation = &"down_1_brown"
 autoplay = "idle_2_brown"
 
 [node name="Player_Body" type="AnimatedSprite2D" parent="Player_Skin"]
+visibility_layer = 9
 sprite_frames = SubResource("SpriteFrames_6eueg")
 animation = &"down_1"
 autoplay = "idle_2"
 
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
+visibility_layer = 9
 shape = SubResource("CapsuleShape2D_ndmki")
 
 [node name="YouHaveDied" parent="." instance=ExtResource("7_3s45b")]
