@@ -1,4 +1,4 @@
-[gd_scene load_steps=208 format=3 uid="uid://ujooexq3jie0"]
+[gd_scene load_steps=209 format=3 uid="uid://ujooexq3jie0"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_lqb31"]
 [ext_resource type="Texture2D" uid="uid://d1le86ljgsxpc" path="res://entities/assets/mrT_front_damaged_sheet.png" id="2_ksdh1"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://pofaim3vrakg" path="res://scenes/common/toutch_controls.tscn" id="17_svtgq"]
 [ext_resource type="FontFile" uid="uid://cx1860fsnt3vy" path="res://ui/assets/Font_Pixellari.ttf" id="19_r5gfm"]
 [ext_resource type="Texture2D" uid="uid://bp7hehhvvciav" path="res://entities/player/wc_papirguriga.png" id="19_sdimy"]
+[ext_resource type="Theme" uid="uid://b07d6ovs3se0r" path="res://ui/assets/button_theme.tres" id="21_rb7b8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxdg3"]
 atlas = ExtResource("2_ksdh1")
@@ -1686,10 +1687,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -724.0
-offset_top = 382.0
-offset_right = 276.0
-offset_bottom = 612.0
+offset_left = -771.0
+offset_top = 404.0
+offset_right = 229.0
+offset_bottom = 634.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.165, 0.165)
@@ -1723,5 +1724,22 @@ offset_right = 1.399
 offset_bottom = 231.75
 color = Color(1, 0, 0, 0.815686)
 
+[node name="Button" type="Button" parent="Control/CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -183.0
+offset_top = -114.0
+offset_right = -20.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("21_rb7b8")
+theme_override_font_sizes/font_size = 80
+text = "Exit"
+
 [connection signal="body_entered" from="TerrainSenseArea" to="." method="_on_terrain_sense_area_body_entered"]
 [connection signal="body_exited" from="TerrainSenseArea" to="." method="_on_terrain_sense_area_body_exited"]
+[connection signal="pressed" from="Control/CanvasLayer/Button" to="." method="_on_button_pressed"]

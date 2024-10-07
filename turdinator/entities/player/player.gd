@@ -177,3 +177,6 @@ func _on_terrain_sense_area_body_exited(_body: Node2D) -> void:
 	slow_down_sound.stop()
 	Global.set_speed_modifier(1.0)
 	pass # Replace with function body.
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://menu/main_menu.tscn")
