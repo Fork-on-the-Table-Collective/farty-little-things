@@ -93,8 +93,6 @@ radius = 27.0
 scale = Vector2(0.3, 0.3)
 collision_layer = 2
 script = ExtResource("1_kpoai")
-speed = 150.0
-damage = -10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 2)
