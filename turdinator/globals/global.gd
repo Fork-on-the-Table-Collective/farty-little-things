@@ -7,7 +7,6 @@ const USE_SAVE=true
 const HEALTH_PER_SIZE = 20
 const WAIT_OF_RESTART = 3
 const NUMBER_OF_MAPS = 5
-#const DEFAULT_PLAYER_COL_SCALE = Vector2(.5,.5)
 const MAX_LEVEL=4.0
 
 # Dictionary contains the transformation values to scale the player to size
@@ -80,7 +79,6 @@ func load_variables():
 	else:
 		print("no savefile")
 		highscore=0
-		#score=0
 		is_first_run=true
 		last_level_id=0
 
@@ -91,14 +89,13 @@ func update_highscore(map_score:int):
 func _ready() -> void:
 	load_variables()
 	create_level_list()
-	print(levels)
 	sfx_stream_player.bus="sfx"
 	add_child(sfx_stream_player)
 	set_all_button()
 	store_variables()
 
 func set_health(modifier: float):
-	health += modifier
+	health = min(HEALTH_PER_SIZE*MAX_LEVEL, health+modifier)
 	size = max(1,min(ceil(health/HEALTH_PER_SIZE),MAX_LEVEL))
 	player_body_collision_pos = player_scale_dict[size].Position
 	player_body_collision_scale = player_scale_dict[size].Scale

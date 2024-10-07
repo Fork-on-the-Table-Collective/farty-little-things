@@ -7,7 +7,7 @@ const HEALTH_MODIFIER: float = -10.0
 @onready var collision_shape: CollisionShape2D = $PerceptionArea/CollisionShape2D
 @onready var timer: Timer = $Timer
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	call_deferred("disable_collision")
 	animated_sprite.play("activated")
 	noise_maker_sound.play()
