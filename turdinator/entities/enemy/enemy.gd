@@ -16,8 +16,8 @@ var target: Area2D = null
 var cooldown_timer: Timer
 var patrol_timer: Timer
 var is_click_on_cooldown: bool = false
+var is_in_hitbox: bool = false # Track if player is in the hitbox
 var origin_speed
-var hitbox_scale: Vector2
 
 @onready var ray_cast_right: RayCast2D = $RayCastRight
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
@@ -30,10 +30,11 @@ func set_movement(t: Node2D):
 func _ready() -> void:
 	origin_speed = speed
 	velocity = Vector2(1.0,1.0)
+	# Cooldown timer for periodic damage
 	cooldown_timer = Timer.new()
 	cooldown_timer.set_wait_time(COOLDOWN)
-	cooldown_timer.set_one_shot(true)  # The timer should stop after one timeout
-	cooldown_timer.timeout.connect(_on_Cooldown_timeout)
+	cooldown_timer.set_one_shot(false)  # The timer should stop after one timeout
+	cooldown_timer.timeout.connect(_apply_damage)
 	add_child(cooldown_timer)  # Add the timer to the scene
 
 	attack_effect.visible = false
@@ -88,13 +89,27 @@ func patrol() -> void:
 			direction.y = -1
 	velocity = direction * speed
 
+# Apply damage periodically if in hitbox area
+func _apply_damage():
+	if is_in_hitbox == true:
+		Global.set_health(damage)
+		attack_effect.visible = true
+		attack_effect.play("activated")
 
+# When the player enters the hitbox area
 func _on_hit_box_area_body_entered(_body: Node2D) -> void:
-	Global.set_health(damage)
-	attack_effect.visible = true
-	attack_effect.play("activated")
+	is_in_hitbox = true  #Player is now in the hitbox
+	_apply_damage()
 	speed=0
-	cooldown_timer.start()
+	cooldown_timer.start()  #Start the cooldown timer
+
+# When the player exits the hitbox
+func _on_hit_box_area_body_exited(_body: Node2D) -> void:
+	is_in_hitbox = false # Player is no longer in the hitbox
+	cooldown_timer.stop() # Stop the damage when player leaves
+	speed = origin_speed
+	attack_effect.stop()
+	attack_effect.visible = false
 
 func _on_perception_area_area_entered(area: Area2D) -> void:
 	target = area

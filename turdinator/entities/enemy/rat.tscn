@@ -157,3 +157,4 @@ collision_mask = 8
 [connection signal="body_entered" from="PerceptionArea" to="." method="_on_perception_area_body_entered"]
 [connection signal="body_exited" from="PerceptionArea" to="." method="_on_perception_area_body_exited"]
 [connection signal="body_entered" from="HitBoxArea" to="." method="_on_hit_box_area_body_entered"]
+[connection signal="body_exited" from="HitBoxArea" to="." method="_on_hit_box_area_body_exited"]
