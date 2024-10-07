@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://deivm62axvjwi"]
+[gd_scene load_steps=4 format=3 uid="uid://daa0smhdbu0lw"]
 
 [ext_resource type="Script" path="res://menu/splash_turdvivor.gd" id="1_c4rlj"]
 [ext_resource type="Texture2D" uid="uid://dpavp8ygp55qi" path="res://menu/assets/backgrounds/splash_game.png" id="1_secxj"]
