@@ -19,5 +19,6 @@ func _on_option_button_item_selected(index: int) -> void:
 	if Global.is_first_run:
 		get_tree().change_scene_to_file(Global.levels[0])
 		Global.is_first_run=false
+		Global.store_variables()
 	else:
 		get_tree().change_scene_to_file("res://scenes/main/game_area.tscn")
