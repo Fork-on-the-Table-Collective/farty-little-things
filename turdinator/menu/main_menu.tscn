@@ -89,6 +89,20 @@ size_flags_vertical = 8
 theme_override_font_sizes/font_size = 80
 text = "Exit"
 
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 120
+
+[node name="button_mute" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+toggle_mode = true
+text = "Mute"
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/MarginContainer2/button_mute" to="." method="_on_button_mute_toggled"]
