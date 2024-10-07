@@ -1,11 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://7rjiu6x1nvex"]
+[gd_scene load_steps=17 format=3 uid="uid://cvlot85hx0mck"]
 
 [ext_resource type="Script" path="res://entities/enemy/enemy.gd" id="1_po8cf"]
 [ext_resource type="Texture2D" uid="uid://bdhjiukg2mvp8" path="res://entities/assets/Fly_anim_sheet_new.png" id="2_b1e7c"]
 [ext_resource type="Texture2D" uid="uid://bffcq21bytkrk" path="res://entities/assets/Damage_effect_sheet.png" id="2_gmoqa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pu7qs"]
-radius = 6.21973
+radius = 20.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3xla6"]
 atlas = ExtResource("2_b1e7c")
@@ -87,15 +87,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_armlm"]
-radius = 27.0
+radius = 35.0
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(0.3, 0.3)
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_po8cf")
-speed = 150.0
-damage = -10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
@@ -129,25 +127,26 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 0
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
+visible = false
 position = Vector2(-5, 2)
 scale = Vector2(7.33708, 6.77195)
 shape = SubResource("CircleShape2D_pu7qs")
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 target_position = Vector2(150, 0)
-collision_mask = 8
+collision_mask = 10
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 target_position = Vector2(-150, 0)
-collision_mask = 0
+collision_mask = 10
 
 [node name="RayCastUp" type="RayCast2D" parent="."]
 target_position = Vector2(0, -75)
-collision_mask = 8
+collision_mask = 10
 
 [node name="RayCastDown" type="RayCast2D" parent="."]
 target_position = Vector2(0, 75)
-collision_mask = 8
+collision_mask = 10
 
 [connection signal="area_entered" from="PerceptionArea" to="." method="_on_perception_area_area_entered"]
 [connection signal="area_exited" from="PerceptionArea" to="." method="_on_perception_area_area_exited"]

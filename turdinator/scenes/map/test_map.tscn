@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://c57y7i7tjmnkl"]
+[gd_scene load_steps=7 format=4 uid="uid://c57y7i7tjmnkl"]
 
+[ext_resource type="PackedScene" uid="uid://ujooexq3jie0" path="res://entities/player/player.tscn" id="1_l1pwb"]
 [ext_resource type="Script" path="res://scenes/map/map.gd" id="1_oe2ba"]
 [ext_resource type="Texture2D" uid="uid://v3celowijn40" path="res://scenes/map/assets/Tileset_01.png" id="3_q1hq3"]
-[ext_resource type="PackedScene" uid="uid://b3kqyw5jx5a81" path="res://entities/enemy/enemy.tscn" id="13_n2aia"]
+[ext_resource type="PackedScene" uid="uid://m8syw50abt0x" path="res://entities/enemy/enemy.tscn" id="13_n2aia"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_44reb"]
 texture = ExtResource("3_q1hq3")
@@ -96,13 +97,16 @@ rendering_quadrant_size = 32
 position = Vector2(370, 110)
 
 [node name="Enemy" parent="." instance=ExtResource("13_n2aia")]
-position = Vector2(578, 118)
+position = Vector2(593, 112)
 enemy = 1
 
 [node name="Enemy2" parent="." instance=ExtResource("13_n2aia")]
-position = Vector2(583, 285)
+position = Vector2(544, 303)
 enemy = 2
 
 [node name="Enemy3" parent="." instance=ExtResource("13_n2aia")]
-position = Vector2(586, 452)
+position = Vector2(594, 530)
 enemy = 3
+
+[node name="Player" parent="." instance=ExtResource("1_l1pwb")]
+position = Vector2(1018, 636)
