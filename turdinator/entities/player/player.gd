@@ -38,6 +38,8 @@ func _ready() -> void:
 	set_animation_dict()
 	Global.you_are_dead = false
 	streak.color = player_skin.sprite_frames.get_frame_texture("idle_2_" + Global.turd_color, 0).get_image().get_pixel(128, 128)
+	if is_instance_of(health_bar.texture_progress, GradientTexture2D):
+		(health_bar.texture_progress as GradientTexture2D).gradient.set_color(1, streak.color)
 	load_farts()
 
 
