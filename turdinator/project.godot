@@ -10,9 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Turdinator"
+config/name="Turdvivor"
 run/main_scene="res://menu/splash_fork.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -85,3 +86,4 @@ pause_game={
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
