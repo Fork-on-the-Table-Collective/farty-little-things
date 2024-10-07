@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-const SPRINT = 3.0
+const SPEED = 600.0
+const SPRINT = 1.25
 const HEALTH_LOST_PER_SECOND_OF_SPRINT = 2
 const DEFAULT_ZOOM = Vector2.ONE*2
-const MAX_ZOOM = Vector2.ONE*2.2
-const MIN_ZOOM = Vector2.ONE*.9
+const MAX_ZOOM = Vector2.ONE*2.3
+const MIN_ZOOM = Vector2.ONE*1.5
 
 var random = RandomNumberGenerator.new()
 
@@ -78,7 +78,7 @@ func _physics_process(delta: float) -> void:
 
 	# Apply movement direction and sprint
 	if input_dir or toutch_input_dir:
-		speed_modifier =  Global.speed_modifier/Global.size
+		speed_modifier =  Global.speed_modifier*((6-Global.size)/5)
 		velocity=direction*speed_modifier*SPEED
 		play_animation(direction, speed_modifier)
 		#velocity.y = direction.y * SPEED / Global.size * Global.speed_modifier

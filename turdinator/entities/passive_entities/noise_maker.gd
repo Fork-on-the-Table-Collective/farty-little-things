@@ -19,3 +19,4 @@ func disable_collision() -> void:
 func _on_timer_timeout() -> void:
 	collision_shape.disabled = true 
 	animated_sprite.play("idle")
+	noise_maker_sound.stop()
