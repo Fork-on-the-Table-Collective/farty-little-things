@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckuh5fukme62p"]
+[gd_scene load_steps=5 format=3 uid="uid://7yfak1nno07o"]
 
 [ext_resource type="Script" path="res://menu/splash_fork.gd" id="1_0uph4"]
 [ext_resource type="Texture2D" uid="uid://cnketm8hejd85" path="res://menu/assets/backgrounds/fork_logo.png" id="1_mdt22"]
