@@ -22,6 +22,7 @@ var farts: Array = []
 @onready var streak: CPUParticles2D = $Streak
 @onready var toutch_controls: CanvasLayer = $ToutchControls
 @onready var slow_down_sound: AudioStreamPlayer = $slow_down_sound
+@onready var health_bar: TextureProgressBar = $Control/CanvasLayer/Healthbar
 
 func reset_player_params():
 	Global.size=2.0
@@ -52,6 +53,8 @@ func _process(_delta: float) -> void:
 	you_have_died.visible = Global.you_are_dead
 	body_collision_shape.scale=Global.player_body_collision_scale
 	body_collision_shape.position=Global.player_body_collision_pos
+	var current_health_percentage = Global.health / (Global.HEALTH_PER_SIZE*Global.MAX_LEVEL)
+	health_bar.value = current_health_percentage
 	var delta_zoom :Vector2= (camera.zoom - DEFAULT_ZOOM/Global.health*Global.HEALTH_PER_SIZE)*_delta
 	if delta_zoom != Vector2.ZERO and camera.zoom-delta_zoom<MAX_ZOOM and camera.zoom-delta_zoom> MIN_ZOOM and not Global.you_are_dead:
 		camera.zoom -=delta_zoom
