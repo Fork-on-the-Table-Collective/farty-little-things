@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3pa47are1ywk"]
+[gd_scene load_steps=6 format=3 uid="uid://c3pa47are1ywk"]
 
 [ext_resource type="Script" path="res://menu/main_menu.gd" id="1_0w8w1"]
 [ext_resource type="Theme" uid="uid://b8kfdhofsvpyy" path="res://scenes/common/fontTheme.tres" id="1_k85u2"]
 [ext_resource type="Texture2D" uid="uid://dab0um3gv7xae" path="res://menu/assets/backgrounds/bricked_wall_toilet.png" id="3_2woms"]
 [ext_resource type="FontFile" uid="uid://cx1860fsnt3vy" path="res://ui/assets/Font_Pixellari.ttf" id="4_ypo51"]
+[ext_resource type="Theme" uid="uid://b07d6ovs3se0r" path="res://ui/assets/button_theme.tres" id="5_kv800"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -72,6 +73,7 @@ theme_override_constants/separation = 25
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+theme = ExtResource("5_kv800")
 theme_override_font_sizes/font_size = 120
 text = "Start"
 
@@ -79,6 +81,7 @@ text = "Start"
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+theme = ExtResource("5_kv800")
 theme_override_font_sizes/font_size = 80
 text = "Settings"
 
@@ -86,6 +89,7 @@ text = "Settings"
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+theme = ExtResource("5_kv800")
 theme_override_font_sizes/font_size = 80
 text = "Exit"
 
@@ -99,6 +103,7 @@ theme_override_constants/margin_bottom = 120
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+theme = ExtResource("5_kv800")
 toggle_mode = true
 text = "Mute"
 

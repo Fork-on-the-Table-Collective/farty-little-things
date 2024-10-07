@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx4glfnd5gafh"]
+[gd_scene load_steps=5 format=3 uid="uid://bx4glfnd5gafh"]
 
 [ext_resource type="Script" path="res://menu/settings_menu.gd" id="1_22mna"]
 [ext_resource type="PackedScene" uid="uid://cq7neih1pnhxb" path="res://scenes/common/volume_slider.tscn" id="1_ra15j"]
 [ext_resource type="Theme" uid="uid://b8kfdhofsvpyy" path="res://scenes/common/fontTheme.tres" id="1_xiewe"]
+[ext_resource type="Theme" uid="uid://b07d6ovs3se0r" path="res://ui/assets/button_theme.tres" id="4_u2j28"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -66,6 +67,7 @@ bus_name = "sfx"
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_u2j28")
 text = "Back"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

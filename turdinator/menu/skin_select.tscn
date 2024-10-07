@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cn8ccvfdc7d80"]
+[gd_scene load_steps=8 format=3 uid="uid://cn8ccvfdc7d80"]
 
 [ext_resource type="Script" path="res://menu/skin_select.gd" id="1_cjtjm"]
 [ext_resource type="Texture2D" uid="uid://b7mqb7bhqjr56" path="res://menu/assets/backgrounds/bricked_wall.png" id="2_0ehro"]
 [ext_resource type="FontFile" uid="uid://cx1860fsnt3vy" path="res://ui/assets/Font_Pixellari.ttf" id="2_mh8yb"]
 [ext_resource type="Theme" uid="uid://b8kfdhofsvpyy" path="res://scenes/common/fontTheme.tres" id="2_opsdo"]
 [ext_resource type="Texture2D" uid="uid://b2gctvs32jyfg" path="res://menu/assets/roll_left.png" id="5_4hl0l"]
+[ext_resource type="Theme" uid="uid://b07d6ovs3se0r" path="res://ui/assets/button_theme.tres" id="6_8561p"]
 [ext_resource type="Texture2D" uid="uid://ruu08ptjx2yg" path="res://menu/assets/roll_right.png" id="6_xst8f"]
 
 [node name="SkinSelect" type="Control"]
@@ -68,6 +69,7 @@ offset_left = 173.0
 offset_top = 187.0
 offset_right = 344.0
 offset_bottom = 295.0
+theme = ExtResource("6_8561p")
 theme_override_colors/font_hover_color = Color(0.94902, 0.823529, 0.0470588, 1)
 theme_override_colors/font_pressed_color = Color(0.278431, 0.243137, 0.215686, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -92,6 +94,7 @@ offset_right = 89.5
 offset_bottom = 17.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("6_8561p")
 theme_override_colors/font_hover_color = Color(0.94902, 0.823529, 0.0470588, 1)
 theme_override_colors/font_pressed_color = Color(0.278431, 0.243137, 0.215686, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
