@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cx1860fsnt3vy"
-path="res://.godot/imported/Font_Pixellari.ttf-4262771ae5ba7874d2ba5839daad4f92.fontdata"
+path="res://.godot/imported/Font_Pixellari.ttf-4ef1920271a20583b1a001bcbb86d771.fontdata"
 
 [deps]
 
-source_file="res://scenes/map/assets/Font_Pixellari.ttf"
-dest_files=["res://.godot/imported/Font_Pixellari.ttf-4262771ae5ba7874d2ba5839daad4f92.fontdata"]
+source_file="res://ui/assets/Font_Pixellari.ttf"
+dest_files=["res://.godot/imported/Font_Pixellari.ttf-4ef1920271a20583b1a001bcbb86d771.fontdata"]
 
 [params]
 

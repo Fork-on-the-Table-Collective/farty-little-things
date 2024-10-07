@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://b8kfdhofsvpyy"]
 
-[ext_resource type="FontFile" uid="uid://cx1860fsnt3vy" path="res://scenes/map/assets/Font_Pixellari.ttf" id="1_ps6nx"]
+[ext_resource type="FontFile" uid="uid://cx1860fsnt3vy" path="res://ui/assets/Font_Pixellari.ttf" id="1_ps6nx"]
 
 [resource]
 default_font = ExtResource("1_ps6nx")

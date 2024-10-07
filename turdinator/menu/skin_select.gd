@@ -5,20 +5,18 @@ extends Control
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-
-func _on_button_back_pressed() -> void:
-	get_tree().change_scene_to_file("res://menu/main_menu.tscn")
-
-func _on_option_button_item_selected(index: int) -> void:
-	if index == 1:
-		Global.set_turd_color("light_brown")
-	else:
-		Global.set_turd_color("brown")
-		
+func start_game() -> void:
 	if Global.is_first_run:
 		get_tree().change_scene_to_file(Global.levels[0])
 		Global.is_first_run=false
 		Global.store_variables()
 	else:
-		get_tree().change_scene_to_file("res://scenes/main/game_area.tscn")
+		get_tree().change_scene_to_file("res://menu/level_select.tscn")
+
+func _on_button_yes_pressed() -> void:
+	Global.set_turd_color("light_brown")
+	start_game()
+
+func _on_button_no_pressed() -> void:
+	Global.set_turd_color("brown")
+	start_game()

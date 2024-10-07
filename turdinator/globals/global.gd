@@ -43,7 +43,7 @@ var player_body_collision_scale=Vector2(1.0,1.0)
 func create_level_list():
 	for i in range(NUMBER_OF_MAPS):
 		levels.append("res://scenes/map/map_" + str(i).pad_zeros(2)+".tscn")
-		level_covers.append("res://scenes/map/assets/covers/Map_Cover_" + str(i).pad_zeros(2)+".png")
+		level_covers.append("res://menu/assets/Map_Cover_" + str(i).pad_zeros(2)+".png")
 func store_variables():
 	if USE_SAVE:
 		var file = FileAccess.open(variable_store_path,FileAccess.WRITE)
