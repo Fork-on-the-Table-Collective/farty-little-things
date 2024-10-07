@@ -1603,6 +1603,7 @@ height = 230
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
+scale = Vector2(0.3, 0.3)
 collision_mask = 9
 script = ExtResource("1_lqb31")
 
