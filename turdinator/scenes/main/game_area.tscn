@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://btvdcq6h8ut5u"]
 
 [ext_resource type="Script" path="res://scenes/main/game_area.gd" id="1_8l05c"]
-[ext_resource type="Theme" uid="uid://b8kfdhofsvpyy" path="res://scenes/common/fontTheme.tres" id="2_75v8o"]
+[ext_resource type="Theme" path="res://scenes/common/fontTheme.tres" id="2_75v8o"]
 
 [node name="GameArea" type="Node2D"]
 script = ExtResource("1_8l05c")

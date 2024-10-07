@@ -64,59 +64,45 @@ position = Vector2(5737, 6149)
 
 [node name="power_up" parent="PassiveEntities" instance=ExtResource("3_0oao7")]
 position = Vector2(4149, 3906)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up2" parent="PassiveEntities" instance=ExtResource("3_0oao7")]
 position = Vector2(3699, 3558)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up3" parent="PassiveEntities" instance=ExtResource("3_0oao7")]
 position = Vector2(1031, 3026)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up4" parent="PassiveEntities" instance=ExtResource("3_0oao7")]
 position = Vector2(4151, 5046)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up5" parent="PassiveEntities" instance=ExtResource("3_0oao7")]
 position = Vector2(5043, 4846)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up6" parent="PassiveEntities" instance=ExtResource("3_0oao7")]
 position = Vector2(5499, 5054)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up7" parent="PassiveEntities" instance=ExtResource("3_0oao7")]
 position = Vector2(5487, 3714)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up8" parent="PassiveEntities" instance=ExtResource("3_0oao7")]
 position = Vector2(7279, 6838)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up9" parent="PassiveEntities" instance=ExtResource("3_0oao7")]
 position = Vector2(6375, 6886)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up10" parent="PassiveEntities" instance=ExtResource("3_0oao7")]
 position = Vector2(5031, 6114)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up11" parent="PassiveEntities" instance=ExtResource("3_0oao7")]
 position = Vector2(7729, 2992)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up12" parent="PassiveEntities" instance=ExtResource("3_0oao7")]
 position = Vector2(6132, 1900)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up13" parent="PassiveEntities" instance=ExtResource("3_0oao7")]
 position = Vector2(772, 4152)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up14" parent="PassiveEntities" instance=ExtResource("3_0oao7")]
 position = Vector2(2804, 3171)
-scale = Vector2(0.3, 0.3)
 
 [node name="Player" parent="." instance=ExtResource("4_6u831")]
 position = Vector2(1681, 3686)
