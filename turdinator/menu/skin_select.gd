@@ -7,7 +7,7 @@ func _ready() -> void:
 
 func start_game() -> void:
 	if Global.is_first_run:
-		get_tree().change_scene_to_file(Global.levels[0])
+		get_tree().change_scene_to_file("res://menu/story_intro.tscn")
 		Global.is_first_run=false
 		Global.store_variables()
 	else:
