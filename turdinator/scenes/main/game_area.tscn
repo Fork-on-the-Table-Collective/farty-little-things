@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://btvdcq6h8ut5u"]
+[gd_scene load_steps=3 format=3 uid="uid://btvdcq6h8ut5u"]
 
 [ext_resource type="Script" path="res://scenes/main/game_area.gd" id="1_8l05c"]
-[ext_resource type="Texture2D" uid="uid://d1xjrlfljw6c7" path="res://scenes/map/assets/covers/Map_Cover_01.png" id="2_qwamt"]
-[ext_resource type="Texture2D" uid="uid://dbrn8y4ta5a1m" path="res://scenes/map/assets/covers/map2.png" id="3_vauve"]
+[ext_resource type="Theme" path="res://scenes/common/fontTheme.tres" id="2_75v8o"]
 
 [node name="GameArea" type="Node2D"]
 script = ExtResource("1_8l05c")
@@ -12,6 +11,7 @@ offset_left = 626.0
 offset_top = 4.0
 offset_right = 830.0
 offset_bottom = 104.0
+theme = ExtResource("2_75v8o")
 text = "MENU"
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -20,22 +20,8 @@ offset_top = 222.0
 offset_right = 976.0
 offset_bottom = 588.0
 scale = Vector2(0.3, 0.3)
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
 columns = 6
 
-[node name="map1" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_qwamt")
-
-[node name="map2" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("3_vauve")
-
-[node name="map3" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-texture_normal = ExtResource("3_vauve")
-texture_disabled = ExtResource("3_vauve")
-
 [connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="GridContainer/map1" to="." method="_on_map_1_pressed"]
-[connection signal="pressed" from="GridContainer/map2" to="." method="_on_map_2_pressed"]
-[connection signal="pressed" from="GridContainer/map3" to="." method="_on_map_2_pressed"]

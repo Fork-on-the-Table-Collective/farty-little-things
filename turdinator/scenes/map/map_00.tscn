@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://ben5cb76stfup"]
+[gd_scene load_steps=7 format=4 uid="uid://brwbjo23s3s0j"]
 
 [ext_resource type="TileSet" uid="uid://cgu33n7n1fnsn" path="res://scenes/map/assets/tilemap_setup.tres" id="1_7x8ng"]
 [ext_resource type="PackedScene" uid="uid://b2fethtyobpvf" path="res://entities/enemy/rat.tscn" id="2_edbl4"]

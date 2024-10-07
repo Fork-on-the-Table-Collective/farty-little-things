@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cn8ccvfdc7d80"]
+[gd_scene load_steps=4 format=3 uid="uid://cn8ccvfdc7d80"]
 
 [ext_resource type="Script" path="res://menu/skin_select.gd" id="1_cjtjm"]
+[ext_resource type="FontFile" uid="uid://cx1860fsnt3vy" path="res://scenes/map/assets/Font_Pixellari.ttf" id="2_mh8yb"]
+[ext_resource type="Theme" uid="uid://b8kfdhofsvpyy" path="res://scenes/common/fontTheme.tres" id="2_opsdo"]
 
 [node name="SkinSelect" type="Control"]
 layout_mode = 3
@@ -34,11 +36,15 @@ theme_override_constants/separation = 25
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_opsdo")
+theme_override_fonts/font = ExtResource("2_mh8yb")
 theme_override_font_sizes/font_size = 64
 text = "Are you vegan?"
 
 [node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_opsdo")
+theme_override_fonts/font = ExtResource("2_mh8yb")
 theme_override_font_sizes/font_size = 64
 item_count = 2
 popup/item_0/text = "No"
@@ -49,6 +55,7 @@ popup/item_1/id = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+theme = ExtResource("2_opsdo")
 theme_override_constants/h_separation = 0
 theme_override_font_sizes/font_size = 50
 text = "Back"

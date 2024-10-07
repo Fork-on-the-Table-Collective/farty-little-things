@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://nkrk50d401rs"]
+[gd_scene load_steps=3 format=3 uid="uid://cf1u6g7xqxnpx"]
 
 [ext_resource type="Script" path="res://menu/pause_menu.gd" id="1_0568h"]
+[ext_resource type="Theme" uid="uid://b8kfdhofsvpyy" path="res://scenes/common/fontTheme.tres" id="1_gskqo"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_gskqo")
 script = ExtResource("1_0568h")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -31,12 +33,10 @@ theme_override_constants/separation = 26
 
 [node name="button_resume" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
 text = "Resume"
 
 [node name="button_exit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
 text = "Exit"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/button_resume" to="." method="_on_button_resume_pressed"]

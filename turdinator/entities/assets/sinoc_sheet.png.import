@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://llp7uqugkrsq"
-path="res://.godot/imported/Map_Cover_06.png-97eff11e77d1011fec26b26b6f48451f.ctex"
+uid="uid://dkpwhjrs0uhlc"
+path="res://.godot/imported/sinoc_sheet.png-1009a53cdc4282c8aae7d74b86747009.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/map/assets/covers/Map_Cover_06.png"
-dest_files=["res://.godot/imported/Map_Cover_06.png-97eff11e77d1011fec26b26b6f48451f.ctex"]
+source_file="res://entities/assets/sinoc_sheet.png"
+dest_files=["res://.godot/imported/sinoc_sheet.png-1009a53cdc4282c8aae7d74b86747009.ctex"]
 
 [params]
 

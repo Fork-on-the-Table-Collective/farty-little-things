@@ -6,6 +6,8 @@ const USE_SAVE=true
 # Only change is constant 
 const HEALTH_PER_SIZE = 20
 const WAIT_OF_RESTART = 3
+const NUMBER_OF_MAPS = 5
+#const DEFAULT_PLAYER_COL_SCALE = Vector2(.5,.5)
 const MAX_LEVEL=4.0
 
 # Dictionary contains the transformation values to scale the player to size
@@ -29,7 +31,8 @@ var is_first_run:bool=true
 var last_level_id:int=1
 var variable_store_path = "user://variable_store.save"
 var level_store_path = "user://level_store.save"
-var levels=["res://scenes/map/map_01.tscn","res://scenes/map/tile_test_map.tscn"]
+var levels=[]
+var level_covers=[]
 var you_are_dead = false
 var turd_color: String = "brown"
 var player_body_collision_pos=Vector2(0.0,0.0)
@@ -41,7 +44,10 @@ var slider_value_dict: Dictionary={
 } 
 # to be saved, level_comp, score, highscore, fist start
 
-
+func create_level_list():
+	for i in range(NUMBER_OF_MAPS):
+		levels.append("res://scenes/map/map_" + str(i).pad_zeros(2)+".tscn")
+		level_covers.append("res://scenes/map/assets/covers/Map_Cover_" + str(i).pad_zeros(2)+".png")
 func store_variables():
 	if USE_SAVE:
 		var file = FileAccess.open(variable_store_path,FileAccess.WRITE)
@@ -72,6 +78,8 @@ func update_highscore(map_score:int):
 
 func _ready() -> void:
 	load_variables()
+	create_level_list()
+	print(levels)
 	sfx_stream_player.bus="sfx"
 	add_child(sfx_stream_player)
 	set_all_button()
@@ -81,13 +89,15 @@ func set_health(modifier: float):
 	size = max(1,min(ceil(health/HEALTH_PER_SIZE),MAX_LEVEL))
 	player_body_collision_pos = player_scale_dict[size].Position
 	player_body_collision_scale = player_scale_dict[size].Scale
-	print(size)
-	print(player_body_collision_scale)
+	if modifier<0:
+		print("DAMAGE!!!")
+	else:
+		print("healing")
+	print("Health: "+str(health))
 	if health <= 0:
 		size=1
 		you_are_dead = true
-		print("jajj")
-		await get_tree().create_timer(0.1, true, false, true).timeout
+		await get_tree().create_timer(.1, true, false, true).timeout
 
 		get_tree().paused = true
 		await get_tree().create_timer(WAIT_OF_RESTART, true, false, true).timeout

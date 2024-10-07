@@ -3,7 +3,9 @@ extends CharacterBody2D
 const SPEED = 300.0
 const SPRINT = 3.0
 const HEALTH_LOST_PER_SECOND_OF_SPRINT = 2
-const DEFAULT_ZOOM = Vector2(2.0,2.0)
+const DEFAULT_ZOOM = Vector2.ONE*2
+const MAX_ZOOM = Vector2.ONE*2.2
+const MIN_ZOOM = Vector2.ONE*.9
 
 var random = RandomNumberGenerator.new()
 
@@ -19,6 +21,7 @@ var farts: Array = []
 @onready var camera: Camera2D = $Camera2D
 @onready var streak: CPUParticles2D = $Streak
 @onready var toutch_controls: CanvasLayer = $ToutchControls
+@onready var slow_down_sound: AudioStreamPlayer = $slow_down_sound
 
 func reset_player_params():
 	Global.size=2.0
@@ -49,9 +52,10 @@ func _process(_delta: float) -> void:
 	you_have_died.visible = Global.you_are_dead
 	body_collision_shape.scale=Global.player_body_collision_scale
 	body_collision_shape.position=Global.player_body_collision_pos
-	var delta_zoom :Vector2= camera.zoom - DEFAULT_ZOOM/Global.health*Global.HEALTH_PER_SIZE
-	if delta_zoom != DEFAULT_ZOOM*0 and  not Global.you_are_dead:
-		camera.zoom -=delta_zoom*_delta
+	var delta_zoom :Vector2= (camera.zoom - DEFAULT_ZOOM/Global.health*Global.HEALTH_PER_SIZE)*_delta
+	if delta_zoom != Vector2.ZERO and camera.zoom-delta_zoom<MAX_ZOOM and camera.zoom-delta_zoom> MIN_ZOOM and not Global.you_are_dead:
+		camera.zoom -=delta_zoom
+	
 
 
 
@@ -78,7 +82,7 @@ func _physics_process(delta: float) -> void:
 		#play_animation(direction, Global.speed_modifier/Global.size)
 
 		# Check if sprinting
-		if Input.is_action_pressed("sprint") or Input.is_action_pressed("ui_select"): 
+		if Input.is_action_pressed("sprint") or Input.is_action_pressed("ui_select"):
 			speed_modifier*=SPRINT
 			velocity=direction*speed_modifier*SPEED
 			play_animation(direction, speed_modifier)
@@ -101,7 +105,6 @@ func _physics_process(delta: float) -> void:
 
 func play_random_fart():
 	var r = random.randi_range(0, FARTS_COUNT - 1)
-	print(r)
 	farts[r].play()
 
 func get_move(direction:Vector2):
@@ -131,9 +134,19 @@ func play_animation(direction:Vector2, anim_speed_modifier:float):
 	player_body.speed_scale=anim_speed_modifier*NORMAL_SPEED
 	player_body.play(animation_body_name)
 	player_skin.play(animation_skin_name)
-	
+
 	if Global.size == 3.0:
 		player_skin.scale = Vector2(0.85, 0.85)
 	else:
 		player_skin.scale = Vector2(1.0, 1.0)
 	#player_body.speed_scale *= velocity.length()
+
+func _on_terrain_sense_area_body_entered(_body: Node2D) -> void:
+	slow_down_sound.play()
+	Global.set_speed_modifier(0.75)
+	pass # Replace with function body.
+
+func _on_terrain_sense_area_body_exited(_body: Node2D) -> void:
+	slow_down_sound.stop()
+	Global.set_speed_modifier(1.0)
+	pass # Replace with function body.
