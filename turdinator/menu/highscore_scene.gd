@@ -6,6 +6,7 @@ var points: int = 0                   # Total points
 
 @onready var points_container: HBoxContainer = $CanvasLayer/PointsContainer  # Container for visualizing points
 @onready var congratulations_label: RichTextLabel = $CanvasLayer/CongratulationsLabel  # Label for "Congratulations"
+@onready var points_label: RichTextLabel = $CanvasLayer/PointsLabel  # Label for "Congratulations"
 #@onready var points_label: Label = $PointsLabel  # Label to display the total points
 
 func _ready():
@@ -35,6 +36,7 @@ func display_congratulations():
 	# Display the congratulations message
 	congratulations_label.visible = true
 	congratulations_label.text = "Congrafuckinglations!"
+	points_label.text = "Your Number Two Tokens: " + str(points) 
 
 	# Visualize the points using assets
 	points_container.visible = true
