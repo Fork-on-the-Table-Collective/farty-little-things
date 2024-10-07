@@ -1,9 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbg03v6wawpge"]
+[gd_scene load_steps=13 format=3 uid="uid://dbg03v6wawpge"]
 
 [ext_resource type="Script" path="res://menu/story_intro.gd" id="1_skxtk"]
 [ext_resource type="Texture2D" uid="uid://c5iylpxf6cmp4" path="res://menu/assets/backgrounds/story_background.webp" id="2_hrlda"]
 [ext_resource type="FontFile" uid="uid://cx1860fsnt3vy" path="res://ui/assets/Font_Pixellari.ttf" id="2_l5y1c"]
 [ext_resource type="AudioStream" uid="uid://d361fg0poll04" path="res://sounds/voicover/voiceover_intro_2_mixdown.wav" id="4_64uih"]
+[ext_resource type="Texture2D" uid="uid://cgdhm827nu3r2" path="res://menu/assets/brush/brush-01_256px.webp" id="5_6vicy"]
+[ext_resource type="Texture2D" uid="uid://wotsi08iw3wu" path="res://menu/assets/brush/brush-02_256px.webp" id="6_s66ma"]
+[ext_resource type="Texture2D" uid="uid://dnrlsdc7g5fg4" path="res://menu/assets/brush/brush-03_256px.webp" id="7_wvda8"]
+[ext_resource type="Texture2D" uid="uid://loyho2adxpc3" path="res://menu/assets/brush/brush-04_256px.webp" id="8_un0p0"]
+[ext_resource type="Texture2D" uid="uid://ctdqpkdqipc0y" path="res://menu/assets/brush/brush-05_256px.webp" id="9_rfxh6"]
+[ext_resource type="Texture2D" uid="uid://c8cn2sckaywei" path="res://menu/assets/brush/brush-06_256px.webp" id="10_vp83a"]
+[ext_resource type="Texture2D" uid="uid://b5ygamlth4mfa" path="res://menu/assets/brush/brush-07_256px.webp" id="11_yug12"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e363d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_6vicy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s66ma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wvda8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_un0p0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rfxh6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vp83a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_yug12")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="StoryIntro" type="Control"]
 layout_mode = 3
@@ -42,10 +78,30 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_l5y1c")
 theme_override_font_sizes/font_size = 40
-text = "From the dark depths of the bowels, a fiber-rich poop emerged—the Chosen One, destined for greatness. His dreams revealed a lush paradise, where life flourished under the sun, from his remains. The prophecy was clear: he was the bringer of life.
+text = "From the dark depths of the bowels, a fiber-rich poop emerged—the Chosen One, destined for greatness. His dreams revealed a lush paradise, where life flourished under the sun, from his remains. The prophecy was clear: he was the bringer of life."
+horizontal_alignment = 1
+autowrap_mode = 2
 
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -676.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-With purpose, he embarked on a perilous journey through the Big City’s sewers, where danger lurked at every corner: trash, toxic gasses and tiny creatures. Yet, he pressed on, determined to fulfill his destiny as The Messiah of Growth."
+[node name="Label" type="Label" parent="MarginContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l5y1c")
+theme_override_font_sizes/font_size = 40
+text = "With purpose, he embarked on a perilous journey through the Big City’s sewers, where danger lurked at every corner: trash, toxic gasses and tiny creatures. Yet, he pressed on, determined to fulfill his destiny as The Messiah of Growth."
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -68,5 +124,11 @@ text = "SKIP"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_64uih")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(838, 312)
+sprite_frames = SubResource("SpriteFrames_e363d")
+autoplay = "default"
+frame_progress = 0.215651
 
 [connection signal="pressed" from="ButtonSkip" to="." method="_on_button_skip_pressed"]
