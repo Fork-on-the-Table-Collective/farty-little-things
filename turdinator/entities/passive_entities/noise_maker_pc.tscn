@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://gejmnrh2ly5l"]
+[gd_scene load_steps=23 format=3 uid="uid://gejmnrh2ly5l"]
 
 [ext_resource type="Script" path="res://entities/passive_entities/noise_maker.gd" id="1_hpe6h"]
 [ext_resource type="Texture2D" uid="uid://cme7y8xvmy4o3" path="res://entities/assets/noise_maker_sheet.png" id="2_co6rg"]
+[ext_resource type="AudioStream" uid="uid://cqdqveh3eaias" path="res://sounds/sfx/player/player_interact_old_computer.wav" id="3_vuwy6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dvbyx"]
 atlas = ExtResource("2_co6rg")
@@ -138,7 +139,7 @@ script = ExtResource("1_hpe6h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -1)
-scale = Vector2(0.14375, 0.180208)
+scale = Vector2(0.75, 0.938)
 sprite_frames = SubResource("SpriteFrames_txfw6")
 animation = &"idle"
 autoplay = "idle"
@@ -148,6 +149,7 @@ position = Vector2(-1.5, -1.5)
 shape = SubResource("RectangleShape2D_8hvrv")
 
 [node name="noise_maker_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vuwy6")
 bus = &"sfx"
 
 [node name="PerceptionArea" type="Area2D" parent="."]

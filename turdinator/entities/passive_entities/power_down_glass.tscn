@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://djjym27n4yfqk"]
+[gd_scene load_steps=7 format=3 uid="uid://djjym27n4yfqk"]
 
 [ext_resource type="Script" path="res://entities/passive_entities/power_down.gd" id="1_248oh"]
 [ext_resource type="Texture2D" uid="uid://c72o0l16f3t27" path="res://entities/assets/glass_shards.png" id="2_0e1gu"]
+[ext_resource type="AudioStream" uid="uid://ccqeyyf3lq2v5" path="res://sounds/sfx/player/player_step_on_glass.wav" id="3_efj0l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1o3r0"]
 atlas = ExtResource("2_0e1gu")
@@ -26,7 +27,7 @@ script = ExtResource("1_248oh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -1)
-scale = Vector2(0.14375, 0.180208)
+scale = Vector2(0.9, 1.125)
 sprite_frames = SubResource("SpriteFrames_txfw6")
 animation = &"idle"
 autoplay = "idle"
@@ -36,6 +37,7 @@ position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_aho68")
 
 [node name="power_down_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_efj0l")
 bus = &"sfx"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

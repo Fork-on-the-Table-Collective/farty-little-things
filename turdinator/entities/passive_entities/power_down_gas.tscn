@@ -243,7 +243,7 @@ script = ExtResource("1_cm7cu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -1)
-scale = Vector2(0.14375, 0.180208)
+scale = Vector2(1.1, 1.375)
 sprite_frames = SubResource("SpriteFrames_txfw6")
 animation = &"idle"
 autoplay = "idle"
