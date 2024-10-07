@@ -31,6 +31,27 @@ func reset_player_params():
 	streak.emitting = false
 
 
+func set_music_based_on_action(bus_name,volume):
+	var bus_index = AudioServer.get_bus_index(bus_name)
+	#var current_volume = AudioServer.get_bus_volume_db(bus_index)
+	#var new_volume = (volume-current_volume)*delta
+	AudioServer.set_bus_volume_db(
+		bus_index,
+		linear_to_db(volume)
+	)
+	
+func bg_music_trigger():
+	if Global.size==1:
+		set_music_based_on_action("bgm2",1)
+	else:
+		set_music_based_on_action("bgm2",0)
+	if Global.health<15:
+		set_music_based_on_action("bgm3",1)
+	else:
+		set_music_based_on_action("bgm3",0)
+		
+		
+
 func _ready() -> void:
 	if OS.get_name() == "iOS":
 		toutch_controls.visible=true
@@ -52,6 +73,7 @@ func load_farts() -> void:
 
 
 func _process(_delta: float) -> void:
+	bg_music_trigger()
 	you_have_died.visible = Global.you_are_dead
 	body_collision_shape.scale=Global.player_body_collision_scale
 	body_collision_shape.position=Global.player_body_collision_pos
