@@ -1,66 +1,36 @@
-[gd_scene load_steps=17 format=3 uid="uid://ca6q5pb5s3k1g"]
+[gd_scene load_steps=12 format=3 uid="uid://b3kqyw5jx5a81"]
 
-[ext_resource type="Script" path="res://entities/enemy/enemy.gd" id="1_kpoai"]
-[ext_resource type="Texture2D" uid="uid://bdhjiukg2mvp8" path="res://entities/assets/Fly_anim_sheet_new.png" id="2_i471g"]
-[ext_resource type="Texture2D" uid="uid://bffcq21bytkrk" path="res://entities/assets/Damage_effect_sheet.png" id="3_p68t6"]
+[ext_resource type="Script" path="res://entities/enemy/enemy.gd" id="1_b6iua"]
+[ext_resource type="Texture2D" uid="uid://bffcq21bytkrk" path="res://entities/assets/Damage_effect_sheet.png" id="3_07hgk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pu7qs"]
 radius = 6.21973
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vp5ty"]
-atlas = ExtResource("2_i471g")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t353h"]
-atlas = ExtResource("2_i471g")
-region = Rect2(512, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e3cf7"]
-atlas = ExtResource("2_i471g")
-region = Rect2(1024, 0, 512, 512)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_nkfjh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vp5ty")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t353h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e3cf7")
-}],
-"loop": true,
-"name": &"left",
-"speed": 8.0
-}]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_uwp7m"]
-atlas = ExtResource("3_p68t6")
+atlas = ExtResource("3_07hgk")
 region = Rect2(0, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c7p6r"]
-atlas = ExtResource("3_p68t6")
+atlas = ExtResource("3_07hgk")
 region = Rect2(256, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_suvbf"]
-atlas = ExtResource("3_p68t6")
+atlas = ExtResource("3_07hgk")
 region = Rect2(512, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_71oo4"]
-atlas = ExtResource("3_p68t6")
+atlas = ExtResource("3_07hgk")
 region = Rect2(768, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nil1q"]
-atlas = ExtResource("3_p68t6")
+atlas = ExtResource("3_07hgk")
 region = Rect2(1024, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4qqwn"]
-atlas = ExtResource("3_p68t6")
+atlas = ExtResource("3_07hgk")
 region = Rect2(1280, 0, 256, 256)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7finr"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ahcig"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -89,35 +59,33 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_armlm"]
 radius = 27.0
 
-[node name="Fly" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(0.3, 0.3)
 collision_layer = 2
-script = ExtResource("1_kpoai")
+collision_mask = 9
+script = ExtResource("1_b6iua")
 speed = 150.0
 damage = -10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
 position = Vector2(-5, 2)
 scale = Vector2(7.33708, 6.77195)
 shape = SubResource("CircleShape2D_pu7qs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_nkfjh")
-animation = &"left"
-autoplay = "left"
-frame_progress = 0.314775
 
 [node name="AttackEffect" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
-position = Vector2(-140, 163.333)
-rotation = -2.1808
-scale = Vector2(0.701959, 0.69541)
-sprite_frames = SubResource("SpriteFrames_7finr")
+position = Vector2(-202.5, 102.5)
+rotation = -2.26603
+scale = Vector2(0.6, 0.561)
+sprite_frames = SubResource("SpriteFrames_ahcig")
 animation = &"activated"
-frame_progress = 0.677874
+autoplay = "activated"
 
 [node name="PerceptionArea" type="Area2D" parent="."]
 scale = Vector2(5.01799, 5.04184)
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionArea"]
@@ -126,12 +94,28 @@ shape = SubResource("CircleShape2D_armlm")
 
 [node name="HitBoxArea" type="Area2D" parent="."]
 scale = Vector2(1.5, 1.5)
-collision_layer = 2
+collision_layer = 0
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
 position = Vector2(-5, 2)
 scale = Vector2(7.33708, 6.77195)
 shape = SubResource("CircleShape2D_pu7qs")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(150, 0)
+collision_mask = 8
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-150, 0)
+collision_mask = 0
+
+[node name="RayCastUp" type="RayCast2D" parent="."]
+target_position = Vector2(0, -75)
+collision_mask = 8
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+target_position = Vector2(0, 75)
+collision_mask = 8
 
 [connection signal="area_entered" from="PerceptionArea" to="." method="_on_perception_area_area_entered"]
 [connection signal="area_exited" from="PerceptionArea" to="." method="_on_perception_area_area_exited"]
