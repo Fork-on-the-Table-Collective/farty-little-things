@@ -3,10 +3,11 @@ extends Node
 # FOR DEVELOPMENT
 const USE_SAVE=true
 
-# Only change is constant 
+# Only change is constant
 const HEALTH_PER_SIZE = 20
 const WAIT_OF_RESTART = 3
-const NUMBER_OF_MAPS = 5
+const NUMBER_OF_MAPS = 6
+#const DEFAULT_PLAYER_COL_SCALE = Vector2(.5,.5)
 const MAX_LEVEL=4.0
 
 # Dictionary contains the transformation values to scale the player to size
@@ -40,11 +41,11 @@ var slider_value_dict: Dictionary={
 	"Master": 1.0,
 	"music": 1.0,
 	"sfx": 1.0
-} 
+}
 # to be saved, level_comp, score, highscore, fist start
 
 func create_level_list():
-	for i in range(NUMBER_OF_MAPS):
+	for i in range(0, NUMBER_OF_MAPS):
 		levels.append("res://scenes/map/map_" + str(i).pad_zeros(2)+".tscn")
 		level_covers.append("res://menu/assets/Map_Cover_" + str(i).pad_zeros(2)+".png")
 func store_variables():
