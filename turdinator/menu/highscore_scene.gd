@@ -27,8 +27,7 @@ func add_base_points():
 
 # Add additional points based on the player's size
 func add_size_based_points():
-	var player_size = Global.size  # Get the size of the player by its scale
-
+	var player_size = int(Global.size) # Get the size of the player by its scale
 	points += player_size - 1
 
 # Show the points on the screen with a congratulatory message

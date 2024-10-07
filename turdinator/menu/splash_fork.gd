@@ -17,10 +17,6 @@ func _ready() -> void:
 	fade()
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 	
 func fade() -> void:
 	var tween = self.create_tween()
