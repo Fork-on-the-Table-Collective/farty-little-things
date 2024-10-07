@@ -41,15 +41,12 @@ position = Vector2(1685, 2135)
 
 [node name="power_up" parent="PassiveEntities" instance=ExtResource("3_mddv2")]
 position = Vector2(1244, 3290)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up2" parent="PassiveEntities" instance=ExtResource("3_mddv2")]
 position = Vector2(1008, 1729)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up3" parent="PassiveEntities" instance=ExtResource("3_mddv2")]
 position = Vector2(1684, 3239)
-scale = Vector2(0.3, 0.3)
 
 [node name="Player" parent="." instance=ExtResource("4_kk1kk")]
 position = Vector2(1235, 6821)

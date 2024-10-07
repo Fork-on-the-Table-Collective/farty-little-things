@@ -100,67 +100,51 @@ position = Vector2(4297, 106)
 
 [node name="power_up" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(3551, 2130)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up2" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(439, 2106)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up3" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(331, 3662)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up4" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(915, 3022)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up5" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(2668, 4130)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up6" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(3434, 4998)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up7" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(6377, 4322)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up8" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(6953, 3922)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up9" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(6160, 2974)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up10" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(5495, 1177)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up11" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(7502, 1399)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up12" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(5898, 115)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up13" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(3191, 112)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up14" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(1910, 1903)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up15" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(1902, 3489)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up16" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(778, 4301)
-scale = Vector2(0.3, 0.3)
 
 [node name="power_up17" parent="PassiveEntities" instance=ExtResource("4_o1ypc")]
 position = Vector2(5720, 4226)
