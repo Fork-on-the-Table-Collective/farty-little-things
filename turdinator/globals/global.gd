@@ -50,21 +50,33 @@ func create_level_list():
 		level_covers.append("res://scenes/map/assets/covers/Map_Cover_" + str(i).pad_zeros(2)+".png")
 func store_variables():
 	if USE_SAVE:
+		var data_to_store={
+			"highscore":highscore,
+			"is_first_run":is_first_run,
+			"last_level_id":last_level_id,
+			"slider_value_dict":slider_value_dict,
+		}
 		var file = FileAccess.open(variable_store_path,FileAccess.WRITE)
-		file.store_var(highscore)
-		file.store_var(is_first_run)
-		file.store_var(last_level_id)
-		file.store_line(JSON.stringify(slider_value_dict))
+		file.store_string(JSON.stringify(data_to_store))
+		file.close()
 
 func load_variables():
 	if FileAccess.file_exists(variable_store_path):
 		var file=FileAccess.open(variable_store_path,FileAccess.READ)
-		highscore=file.get_var(highscore)
-		is_first_run=file.get_var(is_first_run)
-		last_level_id=file.get_var(last_level_id)
-		var dictonary_line=JSON.parse_string(file.get_line())
-		if dictonary_line:
-			slider_value_dict = dictonary_line
+		var json_string = file.get_as_text()
+		file.close()
+		var parsed_data = JSON.parse_string(json_string)
+		if parsed_data:
+			highscore=parsed_data.highscore
+			is_first_run=parsed_data.is_first_run
+			last_level_id=parsed_data.last_level_id
+			slider_value_dict=parsed_data.slider_value_dict
+			for bus in slider_value_dict.keys():
+				set_volume_by_bus(bus)
+		else:
+			print("Failed to load JSON: ")
+			store_variables()
+
 	else:
 		print("no savefile")
 		highscore=0
@@ -83,17 +95,13 @@ func _ready() -> void:
 	sfx_stream_player.bus="sfx"
 	add_child(sfx_stream_player)
 	set_all_button()
+	store_variables()
 
 func set_health(modifier: float):
 	health += modifier
 	size = max(1,min(ceil(health/HEALTH_PER_SIZE),MAX_LEVEL))
 	player_body_collision_pos = player_scale_dict[size].Position
 	player_body_collision_scale = player_scale_dict[size].Scale
-	if modifier<0:
-		print("DAMAGE!!!")
-	else:
-		print("healing")
-	print("Health: "+str(health))
 	if health <= 0:
 		size=1
 		you_are_dead = true
@@ -135,3 +143,10 @@ func set_all_button():
 
 func set_turd_color(color: String):
 	turd_color = color
+
+func set_volume_by_bus(bus_name):
+	var bus_index = AudioServer.get_bus_index(bus_name)
+	AudioServer.set_bus_volume_db(
+		bus_index,
+		linear_to_db(slider_value_dict[bus_name])
+	)
