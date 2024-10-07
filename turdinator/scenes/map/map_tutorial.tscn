@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bcapk4utlhnos" path="res://entities/passive_entities/power_up.tscn" id="3_mddv2"]
 [ext_resource type="PackedScene" uid="uid://ujooexq3jie0" path="res://entities/player/player.tscn" id="4_kk1kk"]
 [ext_resource type="PackedScene" uid="uid://cwld63ar4l5wt" path="res://entities/passive_entities/end_zone.tscn" id="5_syry7"]
-[ext_resource type="FontFile" uid="uid://cx1860fsnt3vy" path="res://scenes/map/assets/Font_Pixellari.ttf" id="6_4ebfx"]
+[ext_resource type="FontFile" uid="uid://cx1860fsnt3vy" path="res://ui/assets/Font_Pixellari.ttf" id="6_4ebfx"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_c0hwm"]
 a = Vector2(-78, 1)

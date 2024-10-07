@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbg03v6wawpge"]
+
+[ext_resource type="Texture2D" uid="uid://b7mqb7bhqjr56" path="res://menu/assets/backgrounds/bricked_wall.png" id="1_aw64e"]
+[ext_resource type="Script" path="res://menu/story_intro.gd" id="1_skxtk"]
+[ext_resource type="FontFile" uid="uid://cx1860fsnt3vy" path="res://ui/assets/Font_Pixellari.ttf" id="2_l5y1c"]
+
+[node name="StoryIntro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_skxtk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_aw64e")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l5y1c")
+theme_override_font_sizes/font_size = 55
+text = "From the dark depths of the bowels, a fiber-rich poop emerged—the Chosen One, destined for greatness. His dreams revealed a lush paradise, where life flourished under the sun, from his remains. The prophecy was clear: he was the bringer of life.
+
+
+With purpose, he embarked on a perilous journey through the Big City’s sewers, where danger lurked at every corner: trash, toxic gasses and tiny creatures. Yet, he pressed on, determined to fulfill his destiny as The Messiah of Growth."
+horizontal_alignment = 1
+autowrap_mode = 2

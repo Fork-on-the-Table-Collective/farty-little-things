@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h2mu3vk5dpeh"
-path="res://.godot/imported/Map_Cover_03.png-1758614f6d48fde12c6446f391672bef.ctex"
+uid="uid://dab0um3gv7xae"
+path="res://.godot/imported/bricked_wall_toilet.png-9f5a88f0370e036bf0e2c1f75c55fcd1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/map/assets/covers/Map_Cover_03.png"
-dest_files=["res://.godot/imported/Map_Cover_03.png-1758614f6d48fde12c6446f391672bef.ctex"]
+source_file="res://menu/assets/backgrounds/bricked_wall_toilet.png"
+dest_files=["res://.godot/imported/bricked_wall_toilet.png-9f5a88f0370e036bf0e2c1f75c55fcd1.ctex"]
 
 [params]
 
