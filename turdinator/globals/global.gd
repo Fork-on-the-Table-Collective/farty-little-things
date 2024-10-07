@@ -89,7 +89,6 @@ func update_highscore(map_score:int):
 func _ready() -> void:
 	load_variables()
 	create_level_list()
-	print(levels)
 	sfx_stream_player.bus="sfx"
 	add_child(sfx_stream_player)
 	set_all_button()
