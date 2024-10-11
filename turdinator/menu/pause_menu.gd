@@ -1,4 +1,5 @@
 extends Control
+@onready var settings: VBoxContainer = $settings
 
 func _on_button_exit_pressed() -> void:
 	get_tree().paused = false
@@ -8,3 +9,10 @@ func _on_button_exit_pressed() -> void:
 func _on_button_resume_pressed() -> void:
 	get_tree().paused = false
 	queue_free()  # Remove the pause menu when resuming
+
+
+func _on_settings_pressed() -> void:
+	if settings.visible:
+		settings.visible=false
+	else:
+		settings.visible=true
