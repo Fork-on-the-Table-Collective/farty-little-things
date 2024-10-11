@@ -10,14 +10,14 @@ var menu = "res://menu/main_menu.tscn"
 var story_intro = "res://menu/story_intro.tscn"
 
 func create_map_loading_buttons():
-	for level_num in range(len(Global.levels)) :
+	for level_num in range(Global.NUMBER_OF_MAPS) :
 		var map_button: = TextureButton.new()
 		map_button.texture_normal=load(Global.level_covers[level_num])
 		
 		if level_num == 0:
-			map_button.pressed.connect(_on_map_pressed.bind(story_intro))
+			map_button.pressed.connect(_on_map_pressed.bind(story_intro,0))
 		else:
-			map_button.pressed.connect(_on_map_pressed.bind(Global.levels[level_num]))
+			map_button.pressed.connect(_on_map_pressed.bind(Global.levels[level_num],level_num))
 		map_button.button_down.connect(_on_map_down.bind(map_button))
 		map_button.mouse_entered.connect(_on_mouse_entered.bind(map_button))
 		map_button.mouse_exited.connect(_on_mouse_exited.bind(map_button))
@@ -51,7 +51,10 @@ func _on_mouse_exited(button:TextureButton):
 		shader_material.set_shader_parameter("modulate_color", Color.WHITE)  # Normal tint
 		button.material=shader_material
 
-func _on_map_pressed(level:String) -> void:
+func _on_map_pressed(level:String,current_level: int) -> void:
+	print(Global.current_map)
+	Global.current_map = current_level
+	print(Global.current_map)
 	get_tree().change_scene_to_file(level)
 	
 func _on_map_down(button:TextureButton):

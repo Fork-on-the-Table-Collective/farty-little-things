@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://pofaim3vrakg" path="res://scenes/common/toutch_controls.tscn" id="17_svtgq"]
 [ext_resource type="FontFile" uid="uid://cx1860fsnt3vy" path="res://ui/assets/Font_Pixellari.ttf" id="19_r5gfm"]
 [ext_resource type="Texture2D" uid="uid://bp7hehhvvciav" path="res://entities/player/wc_papirguriga.png" id="19_sdimy"]
-[ext_resource type="Theme" uid="uid://b07d6ovs3se0r" path="res://ui/assets/button_theme.tres" id="21_rb7b8"]
+[ext_resource type="Theme" path="res://ui/assets/button_theme.tres" id="21_rb7b8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxdg3"]
 atlas = ExtResource("2_ksdh1")

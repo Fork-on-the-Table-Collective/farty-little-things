@@ -42,12 +42,14 @@ var slider_value_dict: Dictionary={
 	"music": 1.0,
 	"sfx": 1.0
 }
+var current_map = 0
 # to be saved, level_comp, score, highscore, fist start
 
 func create_level_list():
 	for i in range(0, NUMBER_OF_MAPS):
 		levels.append("res://scenes/map/map_" + str(i).pad_zeros(2)+".tscn")
 		level_covers.append("res://menu/assets/Map_Cover_" + str(i).pad_zeros(2)+".png")
+	levels.append("res://menu/ty_for_playing.tscn")
 func store_variables():
 	if USE_SAVE:
 		var data_to_store={
