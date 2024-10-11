@@ -6,12 +6,12 @@ const HEALTH_LOST_PER_SECOND_OF_SPRINT = 2
 const DEFAULT_ZOOM = Vector2.ONE*2
 const MAX_ZOOM = Vector2.ONE*2.3
 const MIN_ZOOM = Vector2.ONE*1.5
+const FARTS_COUNT = 3
 
 var random = RandomNumberGenerator.new()
-
 var anim_dict:Dictionary={}
-
-const FARTS_COUNT = 3
+var pause_menu_scene: PackedScene = preload("res://menu/pause_menu.tscn")
+var pause_menu_instance: Node = null  # Will hold the instance of the pause menu
 var farts: Array = []
 
 @onready var player_body: AnimatedSprite2D = $Player_Skin/Player_Body
@@ -178,5 +178,38 @@ func _on_terrain_sense_area_body_exited(_body: Node2D) -> void:
 	Global.set_speed_modifier(1.0)
 	pass # Replace with function body.
 
-func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://menu/main_menu.tscn")
+
+# Pause menu scene
+
+func _input(event):
+	# Detect when the pause key is pressed
+	if event.is_action_pressed("pause_game"):  # Assuming you have defined the "ui_pause" action
+		toggle_pause()
+
+func toggle_pause():
+	if !get_tree().paused:
+		pause_game()
+	else:
+		resume_game()
+
+func pause_game():
+	# Instance the pause menu and add it to the scene
+	if not pause_menu_instance:
+		pause_menu_instance = pause_menu_scene.instantiate()
+
+		add_child(pause_menu_instance)
+
+		# Set the pause menu to process even when the game is paused
+		pause_menu_instance.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+
+	# Pause the game
+	get_tree().paused = true	
+
+func resume_game():
+	# Resume the game
+	get_tree().paused = false
+
+	# Remove the pause menu
+	if pause_menu_instance != null:
+		pause_menu_instance.queue_free()
+		pause_menu_instance = null

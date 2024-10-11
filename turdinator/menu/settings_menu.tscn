@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bx4glfnd5gafh"]
 
 [ext_resource type="Script" path="res://menu/settings_menu.gd" id="1_22mna"]
-[ext_resource type="PackedScene" uid="uid://cq7neih1pnhxb" path="res://scenes/common/volume_slider.tscn" id="1_ra15j"]
 [ext_resource type="Theme" uid="uid://b8kfdhofsvpyy" path="res://scenes/common/fontTheme.tres" id="1_xiewe"]
-[ext_resource type="Theme" uid="uid://b07d6ovs3se0r" path="res://ui/assets/button_theme.tres" id="4_u2j28"]
+[ext_resource type="PackedScene" uid="uid://tg8n3fy4846i" path="res://menu/settings_container.tscn" id="3_jhrnr"]
+[ext_resource type="Theme" path="res://ui/assets/button_theme.tres" id="4_u2j28"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -35,39 +35,12 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" parent="MarginContainer" instance=ExtResource("3_jhrnr")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 25
 
-[node name="master_label" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Master volume"
-
-[node name="master_slider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_ra15j")]
-layout_mode = 2
-bus_name = "Master"
-
-[node name="music_label" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Music volume"
-
-[node name="music_slider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_ra15j")]
-layout_mode = 2
-bus_name = "music"
-
-[node name="sfx_label" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "SFX volume"
-
-[node name="sfx_slider" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_ra15j")]
-layout_mode = 2
-bus_name = "sfx"
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="back" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4_u2j28")
 text = "Back"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/back" to="." method="_on_button_pressed"]

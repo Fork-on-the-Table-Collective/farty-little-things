@@ -69,6 +69,9 @@ position = Vector2(1684, 3239)
 [node name="power_up4" parent="PassiveEntities" instance=ExtResource("3_mddv2")]
 position = Vector2(1243, 1678)
 
+[node name="power_down" parent="PassiveEntities" instance=ExtResource("8_06tme")]
+position = Vector2(1232, 4480)
+
 [node name="power_up5" parent="PassiveEntities" instance=ExtResource("3_mddv2")]
 position = Vector2(1522, 1450)
 
@@ -415,6 +418,3 @@ theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("6_4ebfx")
 theme_override_font_sizes/normal_font_size = 28
 text = "points"
-
-[node name="power_down" parent="." instance=ExtResource("8_06tme")]
-position = Vector2(1232, 4480)

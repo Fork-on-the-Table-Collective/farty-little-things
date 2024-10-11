@@ -1,33 +1,41 @@
-[gd_scene load_steps=6 format=3 uid="uid://cf1u6g7xqxnpx"]
+[gd_scene load_steps=5 format=3 uid="uid://cf1u6g7xqxnpx"]
 
 [ext_resource type="Script" path="res://menu/pause_menu.gd" id="1_0568h"]
 [ext_resource type="Theme" uid="uid://b8kfdhofsvpyy" path="res://scenes/common/fontTheme.tres" id="1_gskqo"]
-[ext_resource type="Theme" uid="uid://b07d6ovs3se0r" path="res://ui/assets/button_theme.tres" id="3_u6obo"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_0nv2p"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k65jh"]
-texture = SubResource("ImageTexture_0nv2p")
-modulate_color = Color(0.145098, 0.0823529, 0, 0.309804)
+[ext_resource type="PackedScene" uid="uid://tg8n3fy4846i" path="res://menu/settings_container.tscn" id="3_h0jnd"]
+[ext_resource type="Theme" path="res://ui/assets/button_theme.tres" id="3_u6obo"]
 
 [node name="PauseMenu" type="Control"]
+z_index = 20
+z_as_relative = false
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 theme = ExtResource("1_gskqo")
 script = ExtResource("1_0568h")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3840.0
+offset_top = -2160.0
+offset_right = -1920.0
+offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_k65jh")
+scale = Vector2(4, 4)
+color = Color(0.2, 0.2, 0.2, 0.635294)
+
+[node name="settings" parent="." instance=ExtResource("3_h0jnd")]
+visible = false
+layout_mode = 2
+offset_left = 196.0
+offset_top = -167.0
+offset_right = 604.0
+offset_bottom = 287.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -50,10 +58,17 @@ theme = ExtResource("3_u6obo")
 theme_override_font_sizes/font_size = 100
 text = "Resume"
 
+[node name="settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_u6obo")
+text = "Settings
+"
+
 [node name="button_exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_u6obo")
-text = "Exit"
+text = "Menu"
 
 [connection signal="pressed" from="VBoxContainer/button_resume" to="." method="_on_button_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/button_exit" to="." method="_on_button_exit_pressed"]

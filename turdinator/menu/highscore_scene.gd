@@ -44,19 +44,15 @@ func display_congratulations():
 	# Step 1: Load the texture from the path
 	var texture = load(point_asset) as Texture2D
 	if texture == null:
-		print("Error: Could not load texture from path:", point_asset)
-	else:
-		print("Texture loaded OK: ", point_asset)
-	# Step 2: Create a TextureRect node to display the texture
-	# Step 3: Add the TextureRect to the HBoxContainer
+		print("Error: Could not load texture from path:", point_asset)	# Step 2: Create a TextureRect node to display the texture
+
 	for i in points:
 		var texture_rect = TextureRect.new()
 		texture_rect.texture = texture    
 		points_container.add_child(texture_rect)
 		
 
-	
-	print("Points: ", points)
+
 	
 
 

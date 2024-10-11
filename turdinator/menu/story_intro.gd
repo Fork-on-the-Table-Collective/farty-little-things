@@ -4,6 +4,7 @@ var in_time : float = 0.5
 var fade_in_time : float = 1.5
 var fade_out_time : float = 1.5
 var out_time : float = 0.3
+var bus_index 
 
 var next_scene = "res://scenes/map/map_00.tscn"
 
@@ -12,6 +13,7 @@ var next_scene = "res://scenes/map/map_00.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	bus_index = AudioServer.get_bus_index("music")
 	modulate.a = 0.0
 	Global.set_all_button()
 	if not Global.is_first_run:
@@ -19,7 +21,6 @@ func _ready() -> void:
 	fade()
 
 func fade() -> void:
-	var bus_index = AudioServer.get_bus_index("music")
 	AudioServer.set_bus_volume_db(
 		bus_index,
 		linear_to_db(0.1)
@@ -42,4 +43,8 @@ func fade() -> void:
 	get_tree().change_scene_to_file(next_scene)
 
 func _on_button_skip_pressed() -> void:
+	AudioServer.set_bus_volume_db(
+		bus_index,
+		linear_to_db(1.0)
+	)
 	get_tree().change_scene_to_file(next_scene)
