@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwcrq7wnq7qg6"]
+[gd_scene load_steps=4 format=3 uid="uid://cwcrq7wnq7qg6"]
 
 [ext_resource type="PackedScene" uid="uid://ujooexq3jie0" path="res://entities/player/player.tscn" id="1_egja3"]
-[ext_resource type="PackedScene" uid="uid://b2fethtyobpvf" path="res://entities/enemy/rat.tscn" id="2_shjxo"]
 [ext_resource type="PackedScene" uid="uid://cwld63ar4l5wt" path="res://entities/passive_entities/end_zone.tscn" id="3_7m74e"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wyvn6"]
@@ -11,9 +10,6 @@ a = Vector2(253, 10)
 
 [node name="Player" parent="." instance=ExtResource("1_egja3")]
 position = Vector2(199, 214)
-
-[node name="Rat" parent="." instance=ExtResource("2_shjxo")]
-position = Vector2(918, 580)
 
 [node name="EndZone" parent="." instance=ExtResource("3_7m74e")]
 position = Vector2(0, 934)
