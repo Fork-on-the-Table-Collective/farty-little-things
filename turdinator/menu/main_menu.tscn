@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://b8kfdhofsvpyy" path="res://scenes/common/fontTheme.tres" id="1_k85u2"]
 [ext_resource type="Texture2D" uid="uid://dab0um3gv7xae" path="res://menu/assets/backgrounds/bricked_wall_toilet.png" id="3_2woms"]
 [ext_resource type="FontFile" uid="uid://cx1860fsnt3vy" path="res://ui/assets/Font_Pixellari.ttf" id="4_ypo51"]
-[ext_resource type="Theme" uid="uid://b07d6ovs3se0r" path="res://ui/assets/button_theme.tres" id="5_kv800"]
+[ext_resource type="Theme" path="res://ui/assets/button_theme.tres" id="5_kv800"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

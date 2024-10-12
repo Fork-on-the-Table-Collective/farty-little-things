@@ -1645,7 +1645,6 @@ position_smoothing_enabled = true
 position = Vector2(0, 68)
 
 [node name="ToutchControls" parent="." instance=ExtResource("17_svtgq")]
-visible = false
 
 [node name="TerrainSenseArea" type="Area2D" parent="."]
 collision_layer = 0
