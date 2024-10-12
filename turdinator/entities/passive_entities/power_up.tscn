@@ -1,7 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://bcapk4utlhnos"]
+[gd_scene load_steps=46 format=3 uid="uid://bcapk4utlhnos"]
 
 [ext_resource type="Script" path="res://entities/passive_entities/power_up.gd" id="1_cstcl"]
 [ext_resource type="Texture2D" uid="uid://ctosqo0fb77s2" path="res://entities/assets/power_up_sheet.png" id="2_7gjaq"]
+[ext_resource type="AudioStream" uid="uid://b1l0yjhd6j4wf" path="res://sounds/sfx/player/item_pickup.wav" id="3_g268s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bflgs"]
 atlas = ExtResource("2_7gjaq")
@@ -265,6 +266,84 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fljfe"]
 
+[sub_resource type="Animation" id="Animation_fedmb"]
+resource_name = "pickup"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("power_up_sound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.466667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dds3y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("power_up_sound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_v8if4"]
+resource_name = "upgrade"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ff8b2"]
+_data = {
+"RESET": SubResource("Animation_dds3y"),
+"pickup": SubResource("Animation_fedmb"),
+"upgrade": SubResource("Animation_v8if4")
+}
+
 [node name="power_up" type="Area2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_cstcl")
@@ -282,6 +361,12 @@ scale = Vector2(0.9, 0.9)
 shape = SubResource("CircleShape2D_fljfe")
 
 [node name="power_up_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_g268s")
 bus = &"sfx"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ff8b2")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

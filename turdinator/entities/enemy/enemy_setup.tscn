@@ -140,7 +140,7 @@ scale = Vector2(0.618339, 0.559342)
 sprite_frames = SubResource("SpriteFrames_ahcig")
 animation = &"activated"
 autoplay = "activated"
-frame_progress = 0.0746922
+frame_progress = 0.672072
 
 [node name="PerceptionArea" type="Area2D" parent="."]
 scale = Vector2(5.01799, 5.04184)

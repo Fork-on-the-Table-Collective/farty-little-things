@@ -201,7 +201,6 @@ func _on_hit_box_area_body_entered(_body: Node2D) -> void:
 	apply_damage()
 
 func _on_perception_area_area_entered(area: Area2D) -> void:
-	print("entered")
 	enemy_presence_sound_player.play()
 	if you_can_eat:
 		target = area
@@ -211,7 +210,6 @@ func _on_perception_area_area_entered(area: Area2D) -> void:
 		velocity=Vector2.ZERO
 
 func _on_perception_area_area_exited(_area: Area2D) -> void:
-	print("exited")
 	enemy_presence_sound_player.stop()
 	target=null
 	velocity=Vector2.ZERO
