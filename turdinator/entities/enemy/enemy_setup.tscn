@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvlot85hx0mck"]
+[gd_scene load_steps=21 format=3 uid="uid://cvlot85hx0mck"]
 
 [ext_resource type="Script" path="res://entities/enemy/enemy.gd" id="1_po8cf"]
 [ext_resource type="Texture2D" uid="uid://bdhjiukg2mvp8" path="res://entities/assets/Fly_anim_sheet_new.png" id="2_b1e7c"]
 [ext_resource type="Texture2D" uid="uid://bffcq21bytkrk" path="res://entities/assets/Damage_effect_sheet.png" id="2_gmoqa"]
+[ext_resource type="Texture2D" uid="uid://bq4iay1bbof7o" path="res://entities/assets/Rat_anim_sheet_new.png" id="3_qpkrr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pu7qs"]
 radius = 20.0
@@ -19,6 +20,18 @@ region = Rect2(512, 0, 512, 512)
 atlas = ExtResource("2_b1e7c")
 region = Rect2(1024, 0, 512, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q8lw"]
+atlas = ExtResource("3_qpkrr")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wdab"]
+atlas = ExtResource("3_qpkrr")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c31x8"]
+atlas = ExtResource("3_qpkrr")
+region = Rect2(1024, 0, 512, 512)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_qeapj"]
 animations = [{
 "frames": [{
@@ -33,6 +46,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q8lw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wdab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c31x8")
+}],
+"loop": true,
+"name": &"new_animation",
 "speed": 5.0
 }]
 
@@ -94,6 +121,7 @@ scale = Vector2(0.3, 0.3)
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_po8cf")
+enemy = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
@@ -103,15 +131,16 @@ shape = SubResource("CircleShape2D_pu7qs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qeapj")
+animation = &"new_animation"
 
 [node name="AttackEffect" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
-position = Vector2(-136.667, 153.333)
+position = Vector2(-213.333, 103.333)
 rotation = -2.26603
-scale = Vector2(0.6, 0.561)
+scale = Vector2(0.618339, 0.559342)
 sprite_frames = SubResource("SpriteFrames_ahcig")
 animation = &"activated"
 autoplay = "activated"
-frame_progress = 0.0290822
+frame_progress = 0.0746922
 
 [node name="PerceptionArea" type="Area2D" parent="."]
 scale = Vector2(5.01799, 5.04184)
@@ -119,6 +148,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionArea"]
+visible = false
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_armlm")
 
