@@ -6,22 +6,24 @@
 [node name="ToutchControls" type="CanvasLayer"]
 
 [node name="Virtual Joystick" parent="." instance=ExtResource("1_48i6s")]
-offset_left = 1248.0
-offset_top = -381.0
-offset_right = 1548.0
-offset_bottom = -81.0
+modulate = Color(1, 1, 1, 0.329412)
+offset_left = 176.0
+offset_top = -409.0
+offset_right = 476.0
+offset_bottom = -109.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 206.0
-offset_top = 632.0
-offset_right = 455.0
-offset_bottom = 838.0
+offset_left = 194.0
+offset_top = 631.0
+offset_right = 443.0
+offset_bottom = 837.0
 localize_numeral_system = false
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="Control"]
-position = Vector2(8, 6)
+modulate = Color(1, 1, 1, 0.345098)
+position = Vector2(1085, -35)
 scale = Vector2(2.875, 2.75)
 texture_normal = ExtResource("2_qiihh")
-action = "ui_select"
+action = "sprint"

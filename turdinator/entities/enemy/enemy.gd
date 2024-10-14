@@ -13,11 +13,11 @@ const PATROL_TURNOVER_TIME = 5.0
 @onready var ray_cast_up: RayCast2D = $RayCastUp
 @onready var ray_cast_down: RayCast2D = $RayCastDown
 @onready var enemy_char_animation: AnimatedSprite2D = $AnimatedSprite2D
+@onready var enemy_unit_attack: AudioStreamPlayer = $EnemyUnitAttack
+@onready var enemy_presence_sound_player: AudioStreamPlayer = $enemy_presence_sound_player
 
 @export var enemy:Enemies
 @export var is_patroling:bool=true
-
-
 
 
 var speed = 200.0
@@ -31,16 +31,16 @@ var is_click_on_cooldown: bool = false
 var origin_speed
 var you_can_eat:bool = true
 
-
 enum Enemies {
-	Fly,
-	Rat,
-	Sinoc,
-	Croissant
+	fly,
+	rat,
+	sinoc,
+	croissant
 }
 const ENEMIES_CHAR_SHEETS=[
 	{
 		"path":"res://entities/assets/Fly_anim_sheet_new.png",
+		"presence_sound":"res://sounds/sfx/enemy_unit/enemy_unit_fly_presence_only_high_EQ.wav",
 		"rows":1,
 		"cols":3,
 		"speed":250.0,
@@ -55,20 +55,22 @@ const ENEMIES_CHAR_SHEETS=[
 	},
 	{
 		"path":"res://entities/assets/Rat_anim_sheet_new.png",
+		"presence_sound":"res://sounds/sfx/enemy_unit/enemy_unit_rat_presence_BOOSTED(dog).wav",
 		"rows":1,
 		"cols":3,
 		"speed":200.0,
 		"damage":-10.0,
 		"scale":Vector2(.3,.3),
-		"attak_position":Vector2(-202,102.5),
+		"attak_position":Vector2(-213,102.5),
 		"attak_scale":Vector2(0.6,0.56),
-		"attak_rotation":130.0,
+		"attak_rotation":-130.0,
 		"collision_radius": 18.0,
 		"perception_radius":30.0,
 		"hitbox_radius":22.0,
 	},
 	{
 		"path":"res://entities/assets/sinoc_sheet.png",
+		"presence_sound":"res://sounds/sfx/enemy_unit/enemy_unit_sinoc_presence.wav",
 		"rows":1,
 		"cols":3,
 		"speed":200.0,
@@ -83,6 +85,7 @@ const ENEMIES_CHAR_SHEETS=[
 	},
 	{
 		"path":"res://entities/assets/Croissant_anim_sheet.png",
+		"presence_sound":"res://sounds/sfx/enemy_unit/enemy_unit_croissant_presence.wav",
 		"rows":2,
 		"cols":2,
 		"speed":150.0,
@@ -131,7 +134,7 @@ func _ready() -> void:
 	collision_shape.shape=c_shape
 	perception_shape.shape=p_shape
 	hit_box.shape=h_shape
-
+	enemy_presence_sound_player.stream=load(ENEMIES_CHAR_SHEETS[enemy].presence_sound)
 	
 	origin_speed = speed
 	velocity = Vector2.ONE
@@ -148,8 +151,6 @@ func _ready() -> void:
 	add_child(patrol_timer)  # Add the timer to the scene
 	patrol_timer.start()
 	patrol()
-
-	
 
 func _on_Patrol_timeout():
 	patrol()
@@ -174,6 +175,8 @@ func patrol() -> void:
 
 func _cooldown_over():
 	you_can_eat=true
+	enemy_unit_attack.stop()
+	attack_effect.visible = false
 	apply_damage()
 
 func apply_damage():
@@ -181,7 +184,8 @@ func apply_damage():
 		if is_in_hitbox == true:
 			Global.set_health(damage)
 			attack_effect.visible = true
-			attack_effect.play("activated")
+			#attack_effect.play("activated")
+			enemy_unit_attack.play()
 			you_can_eat=false
 			speed=0
 			cooldown_timer.start()
@@ -197,6 +201,7 @@ func _on_hit_box_area_body_entered(_body: Node2D) -> void:
 	apply_damage()
 
 func _on_perception_area_area_entered(area: Area2D) -> void:
+	enemy_presence_sound_player.play()
 	if you_can_eat:
 		target = area
 		set_movement(target)
@@ -205,6 +210,7 @@ func _on_perception_area_area_entered(area: Area2D) -> void:
 		velocity=Vector2.ZERO
 
 func _on_perception_area_area_exited(_area: Area2D) -> void:
+	enemy_presence_sound_player.stop()
 	target=null
 	velocity=Vector2.ZERO
 
@@ -212,5 +218,5 @@ func _on_perception_area_area_exited(_area: Area2D) -> void:
 func _on_hit_box_area_body_exited(_body: Node2D) -> void:
 	is_in_hitbox=false
 	speed = origin_speed
-	attack_effect.stop()
-	attack_effect.visible = false
+	#attack_effect.stop()
+	#attack_effect.visible = false

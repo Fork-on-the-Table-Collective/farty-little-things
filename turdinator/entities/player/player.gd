@@ -53,7 +53,8 @@ func bg_music_trigger():
 		
 
 func _ready() -> void:
-	if OS.get_name() == "iOS":
+	slow_down_sound.volume_db=linear_to_db(.2)
+	if OS.get_name() == "iOS" or OS.get_name() == "Android":
 		toutch_controls.visible=true
 	reset_player_params()
 	set_animation_dict()
@@ -109,7 +110,7 @@ func _physics_process(delta: float) -> void:
 		#play_animation(direction, Global.speed_modifier/Global.size)
 
 		# Check if sprinting
-		if Input.is_action_pressed("sprint") or Input.is_action_pressed("ui_select"):
+		if Input.is_action_pressed("sprint"):
 			speed_modifier*=SPRINT
 			velocity=direction*speed_modifier*SPEED
 			play_animation(direction, speed_modifier)
